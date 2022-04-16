@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:local="clr-namespace:Movilizacion"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:maps="clr-namespace:Movilizacion.Renders"
+    x:Class="Movilizacion.Views.ChatFlow.StallsTabbedPage"
+    BackgroundColor="Transparent"
+	grial:Effects.ApplyIOSSafeAreaAsPadding="Bottom"
+    Title="Casillas">
+
+    <ContentPage.Resources>
+        <ResourceDictionary
+			Source="/Styles/TabControl/SegmentedTabResources.xaml" />
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <!-- TABS -->
+        <grial:TabControl
+			Style="{ StaticResource SegmentedTabStyle }">
+            <grial:TabItem
+				Text="{ grial:Translate StringStalls }">
+                <StackLayout  
+                    BackgroundColor="{ DynamicResource BasePageColor }" 
+                    Padding="15,0,30,0">
+                    <SearchBar
+				        Grid.Row="0"
+				        Margin="20,0"
+				        HeightRequest="44"
+				        VerticalOptions="Center"
+				        CancelButtonColor="{ DynamicResource BaseTextColor }"
+				        BackgroundColor="Transparent"
+				        Placeholder="Buscar..."
+				        TextColor="{ DynamicResource BaseTextColor }"
+                        Text="{Binding Search}"
+                        SearchCommand="{Binding SearchCommand}"
+				        grial:SearchBarProperties.IconColor="{ DynamicResource BaseTextColor }"
+				        grial:SearchBarProperties.FieldBackgroundColor="Transparent"
+				        grial:SearchBarProperties.BorderWidth="0"
+				        grial:SearchBarProperties.BorderColor="{ DynamicResource BasePageColor }"
+				        grial:Effects.CornerRadius="{ DynamicResource BaseButtonCornerRadius }"
+				        grial:Effects.ApplyIOSSafeAreaAsPadding="Left,Right" />
+                    <ListView
+					    x:Name="lstStalls"
+                        IsPullToRefreshEnabled="True"
+                        IsRefreshing="{Binding IsRefreshing}"
+                        RefreshCommand="{Binding RefreshCommand}"
+					    ItemsSource="{ Binding Stalls }"
+                        SelectedItem="{Binding Stall, Mode=TwoWay}"
+					    HasUnevenRows="True"
+                        CachingStrategy="RecycleElement"
+                        VerticalScrollBarVisibility="Never"
+					    BackgroundColor="{ DynamicResource BasePageColor }">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <SwipeView >
+                                        <SwipeView.LeftItems>
+                                            <SwipeItems>
+                                                <SwipeItemView
+                                                    Command="{Binding Source={x:Reference lstStalls}, Path=BindingContext.StatusStallCommand}"
+                                                    CommandParameter="{Binding}">
+                                                    <Grid 
+                                                        WidthRequest="70">
+                                                        <StackLayout VerticalOptions="Center">
+                                                            <Image Source="{FontImage FontFamily={ StaticResource GrialIconsFill }, Glyph={x:Static local:GrialIconsFont.Box}, Size=30, Color=#2382A8}"/>
+                                                            <Label 
+                                                                FontAttributes="Bold"
+                                                                Text="Casilla" 
+                                                                TextColor="#2382A8"
+                                                                HorizontalTextAlignment="Center" 
+                                                                VerticalTextAlignment="Center"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </SwipeItemView>
+                                            </SwipeItems>
+                                        </SwipeView.LeftItems>
+                                        <Grid 
+                                             RowDefinitions="Auto"
+                                             ColumnDefinitions="*, Auto"
+                                             Margin="0">
+                                            <StackLayout>
+                                                <Grid 
+                                                    RowSpacing="2"
+                                                    RowDefinitions="Auto, Auto, *">
+                                                    <StackLayout 
+                                                        Grid.Row="0"
+                                                        Orientation="Horizontal">
+                                                        <Label 
+                                                            Text="{Binding StallType, StringFormat='{0}, '}" 
+                                                            Style="{ StaticResource LabelBoldStyle }" />
+                                                        <Label 
+                                                            Text="{Binding Location}" 
+                                                            Style="{ StaticResource LabelBoldStyle }" />
+                                                    </StackLayout>
+                                                    <StackLayout 
+                                                        Grid.Row="1" 
+                                                        Margin="0,1,0,0" 
+                                                        Orientation="Horizontal" >
+                                                        <Label 
+                                                            Text="{Binding Address}" 
+                                                            FontSize="12"  
+                                                            TextColor="{ DynamicResource ErrorColor }"/>
+                                                    </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="2"
+                                                        Orientation="Horizontal">
+                                                        <Label
+                                                            VerticalOptions="Center"
+                                                            FontAttributes="Bold"
+                                                            FontSize="30"
+                                                            FontFamily="{ StaticResource MaterialCommunityIcons }"
+                                                            Text="{Binding Icon}"
+                                                            TextColor="{Binding Color}"/>
+                                                        <Label 
+                                                            VerticalOptions="Center"
+                                                            TextColor="{Binding Color}"
+                                                            Text="{Binding StatusStall}"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                            <Label
+				                                Grid.Column="1"
+				                                Grid.Row="0"
+				                                WidthRequest="20"
+				                                HorizontalOptions="End"
+				                                TextColor="{ DynamicResource BaseTextColor }"
+				                                Style="{ DynamicResource CardsListItemTemplateChevronStyle }"
+				                                Margin="0" />
+                                        </Grid>
+                                    </SwipeView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </grial:TabItem>
+
+            <grial:TabItem
+				Text="{ grial:Translate StringLocations }">
+                <StackLayout>
+                    <maps:CustomMap x:Name="MyMap"
+                        MapType="Street"/>
+                </StackLayout>
+
+            </grial:TabItem>
+
+        </grial:TabControl>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Movilizacion.Renders"
+             x:Class="Movilizacion.Views.Maps.MapPage">
+    <StackLayout>
+        <maps:CustomMap x:Name="MyMap"
+                  MapType="Street"/>
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="581b1d7c3b374709baefb04943a7f005" Name="Diagram1" ZoomLevel="13">
+        <EntityTypeShape EntityType="DBSMovilizacionModel.Casillas" Width="1.5" PointX="5.25" PointY="40.625" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CATDistritoFederal" Width="1.5" PointX="8.25" PointY="42" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CATDistritoLocal" Width="1.5" PointX="3" PointY="34" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CATEstado" Width="1.5" PointX="0.75" PointY="33.625" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CATEstatusCasilla" Width="1.5" PointX="6" PointY="30.625" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CATMunicipios" Width="1.5" PointX="3" PointY="50.375" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CATSecciones" Width="1.5" PointX="10.5" PointY="36" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CATTipoCasilla" Width="1.5" PointX="3" PointY="43.25" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CATTipoContacto" Width="1.5" PointX="19.5" PointY="34.125" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CATTipoCredencial" Width="1.5" PointX="14.25" PointY="32.5" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CATTipoDocumento" Width="1.5" PointX="16.5" PointY="35.25" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CATTipoPregunta" Width="1.5" PointX="16.5" PointY="49.25" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATCambioSeccion" Width="1.5" PointX="12.75" PointY="35.375" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATContacto" Width="1.5" PointX="21.75" PointY="37.5" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATDoctoPersona" Width="1.5" PointX="18.75" PointY="36.75" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATDomicilios" Width="1.5" PointX="21.75" PointY="42.125" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATEncuestas" Width="1.5" PointX="10.5" PointY="41.5" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DatErrores" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DatGeolocalizacionNoProcesadas" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATInvitados" Width="1.5" PointX="18.75" PointY="56.25" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATNoticias" Width="1.5" PointX="13.5" PointY="46.75" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATNotificaciones" Width="1.5" PointX="13.5" PointY="40.625" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATPersonas" Width="1.5" PointX="16.5" PointY="37.625" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DatPersonasGeolocalizacion" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATPreguntas" Width="1.5" PointX="18.75" PointY="48.125" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATProceso" Width="1.5" PointX="6" PointY="33.625" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATReporteCasilla" Width="1.5" PointX="8.25" PointY="38" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATRespuestas" Width="1.5" PointX="21" PointY="48.375" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATRespUsuario" Width="1.5" PointX="18.75" PointY="44.75" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.Encarte" Width="1.5" PointX="0.75" PointY="29" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.ProcesoUsuario" Width="1.5" PointX="8.25" PointY="34.875" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.Territorio" Width="1.5" PointX="18.75" PointY="40.125" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.UsersDeteccion" Width="1.5" PointX="14.25" PointY="52.75" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_Casillas_CATDistritoFederal" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_Casillas_CATEstado" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_Casillas_CATMunicipios" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_Casillas_CATSecciones" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_Casillas_CATTipoCasilla" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_Casillas_Encarte" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATReporteCasilla_Casillas" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK__DATPerson__IdDis__7B264821" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_CATDistritoFederal_CATEstado" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_CATDistritoFederal_CATMunicipios" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_CATDistritoFederal_Encarte" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_CATSecciones_CATDistritoFederal" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATEncuestas_CATDistritoFederal" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATNoticias_CATDistritoFederal" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATNotificaciones_CATDistritoFederal" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_Territorio_CATDistritoFederal" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK__DATPerson__IdDis__7C1A6C5A" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_CATDistritoLocal_CATEstado" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_CATDistritoLocal_Encarte" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_CATSecciones_CATDistritoLocal" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATEncuestas_CATDistritoLocal" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATNoticias_CATDistritoLocal" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATNotificaciones_CATDistritoLocal" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_Territorio_CATDistritoLocal" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK__DATPerson__IdEst__76619304" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_CATMunicipios_CATEstado" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_CATSecciones_CATEstado" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATCambioSeccion_CATEstado" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATDomicilios_CATEstado" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATEncuestas_CATEstado" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATNoticias_CATEstado" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATNotificaciones_CATEstado" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATProceso_CATEstado" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_Territorio_CATEstado" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATReporteCasilla_CATEstatusCasilla" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK__DATPerson__IdMun__7A3223E8" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_CATSecciones_CATMunicipios" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATDomicilios_CATMunicipios" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATEncuestas_CATMunicipios" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATNoticias_CATMunicipios" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATNotificaciones_CATMunicipios" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_Territorio_CATMunicipios" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK__DATPerson__IdSec__7D0E9093" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_CATSecciones_Encarte" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATCambioSeccion_CATSecciones" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_Territorio_CATSecciones" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATContacto_CATTipoContacto" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATPersonas_CATTipoCredencial" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATDoctoPersona_CATTipoDocumento" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATPreguntas_CATTipoPregunta" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATCambioSeccion_Encarte" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATContacto_DATPersonas" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATContacto_DATProceso" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATDoctoPersona_DATPersonas" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATDomicilios_DATPersonas" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATPreguntas_DATEncuestas" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATInvitados_DATPersonas" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATPersonas_UsersDeteccion" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATRespUsuario_DATPersonas" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATRespuestas_DATPreguntas" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATRespUsuario_DATPreguntas" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATProceso_Encarte" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATReporteCasilla_DATProceso" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_ProcesoUsuario_DATProceso" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_Territorio_DATProceso" />
+        <AssociationConnector Association="DBSMovilizacionModel.FK_DATRespUsuario_DATRespuestas" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CatDistritoFederalDistritoLocal" Width="1.5" PointX="3.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CatDistritoFederalMunicipio" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CatDistritoLocalDistritoFederal" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.CatDistritoLocalMunicipio" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DBSMovilizacionModel.DATDetectados" Width="1.5" PointX="2.75" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

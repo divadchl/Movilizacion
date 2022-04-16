@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Movilizacion"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+	x:Class="Movilizacion.Views.TasksFlow.GraphicsPage"
+	Title="Estadísticas">
+
+    <ContentPage.Resources>
+        <ResourceDictionary
+			Source="/Styles/TabControl/SimpleTabResources.xaml" />
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <!-- TALL NAVIGATION BAR BACKGROUND -->
+            <Grid
+                RowDefinitions="Auto, *"
+				RowSpacing="0">
+                <RefreshView
+                    RefreshColor="{StaticResource AccentColor}"
+                    Command="{Binding RefreshCommand}"
+                    IsRefreshing="{Binding IsRefreshing}">
+                <!-- SCROLLING AREA -->
+                    <ScrollView
+					    Grid.Row="1"
+					    grial:Effects.IgnoreIOSSafeAreaOnScrollView="Bottom,Left,Right">
+
+                        <StackLayout
+                            Orientation="Vertical"
+						    Spacing="0">
+
+                            <StackLayout Margin="0,10">
+                                <Label 
+                                    Style="{ StaticResource LabelBoldStyle }"
+								    TextColor="Black"
+                                    FontSize="18"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Personas Contactadas"/>
+                                <Grid
+                                    RowDefinitions="*, AUto"
+							        ColumnSpacing="10"
+							        Margin="20,10"
+							        HorizontalOptions="Center">
+
+                                    <!-- PIE CHART -->
+                                    <local:DonutChart
+									    Grid.Column="0"
+                                        HeightRequest="260"
+                                        WidthRequest="260"
+									    MaxValue="{ Binding Graphics.MaxValueTypeContact }"
+									    ItemsSource="{ Binding Graphics.SeriesTypeContact }"
+									    IsAnimated="true"
+									    ShowValueLabel="false"
+									    LabelOrientation="Horizontal"
+									    ValueLabelOrientation="Horizontal"
+									    LabelColor="#518DD8"
+									    DefaultEntryColor="#518DD8"
+									    UseEntryValuesAsLabels="true"
+									    PointMode="Square"
+									    AreaAlpha="0.1"
+									    LabelTextSize="10" />
+
+                                    <!-- CUSTOM LEGEND -->
+                                    <StackLayout
+									    Grid.Row="1"
+                                        Grid.Column="0"
+									    WidthRequest="290"
+									    HorizontalOptions="Start"
+									    VerticalOptions="Center"
+									    InputTransparent="true"
+									    BindableLayout.ItemsSource="{ Binding Graphics.SeriesTypeContact }">
+
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid
+                                                    ColumnDefinitions="Auto, *, AUto"
+												    Margin="10,0">
+
+                                                    <BoxView
+													    Margin="0,2,2,0"
+													    Grid.Column="0"
+													    WidthRequest="14"
+													    HeightRequest="14"
+													    HorizontalOptions="Center"
+													    VerticalOptions="Center"
+													    BackgroundColor="{Binding Color}" />
+
+                                                    <Label
+													    Grid.Column="1"
+													    Text="{Binding Label}"
+													    VerticalOptions="Center"
+													    FontSize="12" />
+
+                                                    <Label
+													    Grid.Column="2"
+													    Style="{StaticResource LabelBoldStyle}"
+													    Text="{Binding Value}"
+													    VerticalOptions="Center"
+													    FontSize="12" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                </RefreshView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

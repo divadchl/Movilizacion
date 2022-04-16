@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Movilizacion"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+	x:Class="Movilizacion.Views.Navigation.Lists.PollListItemPage">
+    <ContentPage.Content>
+
+        <Grid>
+            <grial:GrialNavigationBar
+				UseNavigationPageBarBackgroundColor="true"
+				UseNavigationPageBarBackgroundGradient="true" />
+
+            <!--BACKGROUND IMAGE-->
+            <Image
+				Style="{ StaticResource MainMenuBackgroundImageStyle }" />
+
+            <Grid
+				RowSpacing="0"
+                RowDefinitions="170, *, Auto">
+
+                <!-- CURVED MASK -->
+                <local:CurvedMask
+					Grid.Row="0"
+					VerticalOptions="End"
+					MaskColor="{ DynamicResource MainWrapperBackgroundColor }" />
+
+                <!-- BACKGROUND BOTTOM COLOR -->
+                <BoxView
+					BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
+					Grid.Row="1" />
+
+                <!-- OVERLAPPED CONTENT -->
+                <StackLayout
+					Spacing="0"
+					Grid.RowSpan="2">
+                    <!-- HEADER -->
+                    <Grid
+                        ColumnDefinitions="Auto, *"
+						RowDefinitions="Auto, Auto"
+                        Margin="20,0"
+						ColumnSpacing="12"
+						RowSpacing="0">
+
+                        <!-- ICON -->
+                        <Label
+							Grid.Column="0"
+							Grid.Row="0"
+							FontSize="26"
+							VerticalTextAlignment="Center"
+							TextColor="{ DynamicResource InverseTextColor }"
+							Text="{ x:Static local:IoniconsFont.IosWorldOutline }"
+							FontFamily="{ StaticResource Ionicons }"
+							Style="{ StaticResource FontIcon }"
+							Margin="10,0,0,0" />
+
+                        <!-- TITLE -->
+                        <Label
+							Grid.Column="1"
+							Grid.Row="0"
+							FontSize="26"
+							Text="{ Binding Poll.Poll }"
+							TextColor="{ DynamicResource InverseTextColor }" />
+                        <!-- SUBTITLE -->
+                        <Label
+							Grid.Column="1"
+							Grid.Row="1"
+							FontSize="16"
+							Text="{ Binding RespuestasTotales, StringFormat='Total de encuestados {0:N0}' }"
+							TextColor="{ DynamicResource InverseTextColor }" />
+                    </Grid>
+                    <!-- LIST -->
+                    <ListView
+						ItemsSource="{ Binding Questions }"
+                        SelectionMode="None"
+						SeparatorVisibility="None"
+						HasUnevenRows="True"
+                        CachingStrategy="RecycleElement"
+						Margin="0,5">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame
+                                        Padding="20,20"
+										Margin="10"
+										CornerRadius="10">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SelectQuestionCommand}"/>
+                                        </Frame.GestureRecognizers>
+                                        <Grid
+                                            ColumnDefinitions="*, Auto, Auto"
+                                            RowDefinitions="Auto, Auto"
+										    RowSpacing="10">
+                                            <Label
+				                                Grid.Row="0"
+				                                Grid.Column="0"
+				                                Grid.ColumnSpan="2"
+				                                FontAttributes="Bold"
+                                                TextColor="Black"
+				                                Text="{ Binding Pregunta }"
+				                                FontSize="18"
+				                                VerticalOptions="Center" />
+                                            <StackLayout
+                                                Padding="10"
+				                                Grid.Row="1"
+				                                Grid.Column="0"
+				                                Grid.ColumnSpan="2"
+                                                BindableLayout.ItemsSource="{Binding AnswersPercent}"
+				                                Orientation="Vertical">
+                                                <StackLayout.Triggers>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding IdTipoPregunta}" Value="3">
+                                                        <Setter Property="IsVisible" Value="false"/>
+                                                    </DataTrigger>
+                                                </StackLayout.Triggers>
+                                                <BindableLayout.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid
+                                                            ColumnDefinitions="40, *">
+                                                            <Label 
+                                                                Grid.Column="0"
+                                                                FontSize="16"
+                                                                TextColor="Black"
+                                                                Text="{Binding Porcentaje, StringFormat='{0:N0}%'}"/>
+                                                            <Label 
+                                                                Grid.Column="1"
+                                                                FontSize="16"
+                                                                TextColor="Black"
+                                                                Text="{Binding Respuesta}"/>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </BindableLayout.ItemTemplate>
+                                            </StackLayout>
+                                            <!-- CHEVRON -->
+                                            <Label
+			                                    Grid.Row="0"
+			                                    Grid.RowSpan="2"
+			                                    Grid.Column="2"
+			                                    WidthRequest="20"
+			                                    HorizontalOptions="End"
+			                                    TextColor="{ Binding BackgroundColor }"
+			                                    Style="{ DynamicResource CardsListItemTemplateChevronStyle }">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding IdTipoPregunta}" Value="1">
+                                                        <Setter Property="IsVisible" Value="false"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding IdTipoPregunta}" Value="2">
+                                                        <Setter Property="IsVisible" Value="false"/>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

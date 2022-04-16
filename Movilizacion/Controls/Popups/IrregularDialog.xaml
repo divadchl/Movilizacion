@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pages:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Movilizacion"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+	x:Class="Movilizacion.IrregularDialog"
+	CloseWhenBackgroundIsClicked="{ StaticResource DialogsCloseWhenBackgroundIsClicked }"
+	BackgroundColor="{ DynamicResource DialogsShimBackgroundColor }">
+        
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:DialogsResources />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+        
+    <Grid
+		Margin="20"
+		Style="{StaticResource BlurredShadow}"
+		VerticalOptions="{DynamicResource DialogsVerticalPositioning}">
+        <Grid
+			RowSpacing="0"
+			BackgroundColor="{DynamicResource BasePageColor}"
+			grial:Effects.CornerRadius="{StaticResource DialogsCornerRadius}"
+			grial:Effects.BackgroundGradient="{DynamicResource SimpleDialogBodyGradient}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition
+					Height="44" />
+                <RowDefinition
+					Height="*" />
+                <RowDefinition
+					Height="{
+                    grial:OnOrientationDouble
+                            Portrait=64,
+                            Landscape=44
+                    }" />
+            </Grid.RowDefinitions>
+            <!--TITLE AND ICON-->
+            <Grid
+                ColumnDefinitions="Auto, Auto, *"
+				Grid.Row="0"
+				Padding="14,0">
+                
+                <!-- ICON CLOSE -->
+                <Label
+					Grid.Column="2"
+					Margin="0"
+					FontSize="{StaticResource DialogsIconsSize}"
+					TextColor="{DynamicResource BaseTextColor}"
+					Text="{x:Static local:GrialIconsFont.CloseCircle}"
+					Style="{StaticResource FontIconFill}"
+					VerticalTextAlignment="Center"
+					HorizontalTextAlignment="End">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+							Tapped="OnClose" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+            <!-- CONTENT -->
+            <StackLayout
+				Margin="30,0,30,30"
+				Grid.Row="1"
+				Spacing="30">
+                <Grid
+                    ColumnDefinitions="Auto, *"
+					ColumnSpacing="10">
+
+                    <Label
+						Grid.Row="0"
+						Grid.Column="0"
+						Text="{x:Static local:GrialIconsFont.MessageSquare}"
+						TextColor="{DynamicResource BaseTextColor}"
+						Style="{StaticResource FontIcon}"
+						VerticalTextAlignment="Center"
+						FontSize="24" />
+
+                    <Label
+						Grid.Row="0"
+						Grid.Column="1"
+						Text="Seleccione la Opción"
+						TextColor="{DynamicResource BaseTextColor}"
+						FontSize="{
+                                OnPlatform 
+                                    iOS=24,
+                                    Android=22 
+                            }"
+						Style="{StaticResource LabelBoldStyle}"
+						LineBreakMode="TailTruncation" />
+                </Grid>
+
+                <ScrollView
+				    Grid.Row="1">
+                    <StackLayout
+					    Spacing="20"
+					    Margin="15,0,15,20">
+                        <input:SelectionView
+                            ItemDisplayBinding="{Binding TypeContact}"
+                            ColumnNumber="1"
+                            SelectionType="RadioButton"
+                            SelectedItem="{Binding SelectedAction}"
+                            ItemsSource="{Binding Actions}"/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+
+            <!-- FOOTER -->
+            <FlexLayout
+				Margin="20,0"
+				Grid.Row="2"
+				JustifyContent="Center">
+                <Button
+					Style="{ StaticResource DialogPrimaryActionButtonStyle }"
+					Text="Aceptar"
+					Command="{Binding SelectCommand}"/>
+            </FlexLayout>
+        </Grid>
+    </Grid>
+</pages:PopupPage>

@@ -1,0 +1,1686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBSMovilizacionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Casillas">
+    <Key>
+      <PropertyRef Name="IdCasilla" />
+    </Key>
+    <Property Name="IdCasilla" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="500" />
+    <Property Name="distrito" Type="decimal" Precision="28" Scale="0" />
+    <Property Name="municipio" Type="decimal" Precision="28" Scale="0" />
+    <Property Name="nmunicipio" Type="varchar" MaxLength="500" />
+    <Property Name="seccion" Type="decimal" Precision="28" Scale="0" />
+    <Property Name="localidad" Type="decimal" Precision="28" Scale="0" />
+    <Property Name="nlocalidad" Type="varchar" MaxLength="500" />
+    <Property Name="manzana" Type="decimal" Precision="28" Scale="0" />
+    <Property Name="casilla" Type="varchar" MaxLength="50" />
+    <Property Name="domicilio" Type="varchar" MaxLength="5000" />
+    <Property Name="ubicacion" Type="varchar" MaxLength="5000" />
+    <Property Name="referencia" Type="varchar" MaxLength="5000" />
+    <Property Name="logitud" Type="varchar" MaxLength="50" />
+    <Property Name="latitud" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstado" Type="int" />
+    <Property Name="IdMunicipio" Type="int" />
+    <Property Name="IdSeccion" Type="int" />
+    <Property Name="IdDistritoFederal" Type="int" />
+    <Property Name="IdEncarte" Type="int" Nullable="false" />
+    <Property Name="IdTipoCasilla" Type="int" Nullable="false" />
+    <Property Name="CAMBIO" Type="int" />
+    <Property Name="ESTATUS2018" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CATDistritoFederal">
+    <Key>
+      <PropertyRef Name="IdDistritoFederal" />
+    </Key>
+    <Property Name="IdDistritoFederal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistritoFederal" Type="int" Nullable="false" />
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="Cabecera" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="IdMunicipio" Type="int" />
+    <Property Name="IdEncarte" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CATDistritoLocal">
+    <Key>
+      <PropertyRef Name="IdDistritoLocal" />
+    </Key>
+    <Property Name="IdDistritoLocal" Type="int" Nullable="false" />
+    <Property Name="DistritoLocal" Type="int" Nullable="false" />
+    <Property Name="IdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cabecera" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="IdEncarte" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CATEstado">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Abreviacion" Type="varchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CATEstatusCasilla">
+    <Key>
+      <PropertyRef Name="IdEstatusCasilla" />
+    </Key>
+    <Property Name="IdEstatusCasilla" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EstatusCasilla" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Color" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CATMunicipios">
+    <Key>
+      <PropertyRef Name="IdMunicipio" />
+    </Key>
+    <Property Name="IdMunicipio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="municipio" Type="decimal" Precision="28" Scale="0" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="abreviatura" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="IdEstado" Type="int" />
+  </EntityType>
+  <EntityType Name="CATSecciones">
+    <Key>
+      <PropertyRef Name="IdSeccion" />
+    </Key>
+    <Property Name="IdSeccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="IdMunicipio" Type="int" Nullable="false" />
+    <Property Name="IdDistritoLocal" Type="int" Nullable="false" />
+    <Property Name="IdDistritoFederal" Type="int" Nullable="false" />
+    <Property Name="Seccion" Type="int" Nullable="false" />
+    <Property Name="IdEncarte" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CATTipoCasilla">
+    <Key>
+      <PropertyRef Name="IdTipoCasilla" />
+    </Key>
+    <Property Name="IdTipoCasilla" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CATTipoContacto">
+    <Key>
+      <PropertyRef Name="IdTipoContacto" />
+    </Key>
+    <Property Name="IdTipoContacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoContacto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Color" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CATTipoCredencial">
+    <Key>
+      <PropertyRef Name="IdTipoCredencial" />
+    </Key>
+    <Property Name="IdTipoCredencial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoCrecencial" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CATTipoDocumento">
+    <Key>
+      <PropertyRef Name="IdTipoDocumento" />
+    </Key>
+    <Property Name="IdTipoDocumento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CATTipoPregunta">
+    <Key>
+      <PropertyRef Name="IdTipoPregunta" />
+    </Key>
+    <Property Name="IdTipoPregunta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoPregunta" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DATCambioSeccion">
+    <Key>
+      <PropertyRef Name="IdCambio" />
+    </Key>
+    <Property Name="IdCambio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdSeccionNueva" Type="int" Nullable="false" />
+    <Property Name="SeccionVieja" Type="int" Nullable="false" />
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="IdEncarte" Type="int" Nullable="false" />
+    <Property Name="AddDate" Type="datetime" Nullable="false" />
+    <Property Name="AddUser" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DATContacto">
+    <Key>
+      <PropertyRef Name="IdContacto" />
+    </Key>
+    <Property Name="IdContacto" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IdProceso" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IdPersona" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Voto" Type="bit" Nullable="false" />
+    <Property Name="IdTipoContacto" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" />
+    <Property Name="FechaHora" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DATDoctoPersona">
+    <Key>
+      <PropertyRef Name="IdDoctoPersona" />
+    </Key>
+    <Property Name="IdDoctoPersona" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IdPersona" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IdTipoDocumento" Type="int" Nullable="false" />
+    <Property Name="Documento" Type="image" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="70" />
+  </EntityType>
+  <EntityType Name="DATDomicilios">
+    <Key>
+      <PropertyRef Name="IdDomicilio" />
+    </Key>
+    <Property Name="IdDomicilio" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Calle" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="NoExterior" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NoInterior" Type="varchar" MaxLength="50" />
+    <Property Name="Colonia" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="IdMunicipio" Type="int" Nullable="false" />
+    <Property Name="CP" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="IdPersona" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Longitud" Type="varchar" MaxLength="50" />
+    <Property Name="Latitud" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DATEncuestas">
+    <Key>
+      <PropertyRef Name="IdEncuesta" />
+    </Key>
+    <Property Name="IdEncuesta" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Encuesta" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NoPregutas" Type="int" Nullable="false" />
+    <Property Name="Vigencia" Type="date" Nullable="false" />
+    <Property Name="IdEstado" Type="int" />
+    <Property Name="IdMunicipio" Type="int" />
+    <Property Name="IdDistritoFederal" Type="int" />
+    <Property Name="IdDistritoLocal" Type="int" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="NotificacionEnviada" Type="bit" />
+    <Property Name="InsertedUser" Type="varchar" MaxLength="25" />
+    <Property Name="InsertedDate" Type="datetime" />
+    <Property Name="ModifiedUser" Type="varchar" MaxLength="25" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="IdProceso" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="DatErrores">
+    <Key>
+      <PropertyRef Name="IdError" />
+    </Key>
+    <Property Name="IdError" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Aplicacion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Message" Type="varchar(max)" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DatGeolocalizacionNoProcesadas">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Message" Type="varchar" MaxLength="4000" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="IdDomicilio" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="DATInvitados">
+    <Key>
+      <PropertyRef Name="IdInvitado" />
+    </Key>
+    <Property Name="IdInvitado" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="IdPersona" Type="uniqueidentifier" />
+    <Property Name="CodigoInvitacion" Type="varchar" MaxLength="10" />
+    <Property Name="IdProceso" Type="uniqueidentifier" />
+    <Property Name="App" Type="varchar" MaxLength="50" />
+    <Property Name="IdUser" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="DATNoticias">
+    <Key>
+      <PropertyRef Name="IdNoticia" />
+    </Key>
+    <Property Name="IdNoticia" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Link" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdEstado" Type="int" />
+    <Property Name="IdMunicipio" Type="int" />
+    <Property Name="IdDistritoFederal" Type="int" />
+    <Property Name="IdDistritoLocal" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Titulo" Type="varchar" MaxLength="255" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="InsertedUser" Type="varchar" MaxLength="25" />
+    <Property Name="InsertedDate" Type="datetime" />
+    <Property Name="ModifiedUser" Type="varchar" MaxLength="25" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="IdProceso" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="DATNotificaciones">
+    <Key>
+      <PropertyRef Name="IdNotificacion" />
+    </Key>
+    <Property Name="IdNotificacion" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Notificacion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Enviada" Type="bit" Nullable="false" />
+    <Property Name="IdEstado" Type="int" />
+    <Property Name="IdMunicipio" Type="int" />
+    <Property Name="IdDistritoFederal" Type="int" />
+    <Property Name="IdDistritoLocal" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Titulo" Type="varchar" MaxLength="255" />
+    <Property Name="InsertedUser" Type="varchar" MaxLength="25" />
+    <Property Name="InsertedDate" Type="datetime" />
+    <Property Name="ModifiedUser" Type="varchar" MaxLength="25" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="IdProceso" Type="uniqueidentifier" />
+    <Property Name="Aplicacion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DATPersonas">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Paterno" Type="varchar" MaxLength="50" />
+    <Property Name="Materno" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Calle" Type="varchar" MaxLength="150" />
+    <Property Name="NoExterior" Type="varchar" MaxLength="50" />
+    <Property Name="NoInterior" Type="varchar" MaxLength="50" />
+    <Property Name="Colonia" Type="varchar" MaxLength="150" />
+    <Property Name="CP" Type="varchar" MaxLength="5" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+    <Property Name="Municipio" Type="varchar" MaxLength="150" />
+    <Property Name="ClaveINE" Type="varchar" MaxLength="50" />
+    <Property Name="CURP" Type="varchar" MaxLength="50" />
+    <Property Name="NoEstado" Type="varchar" MaxLength="5" />
+    <Property Name="NoMunicipio" Type="varchar" MaxLength="5" />
+    <Property Name="Seccion" Type="varchar" MaxLength="5" />
+    <Property Name="Emision" Type="varchar" MaxLength="5" />
+    <Property Name="Vigencia" Type="varchar" MaxLength="5" />
+    <Property Name="OCR" Type="varchar" MaxLength="15" />
+    <Property Name="CIC" Type="varchar" MaxLength="50" />
+    <Property Name="RegistroINE" Type="varchar" MaxLength="50" />
+    <Property Name="NoEmision" Type="varchar" MaxLength="50" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdPadre" Type="uniqueidentifier" />
+    <Property Name="IdUsuario" Type="uniqueidentifier" />
+    <Property Name="Latitud" Type="varchar" MaxLength="50" />
+    <Property Name="Longitud" Type="varchar" MaxLength="50" />
+    <Property Name="IdMunicipio" Type="int" />
+    <Property Name="IdDistritoFederal" Type="int" />
+    <Property Name="IdDistritoLocal" Type="int" />
+    <Property Name="IdSeccion" Type="int" />
+    <Property Name="IdEstado" Type="int" />
+    <Property Name="IdInvitado" Type="uniqueidentifier" />
+    <Property Name="IdTipoCredencial" Type="int" />
+    <Property Name="Vigente" Type="bit" />
+    <Property Name="IdProceso" Type="uniqueidentifier" />
+    <Property Name="IdUserPadre" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="DatPersonasGeolocalizacion">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Point" Type="geography" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DATPreguntas">
+    <Key>
+      <PropertyRef Name="IdPregunta" />
+    </Key>
+    <Property Name="IdPregunta" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Pregunta" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="IdEncuesta" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IdTipoPregunta" Type="int" Nullable="false" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="InsertedUser" Type="varchar" MaxLength="25" />
+    <Property Name="InsertedDate" Type="datetime" />
+    <Property Name="ModifiedUser" Type="varchar" MaxLength="25" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="IdProceso" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="DATProceso">
+    <Key>
+      <PropertyRef Name="IdProceso" />
+    </Key>
+    <Property Name="IdProceso" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Local" Type="bit" Nullable="false" />
+    <Property Name="FechaProceso" Type="datetime" Nullable="false" />
+    <Property Name="Archivado" Type="bit" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="AddUser" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="AddDate" Type="datetime" Nullable="false" />
+    <Property Name="IdEncarte" Type="int" Nullable="false" />
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DATReporteCasilla">
+    <Key>
+      <PropertyRef Name="IdReporteCasilla" />
+    </Key>
+    <Property Name="IdReporteCasilla" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IdCasilla" Type="int" Nullable="false" />
+    <Property Name="IdProceso" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IdEstatusCasilla" Type="int" Nullable="false" />
+    <Property Name="FechaHora" Type="datetime" Nullable="false" />
+    <Property Name="Comentario" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DATRespuestas">
+    <Key>
+      <PropertyRef Name="IdRespuestas" />
+    </Key>
+    <Property Name="IdRespuestas" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Respuesta" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="IdPregunta" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="InsertedUser" Type="varchar" MaxLength="25" />
+    <Property Name="InsertedDate" Type="datetime" />
+    <Property Name="ModifiedUser" Type="varchar" MaxLength="25" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="IdProceso" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="DATRespUsuario">
+    <Key>
+      <PropertyRef Name="IdRespUsuario" />
+    </Key>
+    <Property Name="IdRespUsuario" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IdPregunta" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IdRespuesta" Type="uniqueidentifier" />
+    <Property Name="RespAbierta" Type="varchar" MaxLength="5000" />
+    <Property Name="IdPersona" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Encarte">
+    <Key>
+      <PropertyRef Name="IdEncarte" />
+    </Key>
+    <Property Name="IdEncarte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="AddDate" Type="datetime" Nullable="false" />
+    <Property Name="AddUser" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="ModDate" Type="datetime" Nullable="false" />
+    <Property Name="ModUser" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProcesoUsuario">
+    <Key>
+      <PropertyRef Name="IdProceso" />
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="IdProceso" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="ApplicationGroup" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Territorio">
+    <Key>
+      <PropertyRef Name="IdTerritorio" />
+    </Key>
+    <Property Name="IdTerritorio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProceso" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="150" />
+    <Property Name="IdEstado" Type="int" />
+    <Property Name="IdMunicipio" Type="int" />
+    <Property Name="IdDistritoFederal" Type="int" />
+    <Property Name="IdDistritoLocal" Type="int" />
+    <Property Name="IdSeccion" Type="int" />
+  </EntityType>
+  <EntityType Name="UsersDeteccion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="salt" Type="varchar" MaxLength="50" />
+    <Property Name="isRegister" Type="bit" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" />
+    <Property Name="token" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSMovilizacion.dbo.CatDistritoFederalDistritoLocal' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CatDistritoFederalDistritoLocal">
+    <Key>
+      <PropertyRef Name="IdEncarte" />
+      <PropertyRef Name="IdEstado" />
+      <PropertyRef Name="IdDistritoFederal" />
+      <PropertyRef Name="IdDistritoLocal" />
+      <PropertyRef Name="IdSeccion" />
+    </Key>
+    <Property Name="IdEncarte" Type="int" Nullable="false" />
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="IdDistritoFederal" Type="int" Nullable="false" />
+    <Property Name="IdDistritoLocal" Type="int" Nullable="false" />
+    <Property Name="IdSeccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSMovilizacion.dbo.CatDistritoFederalMunicipio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CatDistritoFederalMunicipio">
+    <Key>
+      <PropertyRef Name="IdEncarte" />
+      <PropertyRef Name="IdEstado" />
+      <PropertyRef Name="IdMunicipio" />
+      <PropertyRef Name="IdDistritoFederal" />
+      <PropertyRef Name="IdSeccion" />
+    </Key>
+    <Property Name="IdEncarte" Type="int" Nullable="false" />
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="IdMunicipio" Type="int" Nullable="false" />
+    <Property Name="IdDistritoFederal" Type="int" Nullable="false" />
+    <Property Name="IdSeccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSMovilizacion.dbo.CatDistritoLocalDistritoFederal' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CatDistritoLocalDistritoFederal">
+    <Key>
+      <PropertyRef Name="IdEncarte" />
+      <PropertyRef Name="IdEstado" />
+      <PropertyRef Name="IdDistritoLocal" />
+      <PropertyRef Name="IdDistritoFederal" />
+      <PropertyRef Name="IdSeccion" />
+    </Key>
+    <Property Name="IdEncarte" Type="int" Nullable="false" />
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="IdDistritoLocal" Type="int" Nullable="false" />
+    <Property Name="IdDistritoFederal" Type="int" Nullable="false" />
+    <Property Name="IdSeccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSMovilizacion.dbo.CatDistritoLocalMunicipio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CatDistritoLocalMunicipio">
+    <Key>
+      <PropertyRef Name="IdEncarte" />
+      <PropertyRef Name="IdEstado" />
+      <PropertyRef Name="IdMunicipio" />
+      <PropertyRef Name="IdDistritoLocal" />
+      <PropertyRef Name="IdSeccion" />
+    </Key>
+    <Property Name="IdEncarte" Type="int" Nullable="false" />
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="IdMunicipio" Type="int" Nullable="false" />
+    <Property Name="IdDistritoLocal" Type="int" Nullable="false" />
+    <Property Name="IdSeccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSMovilizacion.dbo.DATDetectados' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DATDetectados">
+    <Key>
+      <PropertyRef Name="Usuario" />
+      <PropertyRef Name="FechaRegistro" />
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="Paterno" Type="varchar" MaxLength="50" />
+    <Property Name="Materno" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Calle" Type="varchar" MaxLength="150" />
+    <Property Name="NoExterior" Type="varchar" MaxLength="50" />
+    <Property Name="NoInterior" Type="varchar" MaxLength="50" />
+    <Property Name="Colonia" Type="varchar" MaxLength="150" />
+    <Property Name="CP" Type="varchar" MaxLength="5" />
+    <Property Name="Municipio" Type="varchar" MaxLength="150" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+    <Property Name="ClaveINE" Type="varchar" MaxLength="50" />
+    <Property Name="CURP" Type="varchar" MaxLength="50" />
+    <Property Name="NoEstado" Type="varchar" MaxLength="5" />
+    <Property Name="NoMunicipio" Type="varchar" MaxLength="5" />
+    <Property Name="Seccion" Type="varchar" MaxLength="5" />
+    <Property Name="Emision" Type="varchar" MaxLength="5" />
+    <Property Name="Vigencia" Type="varchar" MaxLength="5" />
+    <Property Name="OCR" Type="varchar" MaxLength="15" />
+    <Property Name="RegistroINE" Type="varchar" MaxLength="50" />
+    <Property Name="NoEmision" Type="varchar" MaxLength="50" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdPadre" Type="uniqueidentifier" />
+    <Property Name="IdUsuario" Type="uniqueidentifier" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" />
+    <Property Name="IdPersona" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__DATPerson__IdDis__7B264821">
+    <End Role="CATDistritoFederal" Type="Self.CATDistritoFederal" Multiplicity="0..1" />
+    <End Role="DATPersonas" Type="Self.DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DATPerson__IdDis__7C1A6C5A">
+    <End Role="CATDistritoLocal" Type="Self.CATDistritoLocal" Multiplicity="0..1" />
+    <End Role="DATPersonas" Type="Self.DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoLocal">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DATPerson__IdEst__76619304">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="0..1" />
+    <End Role="DATPersonas" Type="Self.DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DATPerson__IdMun__7A3223E8">
+    <End Role="CATMunicipios" Type="Self.CATMunicipios" Multiplicity="0..1" />
+    <End Role="DATPersonas" Type="Self.DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DATPerson__IdSec__7D0E9093">
+    <End Role="CATSecciones" Type="Self.CATSecciones" Multiplicity="0..1" />
+    <End Role="DATPersonas" Type="Self.DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATSecciones">
+        <PropertyRef Name="IdSeccion" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdSeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Casillas_CATDistritoFederal">
+    <End Role="CATDistritoFederal" Type="Self.CATDistritoFederal" Multiplicity="0..1" />
+    <End Role="Casillas" Type="Self.Casillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="Casillas">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Casillas_CATEstado">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="0..1" />
+    <End Role="Casillas" Type="Self.Casillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="Casillas">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Casillas_CATMunicipios">
+    <End Role="CATMunicipios" Type="Self.CATMunicipios" Multiplicity="0..1" />
+    <End Role="Casillas" Type="Self.Casillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="Casillas">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Casillas_CATSecciones">
+    <End Role="CATSecciones" Type="Self.CATSecciones" Multiplicity="0..1" />
+    <End Role="Casillas" Type="Self.Casillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATSecciones">
+        <PropertyRef Name="IdSeccion" />
+      </Principal>
+      <Dependent Role="Casillas">
+        <PropertyRef Name="IdSeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Casillas_CATTipoCasilla">
+    <End Role="CATTipoCasilla" Type="Self.CATTipoCasilla" Multiplicity="1" />
+    <End Role="Casillas" Type="Self.Casillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATTipoCasilla">
+        <PropertyRef Name="IdTipoCasilla" />
+      </Principal>
+      <Dependent Role="Casillas">
+        <PropertyRef Name="IdTipoCasilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Casillas_Encarte">
+    <End Role="Encarte" Type="Self.Encarte" Multiplicity="1" />
+    <End Role="Casillas" Type="Self.Casillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encarte">
+        <PropertyRef Name="IdEncarte" />
+      </Principal>
+      <Dependent Role="Casillas">
+        <PropertyRef Name="IdEncarte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATDistritoFederal_CATEstado">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="1" />
+    <End Role="CATDistritoFederal" Type="Self.CATDistritoFederal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="CATDistritoFederal">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATDistritoFederal_CATMunicipios">
+    <End Role="CATMunicipios" Type="Self.CATMunicipios" Multiplicity="0..1" />
+    <End Role="CATDistritoFederal" Type="Self.CATDistritoFederal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="CATDistritoFederal">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATDistritoFederal_Encarte">
+    <End Role="Encarte" Type="Self.Encarte" Multiplicity="1" />
+    <End Role="CATDistritoFederal" Type="Self.CATDistritoFederal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encarte">
+        <PropertyRef Name="IdEncarte" />
+      </Principal>
+      <Dependent Role="CATDistritoFederal">
+        <PropertyRef Name="IdEncarte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATDistritoLocal_CATEstado">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="1" />
+    <End Role="CATDistritoLocal" Type="Self.CATDistritoLocal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="CATDistritoLocal">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATDistritoLocal_Encarte">
+    <End Role="Encarte" Type="Self.Encarte" Multiplicity="1" />
+    <End Role="CATDistritoLocal" Type="Self.CATDistritoLocal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encarte">
+        <PropertyRef Name="IdEncarte" />
+      </Principal>
+      <Dependent Role="CATDistritoLocal">
+        <PropertyRef Name="IdEncarte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATMunicipios_CATEstado">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="0..1" />
+    <End Role="CATMunicipios" Type="Self.CATMunicipios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="CATMunicipios">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATSecciones_CATDistritoFederal">
+    <End Role="CATDistritoFederal" Type="Self.CATDistritoFederal" Multiplicity="1" />
+    <End Role="CATSecciones" Type="Self.CATSecciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="CATSecciones">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATSecciones_CATDistritoLocal">
+    <End Role="CATDistritoLocal" Type="Self.CATDistritoLocal" Multiplicity="1" />
+    <End Role="CATSecciones" Type="Self.CATSecciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoLocal">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Principal>
+      <Dependent Role="CATSecciones">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATSecciones_CATEstado">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="1" />
+    <End Role="CATSecciones" Type="Self.CATSecciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="CATSecciones">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATSecciones_CATMunicipios">
+    <End Role="CATMunicipios" Type="Self.CATMunicipios" Multiplicity="1" />
+    <End Role="CATSecciones" Type="Self.CATSecciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="CATSecciones">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATSecciones_Encarte">
+    <End Role="Encarte" Type="Self.Encarte" Multiplicity="1" />
+    <End Role="CATSecciones" Type="Self.CATSecciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encarte">
+        <PropertyRef Name="IdEncarte" />
+      </Principal>
+      <Dependent Role="CATSecciones">
+        <PropertyRef Name="IdEncarte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATCambioSeccion_CATEstado">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="1" />
+    <End Role="DATCambioSeccion" Type="Self.DATCambioSeccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATCambioSeccion">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATCambioSeccion_CATSecciones">
+    <End Role="CATSecciones" Type="Self.CATSecciones" Multiplicity="1" />
+    <End Role="DATCambioSeccion" Type="Self.DATCambioSeccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATSecciones">
+        <PropertyRef Name="IdSeccion" />
+      </Principal>
+      <Dependent Role="DATCambioSeccion">
+        <PropertyRef Name="IdSeccionNueva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATCambioSeccion_Encarte">
+    <End Role="Encarte" Type="Self.Encarte" Multiplicity="1" />
+    <End Role="DATCambioSeccion" Type="Self.DATCambioSeccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encarte">
+        <PropertyRef Name="IdEncarte" />
+      </Principal>
+      <Dependent Role="DATCambioSeccion">
+        <PropertyRef Name="IdEncarte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATContacto_CATTipoContacto">
+    <End Role="CATTipoContacto" Type="Self.CATTipoContacto" Multiplicity="1" />
+    <End Role="DATContacto" Type="Self.DATContacto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATTipoContacto">
+        <PropertyRef Name="IdTipoContacto" />
+      </Principal>
+      <Dependent Role="DATContacto">
+        <PropertyRef Name="IdTipoContacto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATContacto_DATPersonas">
+    <End Role="DATPersonas" Type="Self.DATPersonas" Multiplicity="1" />
+    <End Role="DATContacto" Type="Self.DATContacto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPersonas">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="DATContacto">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATContacto_DATProceso">
+    <End Role="DATProceso" Type="Self.DATProceso" Multiplicity="1" />
+    <End Role="DATContacto" Type="Self.DATContacto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATProceso">
+        <PropertyRef Name="IdProceso" />
+      </Principal>
+      <Dependent Role="DATContacto">
+        <PropertyRef Name="IdProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATDoctoPersona_CATTipoDocumento">
+    <End Role="CATTipoDocumento" Type="Self.CATTipoDocumento" Multiplicity="1" />
+    <End Role="DATDoctoPersona" Type="Self.DATDoctoPersona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATTipoDocumento">
+        <PropertyRef Name="IdTipoDocumento" />
+      </Principal>
+      <Dependent Role="DATDoctoPersona">
+        <PropertyRef Name="IdTipoDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATDoctoPersona_DATPersonas">
+    <End Role="DATPersonas" Type="Self.DATPersonas" Multiplicity="1" />
+    <End Role="DATDoctoPersona" Type="Self.DATDoctoPersona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPersonas">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="DATDoctoPersona">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATDomicilios_CATEstado">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="1" />
+    <End Role="DATDomicilios" Type="Self.DATDomicilios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATDomicilios">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATDomicilios_CATMunicipios">
+    <End Role="CATMunicipios" Type="Self.CATMunicipios" Multiplicity="1" />
+    <End Role="DATDomicilios" Type="Self.DATDomicilios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="DATDomicilios">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATDomicilios_DATPersonas">
+    <End Role="DATPersonas" Type="Self.DATPersonas" Multiplicity="1" />
+    <End Role="DATDomicilios" Type="Self.DATDomicilios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPersonas">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="DATDomicilios">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATEncuestas_CATDistritoFederal">
+    <End Role="CATDistritoFederal" Type="Self.CATDistritoFederal" Multiplicity="0..1" />
+    <End Role="DATEncuestas" Type="Self.DATEncuestas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="DATEncuestas">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATEncuestas_CATDistritoLocal">
+    <End Role="CATDistritoLocal" Type="Self.CATDistritoLocal" Multiplicity="0..1" />
+    <End Role="DATEncuestas" Type="Self.DATEncuestas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoLocal">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Principal>
+      <Dependent Role="DATEncuestas">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATEncuestas_CATEstado">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="0..1" />
+    <End Role="DATEncuestas" Type="Self.DATEncuestas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATEncuestas">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATEncuestas_CATMunicipios">
+    <End Role="CATMunicipios" Type="Self.CATMunicipios" Multiplicity="0..1" />
+    <End Role="DATEncuestas" Type="Self.DATEncuestas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="DATEncuestas">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATInvitados_DATPersonas">
+    <End Role="DATPersonas" Type="Self.DATPersonas" Multiplicity="0..1" />
+    <End Role="DATInvitados" Type="Self.DATInvitados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPersonas">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="DATInvitados">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNoticias_CATDistritoFederal">
+    <End Role="CATDistritoFederal" Type="Self.CATDistritoFederal" Multiplicity="0..1" />
+    <End Role="DATNoticias" Type="Self.DATNoticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="DATNoticias">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNoticias_CATDistritoLocal">
+    <End Role="CATDistritoLocal" Type="Self.CATDistritoLocal" Multiplicity="0..1" />
+    <End Role="DATNoticias" Type="Self.DATNoticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoLocal">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Principal>
+      <Dependent Role="DATNoticias">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNoticias_CATEstado">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="0..1" />
+    <End Role="DATNoticias" Type="Self.DATNoticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATNoticias">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNoticias_CATMunicipios">
+    <End Role="CATMunicipios" Type="Self.CATMunicipios" Multiplicity="0..1" />
+    <End Role="DATNoticias" Type="Self.DATNoticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="DATNoticias">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNotificaciones_CATDistritoFederal">
+    <End Role="CATDistritoFederal" Type="Self.CATDistritoFederal" Multiplicity="0..1" />
+    <End Role="DATNotificaciones" Type="Self.DATNotificaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="DATNotificaciones">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNotificaciones_CATDistritoLocal">
+    <End Role="CATDistritoLocal" Type="Self.CATDistritoLocal" Multiplicity="0..1" />
+    <End Role="DATNotificaciones" Type="Self.DATNotificaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoLocal">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Principal>
+      <Dependent Role="DATNotificaciones">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNotificaciones_CATEstado">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="0..1" />
+    <End Role="DATNotificaciones" Type="Self.DATNotificaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATNotificaciones">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNotificaciones_CATMunicipios">
+    <End Role="CATMunicipios" Type="Self.CATMunicipios" Multiplicity="0..1" />
+    <End Role="DATNotificaciones" Type="Self.DATNotificaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="DATNotificaciones">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATPersonas_CATTipoCredencial">
+    <End Role="CATTipoCredencial" Type="Self.CATTipoCredencial" Multiplicity="0..1" />
+    <End Role="DATPersonas" Type="Self.DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATTipoCredencial">
+        <PropertyRef Name="IdTipoCredencial" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdTipoCredencial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATPersonas_UsersDeteccion">
+    <End Role="UsersDeteccion" Type="Self.UsersDeteccion" Multiplicity="0..1" />
+    <End Role="DATPersonas" Type="Self.DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersDeteccion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATPreguntas_CATTipoPregunta">
+    <End Role="CATTipoPregunta" Type="Self.CATTipoPregunta" Multiplicity="1" />
+    <End Role="DATPreguntas" Type="Self.DATPreguntas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATTipoPregunta">
+        <PropertyRef Name="IdTipoPregunta" />
+      </Principal>
+      <Dependent Role="DATPreguntas">
+        <PropertyRef Name="IdTipoPregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATPreguntas_DATEncuestas">
+    <End Role="DATEncuestas" Type="Self.DATEncuestas" Multiplicity="1" />
+    <End Role="DATPreguntas" Type="Self.DATPreguntas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATEncuestas">
+        <PropertyRef Name="IdEncuesta" />
+      </Principal>
+      <Dependent Role="DATPreguntas">
+        <PropertyRef Name="IdEncuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATProceso_CATEstado">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="1" />
+    <End Role="DATProceso" Type="Self.DATProceso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATProceso">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATProceso_Encarte">
+    <End Role="Encarte" Type="Self.Encarte" Multiplicity="1" />
+    <End Role="DATProceso" Type="Self.DATProceso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encarte">
+        <PropertyRef Name="IdEncarte" />
+      </Principal>
+      <Dependent Role="DATProceso">
+        <PropertyRef Name="IdEncarte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATReporteCasilla_Casillas">
+    <End Role="Casillas" Type="Self.Casillas" Multiplicity="1" />
+    <End Role="DATReporteCasilla" Type="Self.DATReporteCasilla" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Casillas">
+        <PropertyRef Name="IdCasilla" />
+      </Principal>
+      <Dependent Role="DATReporteCasilla">
+        <PropertyRef Name="IdCasilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATReporteCasilla_CATEstatusCasilla">
+    <End Role="CATEstatusCasilla" Type="Self.CATEstatusCasilla" Multiplicity="1" />
+    <End Role="DATReporteCasilla" Type="Self.DATReporteCasilla" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstatusCasilla">
+        <PropertyRef Name="IdEstatusCasilla" />
+      </Principal>
+      <Dependent Role="DATReporteCasilla">
+        <PropertyRef Name="IdEstatusCasilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATReporteCasilla_DATProceso">
+    <End Role="DATProceso" Type="Self.DATProceso" Multiplicity="1" />
+    <End Role="DATReporteCasilla" Type="Self.DATReporteCasilla" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATProceso">
+        <PropertyRef Name="IdProceso" />
+      </Principal>
+      <Dependent Role="DATReporteCasilla">
+        <PropertyRef Name="IdProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATRespuestas_DATPreguntas">
+    <End Role="DATPreguntas" Type="Self.DATPreguntas" Multiplicity="1" />
+    <End Role="DATRespuestas" Type="Self.DATRespuestas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPreguntas">
+        <PropertyRef Name="IdPregunta" />
+      </Principal>
+      <Dependent Role="DATRespuestas">
+        <PropertyRef Name="IdPregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATRespUsuario_DATPersonas">
+    <End Role="DATPersonas" Type="Self.DATPersonas" Multiplicity="1" />
+    <End Role="DATRespUsuario" Type="Self.DATRespUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPersonas">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="DATRespUsuario">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATRespUsuario_DATPreguntas">
+    <End Role="DATPreguntas" Type="Self.DATPreguntas" Multiplicity="1" />
+    <End Role="DATRespUsuario" Type="Self.DATRespUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPreguntas">
+        <PropertyRef Name="IdPregunta" />
+      </Principal>
+      <Dependent Role="DATRespUsuario">
+        <PropertyRef Name="IdPregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATRespUsuario_DATRespuestas">
+    <End Role="DATRespuestas" Type="Self.DATRespuestas" Multiplicity="0..1" />
+    <End Role="DATRespUsuario" Type="Self.DATRespUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATRespuestas">
+        <PropertyRef Name="IdRespuestas" />
+      </Principal>
+      <Dependent Role="DATRespUsuario">
+        <PropertyRef Name="IdRespuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProcesoUsuario_DATProceso">
+    <End Role="DATProceso" Type="Self.DATProceso" Multiplicity="1" />
+    <End Role="ProcesoUsuario" Type="Self.ProcesoUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATProceso">
+        <PropertyRef Name="IdProceso" />
+      </Principal>
+      <Dependent Role="ProcesoUsuario">
+        <PropertyRef Name="IdProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_CATDistritoFederal">
+    <End Role="CATDistritoFederal" Type="Self.CATDistritoFederal" Multiplicity="0..1" />
+    <End Role="Territorio" Type="Self.Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_CATDistritoLocal">
+    <End Role="CATDistritoLocal" Type="Self.CATDistritoLocal" Multiplicity="0..1" />
+    <End Role="Territorio" Type="Self.Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoLocal">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_CATEstado">
+    <End Role="CATEstado" Type="Self.CATEstado" Multiplicity="0..1" />
+    <End Role="Territorio" Type="Self.Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_CATMunicipios">
+    <End Role="CATMunicipios" Type="Self.CATMunicipios" Multiplicity="0..1" />
+    <End Role="Territorio" Type="Self.Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_CATSecciones">
+    <End Role="CATSecciones" Type="Self.CATSecciones" Multiplicity="0..1" />
+    <End Role="Territorio" Type="Self.Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATSecciones">
+        <PropertyRef Name="IdSeccion" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="IdSeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_DATProceso">
+    <End Role="DATProceso" Type="Self.DATProceso" Multiplicity="1" />
+    <End Role="Territorio" Type="Self.Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATProceso">
+        <PropertyRef Name="IdProceso" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="IdProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBSMovilizacionModelStoreContainer">
+    <EntitySet Name="Casillas" EntityType="Self.Casillas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATDistritoFederal" EntityType="Self.CATDistritoFederal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATDistritoLocal" EntityType="Self.CATDistritoLocal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATEstado" EntityType="Self.CATEstado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATEstatusCasilla" EntityType="Self.CATEstatusCasilla" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATMunicipios" EntityType="Self.CATMunicipios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATSecciones" EntityType="Self.CATSecciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATTipoCasilla" EntityType="Self.CATTipoCasilla" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATTipoContacto" EntityType="Self.CATTipoContacto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATTipoCredencial" EntityType="Self.CATTipoCredencial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATTipoDocumento" EntityType="Self.CATTipoDocumento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATTipoPregunta" EntityType="Self.CATTipoPregunta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATCambioSeccion" EntityType="Self.DATCambioSeccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATContacto" EntityType="Self.DATContacto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATDoctoPersona" EntityType="Self.DATDoctoPersona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATDomicilios" EntityType="Self.DATDomicilios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATEncuestas" EntityType="Self.DATEncuestas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DatErrores" EntityType="Self.DatErrores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DatGeolocalizacionNoProcesadas" EntityType="Self.DatGeolocalizacionNoProcesadas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATInvitados" EntityType="Self.DATInvitados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATNoticias" EntityType="Self.DATNoticias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATNotificaciones" EntityType="Self.DATNotificaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATPersonas" EntityType="Self.DATPersonas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DatPersonasGeolocalizacion" EntityType="Self.DatPersonasGeolocalizacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATPreguntas" EntityType="Self.DATPreguntas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATProceso" EntityType="Self.DATProceso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATReporteCasilla" EntityType="Self.DATReporteCasilla" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATRespuestas" EntityType="Self.DATRespuestas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATRespUsuario" EntityType="Self.DATRespUsuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Encarte" EntityType="Self.Encarte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProcesoUsuario" EntityType="Self.ProcesoUsuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Territorio" EntityType="Self.Territorio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersDeteccion" EntityType="Self.UsersDeteccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatDistritoFederalDistritoLocal" EntityType="Self.CatDistritoFederalDistritoLocal" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CatDistritoFederalDistritoLocal].[IdEncarte] AS [IdEncarte], 
+    [CatDistritoFederalDistritoLocal].[IdEstado] AS [IdEstado], 
+    [CatDistritoFederalDistritoLocal].[IdDistritoFederal] AS [IdDistritoFederal], 
+    [CatDistritoFederalDistritoLocal].[IdDistritoLocal] AS [IdDistritoLocal], 
+    [CatDistritoFederalDistritoLocal].[IdSeccion] AS [IdSeccion]
+    FROM [dbo].[CatDistritoFederalDistritoLocal] AS [CatDistritoFederalDistritoLocal]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CatDistritoFederalMunicipio" EntityType="Self.CatDistritoFederalMunicipio" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CatDistritoFederalMunicipio].[IdEncarte] AS [IdEncarte], 
+    [CatDistritoFederalMunicipio].[IdEstado] AS [IdEstado], 
+    [CatDistritoFederalMunicipio].[IdMunicipio] AS [IdMunicipio], 
+    [CatDistritoFederalMunicipio].[IdDistritoFederal] AS [IdDistritoFederal], 
+    [CatDistritoFederalMunicipio].[IdSeccion] AS [IdSeccion]
+    FROM [dbo].[CatDistritoFederalMunicipio] AS [CatDistritoFederalMunicipio]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CatDistritoLocalDistritoFederal" EntityType="Self.CatDistritoLocalDistritoFederal" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CatDistritoLocalDistritoFederal].[IdEncarte] AS [IdEncarte], 
+    [CatDistritoLocalDistritoFederal].[IdEstado] AS [IdEstado], 
+    [CatDistritoLocalDistritoFederal].[IdDistritoLocal] AS [IdDistritoLocal], 
+    [CatDistritoLocalDistritoFederal].[IdDistritoFederal] AS [IdDistritoFederal], 
+    [CatDistritoLocalDistritoFederal].[IdSeccion] AS [IdSeccion]
+    FROM [dbo].[CatDistritoLocalDistritoFederal] AS [CatDistritoLocalDistritoFederal]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CatDistritoLocalMunicipio" EntityType="Self.CatDistritoLocalMunicipio" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CatDistritoLocalMunicipio].[IdEncarte] AS [IdEncarte], 
+    [CatDistritoLocalMunicipio].[IdEstado] AS [IdEstado], 
+    [CatDistritoLocalMunicipio].[IdMunicipio] AS [IdMunicipio], 
+    [CatDistritoLocalMunicipio].[IdDistritoLocal] AS [IdDistritoLocal], 
+    [CatDistritoLocalMunicipio].[IdSeccion] AS [IdSeccion]
+    FROM [dbo].[CatDistritoLocalMunicipio] AS [CatDistritoLocalMunicipio]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DATDetectados" EntityType="Self.DATDetectados" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DATDetectados].[Paterno] AS [Paterno], 
+    [DATDetectados].[Materno] AS [Materno], 
+    [DATDetectados].[Nombre] AS [Nombre], 
+    [DATDetectados].[Calle] AS [Calle], 
+    [DATDetectados].[NoExterior] AS [NoExterior], 
+    [DATDetectados].[NoInterior] AS [NoInterior], 
+    [DATDetectados].[Colonia] AS [Colonia], 
+    [DATDetectados].[CP] AS [CP], 
+    [DATDetectados].[Municipio] AS [Municipio], 
+    [DATDetectados].[Estado] AS [Estado], 
+    [DATDetectados].[ClaveINE] AS [ClaveINE], 
+    [DATDetectados].[CURP] AS [CURP], 
+    [DATDetectados].[NoEstado] AS [NoEstado], 
+    [DATDetectados].[NoMunicipio] AS [NoMunicipio], 
+    [DATDetectados].[Seccion] AS [Seccion], 
+    [DATDetectados].[Emision] AS [Emision], 
+    [DATDetectados].[Vigencia] AS [Vigencia], 
+    [DATDetectados].[OCR] AS [OCR], 
+    [DATDetectados].[RegistroINE] AS [RegistroINE], 
+    [DATDetectados].[NoEmision] AS [NoEmision], 
+    [DATDetectados].[Usuario] AS [Usuario], 
+    [DATDetectados].[FechaRegistro] AS [FechaRegistro], 
+    [DATDetectados].[IdPadre] AS [IdPadre], 
+    [DATDetectados].[IdUsuario] AS [IdUsuario], 
+    [DATDetectados].[Telefono] AS [Telefono], 
+    [DATDetectados].[IdPersona] AS [IdPersona]
+    FROM [dbo].[DATDetectados] AS [DATDetectados]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__DATPerson__IdDis__7B264821" Association="Self.FK__DATPerson__IdDis__7B264821">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DATPerson__IdDis__7C1A6C5A" Association="Self.FK__DATPerson__IdDis__7C1A6C5A">
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DATPerson__IdEst__76619304" Association="Self.FK__DATPerson__IdEst__76619304">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DATPerson__IdMun__7A3223E8" Association="Self.FK__DATPerson__IdMun__7A3223E8">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DATPerson__IdSec__7D0E9093" Association="Self.FK__DATPerson__IdSec__7D0E9093">
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Casillas_CATDistritoFederal" Association="Self.FK_Casillas_CATDistritoFederal">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="Casillas" EntitySet="Casillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Casillas_CATEstado" Association="Self.FK_Casillas_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="Casillas" EntitySet="Casillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Casillas_CATMunicipios" Association="Self.FK_Casillas_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="Casillas" EntitySet="Casillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Casillas_CATSecciones" Association="Self.FK_Casillas_CATSecciones">
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+      <End Role="Casillas" EntitySet="Casillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Casillas_CATTipoCasilla" Association="Self.FK_Casillas_CATTipoCasilla">
+      <End Role="CATTipoCasilla" EntitySet="CATTipoCasilla" />
+      <End Role="Casillas" EntitySet="Casillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Casillas_Encarte" Association="Self.FK_Casillas_Encarte">
+      <End Role="Encarte" EntitySet="Encarte" />
+      <End Role="Casillas" EntitySet="Casillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATDistritoFederal_CATEstado" Association="Self.FK_CATDistritoFederal_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATDistritoFederal_CATMunicipios" Association="Self.FK_CATDistritoFederal_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATDistritoFederal_Encarte" Association="Self.FK_CATDistritoFederal_Encarte">
+      <End Role="Encarte" EntitySet="Encarte" />
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATDistritoLocal_CATEstado" Association="Self.FK_CATDistritoLocal_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATDistritoLocal_Encarte" Association="Self.FK_CATDistritoLocal_Encarte">
+      <End Role="Encarte" EntitySet="Encarte" />
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATMunicipios_CATEstado" Association="Self.FK_CATMunicipios_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATSecciones_CATDistritoFederal" Association="Self.FK_CATSecciones_CATDistritoFederal">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATSecciones_CATDistritoLocal" Association="Self.FK_CATSecciones_CATDistritoLocal">
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATSecciones_CATEstado" Association="Self.FK_CATSecciones_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATSecciones_CATMunicipios" Association="Self.FK_CATSecciones_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATSecciones_Encarte" Association="Self.FK_CATSecciones_Encarte">
+      <End Role="Encarte" EntitySet="Encarte" />
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATCambioSeccion_CATEstado" Association="Self.FK_DATCambioSeccion_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATCambioSeccion" EntitySet="DATCambioSeccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATCambioSeccion_CATSecciones" Association="Self.FK_DATCambioSeccion_CATSecciones">
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+      <End Role="DATCambioSeccion" EntitySet="DATCambioSeccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATCambioSeccion_Encarte" Association="Self.FK_DATCambioSeccion_Encarte">
+      <End Role="Encarte" EntitySet="Encarte" />
+      <End Role="DATCambioSeccion" EntitySet="DATCambioSeccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATContacto_CATTipoContacto" Association="Self.FK_DATContacto_CATTipoContacto">
+      <End Role="CATTipoContacto" EntitySet="CATTipoContacto" />
+      <End Role="DATContacto" EntitySet="DATContacto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATContacto_DATPersonas" Association="Self.FK_DATContacto_DATPersonas">
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+      <End Role="DATContacto" EntitySet="DATContacto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATContacto_DATProceso" Association="Self.FK_DATContacto_DATProceso">
+      <End Role="DATProceso" EntitySet="DATProceso" />
+      <End Role="DATContacto" EntitySet="DATContacto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATDoctoPersona_CATTipoDocumento" Association="Self.FK_DATDoctoPersona_CATTipoDocumento">
+      <End Role="CATTipoDocumento" EntitySet="CATTipoDocumento" />
+      <End Role="DATDoctoPersona" EntitySet="DATDoctoPersona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATDoctoPersona_DATPersonas" Association="Self.FK_DATDoctoPersona_DATPersonas">
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+      <End Role="DATDoctoPersona" EntitySet="DATDoctoPersona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATDomicilios_CATEstado" Association="Self.FK_DATDomicilios_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATDomicilios" EntitySet="DATDomicilios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATDomicilios_CATMunicipios" Association="Self.FK_DATDomicilios_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="DATDomicilios" EntitySet="DATDomicilios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATDomicilios_DATPersonas" Association="Self.FK_DATDomicilios_DATPersonas">
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+      <End Role="DATDomicilios" EntitySet="DATDomicilios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATEncuestas_CATDistritoFederal" Association="Self.FK_DATEncuestas_CATDistritoFederal">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="DATEncuestas" EntitySet="DATEncuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATEncuestas_CATDistritoLocal" Association="Self.FK_DATEncuestas_CATDistritoLocal">
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+      <End Role="DATEncuestas" EntitySet="DATEncuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATEncuestas_CATEstado" Association="Self.FK_DATEncuestas_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATEncuestas" EntitySet="DATEncuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATEncuestas_CATMunicipios" Association="Self.FK_DATEncuestas_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="DATEncuestas" EntitySet="DATEncuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATInvitados_DATPersonas" Association="Self.FK_DATInvitados_DATPersonas">
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+      <End Role="DATInvitados" EntitySet="DATInvitados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNoticias_CATDistritoFederal" Association="Self.FK_DATNoticias_CATDistritoFederal">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="DATNoticias" EntitySet="DATNoticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNoticias_CATDistritoLocal" Association="Self.FK_DATNoticias_CATDistritoLocal">
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+      <End Role="DATNoticias" EntitySet="DATNoticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNoticias_CATEstado" Association="Self.FK_DATNoticias_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATNoticias" EntitySet="DATNoticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNoticias_CATMunicipios" Association="Self.FK_DATNoticias_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="DATNoticias" EntitySet="DATNoticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNotificaciones_CATDistritoFederal" Association="Self.FK_DATNotificaciones_CATDistritoFederal">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="DATNotificaciones" EntitySet="DATNotificaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNotificaciones_CATDistritoLocal" Association="Self.FK_DATNotificaciones_CATDistritoLocal">
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+      <End Role="DATNotificaciones" EntitySet="DATNotificaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNotificaciones_CATEstado" Association="Self.FK_DATNotificaciones_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATNotificaciones" EntitySet="DATNotificaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNotificaciones_CATMunicipios" Association="Self.FK_DATNotificaciones_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="DATNotificaciones" EntitySet="DATNotificaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATPersonas_CATTipoCredencial" Association="Self.FK_DATPersonas_CATTipoCredencial">
+      <End Role="CATTipoCredencial" EntitySet="CATTipoCredencial" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATPersonas_UsersDeteccion" Association="Self.FK_DATPersonas_UsersDeteccion">
+      <End Role="UsersDeteccion" EntitySet="UsersDeteccion" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATPreguntas_CATTipoPregunta" Association="Self.FK_DATPreguntas_CATTipoPregunta">
+      <End Role="CATTipoPregunta" EntitySet="CATTipoPregunta" />
+      <End Role="DATPreguntas" EntitySet="DATPreguntas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATPreguntas_DATEncuestas" Association="Self.FK_DATPreguntas_DATEncuestas">
+      <End Role="DATEncuestas" EntitySet="DATEncuestas" />
+      <End Role="DATPreguntas" EntitySet="DATPreguntas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATProceso_CATEstado" Association="Self.FK_DATProceso_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATProceso" EntitySet="DATProceso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATProceso_Encarte" Association="Self.FK_DATProceso_Encarte">
+      <End Role="Encarte" EntitySet="Encarte" />
+      <End Role="DATProceso" EntitySet="DATProceso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATReporteCasilla_Casillas" Association="Self.FK_DATReporteCasilla_Casillas">
+      <End Role="Casillas" EntitySet="Casillas" />
+      <End Role="DATReporteCasilla" EntitySet="DATReporteCasilla" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATReporteCasilla_CATEstatusCasilla" Association="Self.FK_DATReporteCasilla_CATEstatusCasilla">
+      <End Role="CATEstatusCasilla" EntitySet="CATEstatusCasilla" />
+      <End Role="DATReporteCasilla" EntitySet="DATReporteCasilla" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATReporteCasilla_DATProceso" Association="Self.FK_DATReporteCasilla_DATProceso">
+      <End Role="DATProceso" EntitySet="DATProceso" />
+      <End Role="DATReporteCasilla" EntitySet="DATReporteCasilla" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATRespuestas_DATPreguntas" Association="Self.FK_DATRespuestas_DATPreguntas">
+      <End Role="DATPreguntas" EntitySet="DATPreguntas" />
+      <End Role="DATRespuestas" EntitySet="DATRespuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATRespUsuario_DATPersonas" Association="Self.FK_DATRespUsuario_DATPersonas">
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+      <End Role="DATRespUsuario" EntitySet="DATRespUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATRespUsuario_DATPreguntas" Association="Self.FK_DATRespUsuario_DATPreguntas">
+      <End Role="DATPreguntas" EntitySet="DATPreguntas" />
+      <End Role="DATRespUsuario" EntitySet="DATRespUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATRespUsuario_DATRespuestas" Association="Self.FK_DATRespUsuario_DATRespuestas">
+      <End Role="DATRespuestas" EntitySet="DATRespuestas" />
+      <End Role="DATRespUsuario" EntitySet="DATRespUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProcesoUsuario_DATProceso" Association="Self.FK_ProcesoUsuario_DATProceso">
+      <End Role="DATProceso" EntitySet="DATProceso" />
+      <End Role="ProcesoUsuario" EntitySet="ProcesoUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_CATDistritoFederal" Association="Self.FK_Territorio_CATDistritoFederal">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_CATDistritoLocal" Association="Self.FK_Territorio_CATDistritoLocal">
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_CATEstado" Association="Self.FK_Territorio_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_CATMunicipios" Association="Self.FK_Territorio_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_CATSecciones" Association="Self.FK_Territorio_CATSecciones">
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_DATProceso" Association="Self.FK_Territorio_DATProceso">
+      <End Role="DATProceso" EntitySet="DATProceso" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

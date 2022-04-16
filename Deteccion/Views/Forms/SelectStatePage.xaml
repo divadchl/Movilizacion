@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    x:Class="Deteccion.Views.Forms.SelectStatePage"
+    Title="{ grial:Translate PageTitleSelectState }"
+	BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }">
+
+    <ContentPage.Content>
+        <ScrollView
+			grial:Effects.IgnoreIOSSafeAreaOnScrollView="Bottom">
+            <Grid
+                RowDefinitions="*, Auto"
+				RowSpacing="0"
+				grial:Effects.ApplyIOSSafeAreaAsPadding="Bottom"
+				grial:Effects.IOSSafeAreaBottomSize="15"
+				Padding="20"
+				Style="{ StaticResource ResponsiveLandscapeMarginStyle }">
+
+                <StackLayout Orientation="Vertical">
+                    <Label
+                        Text="Seleccione el Estado donde vive"/>
+                    <Picker
+                        ItemDisplayBinding="{Binding Name}"
+                        ItemsSource="{Binding States}"
+                        SelectedItem="{Binding State}"
+                        Title="Estado"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <!-- Primary Button -->
+                <Button
+                    Command="{Binding SelectCommand}"
+                    IsEnabled="{Binding IsEnabled}"
+					Margin="0,20,0,0"
+					Grid.Row="1"
+					HeightRequest="44"
+					VerticalOptions="CenterAndExpand"
+					Text="Seleccionar"
+					Style="{ StaticResource PrimaryActionButtonStyle }" />
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

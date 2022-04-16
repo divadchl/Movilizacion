@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Deteccion.ContactSimpleDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:local="clr-namespace:Deteccion"
+    grial:Effects.BackgroundGradient="{DynamicResource NavigationBarGradient}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid Style="{StaticResource ResponsiveLandscapeMarginStyle}">
+                <grial:CardView Margin="{grial:OnOrientationThickness Default='20,90,20,20', LandscapePhone='20,60,20,20'}" Padding="0">
+                    <grial:CardView.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </grial:CardView.RowDefinitions>
+                    <ScrollView>
+                        <StackLayout
+                            Margin="{grial:OnOrientationThickness Default='0,60,0,0',
+                                                                  LandscapePhone='0,25,0,0'}"
+                            Padding="26,16"
+                            BackgroundColor="{DynamicResource BasePageColor}"
+                            Orientation="Vertical"
+                            VerticalOptions="Start">
+
+                            <!--  NAME  -->
+                            <Label FontSize="13" Text="Nombre" />
+
+                            <Label
+                                FontSize="14"
+                                Style="{StaticResource LabelBoldStyle}"
+                                Text="{Binding User.Name}" />
+                            <!--  EMAIL  -->
+                            <Label FontSize="13" Text="Correo" />
+
+                            <Label
+                                FontSize="14"
+                                Style="{StaticResource LabelBoldStyle}"
+                                Text="{Binding User.Email}" />
+
+                            <!--  PHONE NUMBER  -->
+                            <Label FontSize="13" Text="Teléfono" />
+
+                            <Label
+                                FontSize="14"
+                                Style="{StaticResource LabelBoldStyle}"
+                                Text="{Binding User.Phone}" />
+
+                            <Image Source="{Binding ImageFront}" />
+
+                            <Image Source="{Binding ImageBack}" />
+                        </StackLayout>
+                    </ScrollView>
+
+                    <!--  BUTTONS GRID  -->
+                    <Grid
+                        Grid.Row="1"
+                        Padding="{grial:OnOrientationThickness Default='20',
+                                                               LandscapePhone='20,8'}"
+                        ColumnDefinitions="Auto, Auto, Auto, Auto"
+                        ColumnSpacing="30"
+                        HorizontalOptions="Center"
+                        RowDefinitions="Auto, Auto, Auto"
+                        RowSpacing="0">
+
+                        <!--  Change Credential  -->
+                        <Button
+                            Command="{Binding ChangeCredentialCommand}"
+                            FontFamily="{StaticResource IconsFontFamily}"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource CircleActionButtonFlatStyle}"
+                            Text="{x:Static local:GrialIconsFont.CreditCard}" />
+
+                        <!--  Text  -->
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontSize="13"
+                            HorizontalOptions="Center"
+                            IsVisible="{grial:OnOrientationBool Default='true',
+                                                                LandscapePhone='false'}"
+                            Text="Cambiar"
+                            TextColor="{DynamicResource CircleActionButtonFlatTextColor}"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontSize="13"
+                            HorizontalOptions="Center"
+                            IsVisible="{grial:OnOrientationBool Default='true',
+                                                                LandscapePhone='false'}"
+                            Text="Credencial"
+                            TextColor="{DynamicResource CircleActionButtonFlatTextColor}"
+                            VerticalOptions="Center" />
+
+                        <!--  Change Password  -->
+                        <Button
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Command="{Binding ChangePasswordCommand}"
+                            FontFamily="{StaticResource IconsFontFamily}"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource CircleActionButtonFlatStyle}"
+                            Text="{x:Static local:GrialIconsFont.Edit}" />
+
+                        <!--  Text  -->
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="13"
+                            HorizontalOptions="Center"
+                            IsVisible="{grial:OnOrientationBool Default='true',
+                                                                LandscapePhone='false'}"
+                            Text="Cambiar"
+                            TextColor="{DynamicResource CircleActionButtonFlatTextColor}"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            FontSize="13"
+                            HorizontalOptions="Center"
+                            IsVisible="{grial:OnOrientationBool Default='true',
+                                                                LandscapePhone='false'}"
+                            Text="Contraseña"
+                            TextColor="{DynamicResource CircleActionButtonFlatTextColor}"
+                            VerticalOptions="Center" />
+
+                        <!--  Exit Process  -->
+                        <Button
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Command="{Binding ExitProcessCommand}"
+                            FontFamily="{StaticResource IconsFontFamily}"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource CircleActionButtonFlatStyle}"
+                            Text="{x:Static local:GrialIconsFont.CloseSquare}" />
+
+                        <!--  Text  -->
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            FontSize="13"
+                            HorizontalOptions="Center"
+                            IsVisible="{grial:OnOrientationBool Default='true',
+                                                                LandscapePhone='false'}"
+                            Text="Salir"
+                            TextColor="{DynamicResource CircleActionButtonFlatTextColor}"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            FontSize="13"
+                            HorizontalOptions="Center"
+                            IsVisible="{grial:OnOrientationBool Default='true',
+                                                                LandscapePhone='false'}"
+                            Text="del Proceso"
+                            TextColor="{DynamicResource CircleActionButtonFlatTextColor}"
+                            VerticalOptions="Center" />
+
+                        <!--  Logout  -->
+                        <Button
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            Command="{Binding LogoutCommand}"
+                            FontFamily="{StaticResource IconsFontFamily}"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource CircleActionButtonFlatStyle}"
+                            Text="{x:Static local:GrialIconsFont.LogOut}" />
+
+                        <!--  Text  -->
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="3"
+                            FontSize="13"
+                            HorizontalOptions="Center"
+                            IsVisible="{grial:OnOrientationBool Default='true',
+                                                                LandscapePhone='false'}"
+                            Text="Salir"
+                            TextColor="{DynamicResource CircleActionButtonFlatTextColor}"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+                </grial:CardView>
+            </Grid>
+
+            <!--  ROUNDED OVERLAP  -->
+            <Grid
+                Margin="{grial:OnOrientationThickness Default='0,50,0,0',
+                                                      LandscapePhone='0,20,0,0'}"
+                Padding="20,0"
+                grial:Effects.Shadow="true"
+                grial:Effects.ShadowOpacity="0"
+                HeightRequest="80"
+                HorizontalOptions="Center"
+                VerticalOptions="Start">
+
+                <!--  AVATAR  -->
+                <local:CircleCachedImage
+                    HeightRequest="80"
+                    HorizontalOptions="Start"
+                    Source="{Binding Image}"
+                    VerticalOptions="Start"
+                    WidthRequest="80">
+                    <local:CircleCachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}" />
+                    </local:CircleCachedImage.GestureRecognizers>
+                </local:CircleCachedImage>
+
+                <!--  EDIT BUTTON  -->
+                <Button
+                    Grid.Column="0"
+                    BackgroundColor="{DynamicResource AccentColor}"
+                    BorderWidth="0"
+                    Command="{Binding ChangeImageCommand}"
+                    CornerRadius="18"
+                    FontFamily="{StaticResource IconsFontFamily}"
+                    HeightRequest="36"
+                    HorizontalOptions="End"
+                    Style="{StaticResource CircleActionButtonFlatStyle}"
+                    Text="{x:Static local:GrialIconsFont.Edit2}"
+                    TranslationX="14"
+                    TranslationY="6"
+                    VerticalOptions="End"
+                    WidthRequest="36" />
+
+            </Grid>
+            <!--  CLOSE ICON  -->
+            <Label Style="{StaticResource IconCloseLabelStyle}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

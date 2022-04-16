@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Deteccion.Views.Navigation.Tabs.GuestTabPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:local="clr-namespace:Deteccion"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Title="{grial:Translate PageTitleGuests}"
+    BackgroundColor="{DynamicResource BasePageColor}">
+    <Grid Margin="0,10,0,0">
+        <xct:TabView
+            IsSwipeEnabled="True"
+            TabIndicatorColor="{StaticResource AccentColor}"
+            TabStripHeight="70"
+            TabStripPlacement="Top">
+            <xct:TabViewItem
+                BadgeBackgroundColor="Gray"
+                BadgeBackgroundColorSelected="{StaticResource NavigationBarStartBackgroundColor}"
+                BadgeText="{Binding Guests}"
+                BadgeTextColor="white"
+                FontAttributes="Bold"
+                Text="Invitados"
+                TextColor="Gray"
+                TextColorSelected="{StaticResource AccentColor}">
+                <xct:TabViewItem.Icon>
+                    <FontImageSource
+                        FontFamily="{StaticResource GrialIconsFill}"
+                        Glyph="{x:Static local:GrialIconsFont.Users}"
+                        Color="Gray" />
+                </xct:TabViewItem.Icon>
+                <xct:TabViewItem.IconSelected>
+                    <FontImageSource
+                        FontFamily="{StaticResource GrialIconsFill}"
+                        Glyph="{x:Static local:GrialIconsFont.Users}"
+                        Color="{StaticResource AccentColor}" />
+                </xct:TabViewItem.IconSelected>
+                <xct:TabViewItem.Content>
+                    <AbsoluteLayout Margin="0,25,0,0">
+                        <RefreshView
+                            Command="{Binding RefreshCommand}"
+                            IsRefreshing="{Binding IsRefreshing}"
+                            RefreshColor="{StaticResource AccentColor}">
+                            <CollectionView ItemSizingStrategy="MeasureFirstItem" ItemsSource="{Binding Contacts}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <!--  MAIN WRAPPER  -->
+                                        <StackLayout
+                                            Padding="0"
+                                            HeightRequest="{OnIdiom Phone=60,
+                                                                    Tablet=80}"
+                                            HorizontalOptions="Fill"
+                                            Spacing="0">
+                                            <!--  MAIN GRID  -->
+                                            <Grid
+                                                Padding="20,0"
+                                                ColumnSpacing="10"
+                                                VerticalOptions="FillAndExpand">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="{grial:OnOrientationDouble Default=45, PortraitTablet=55, LandscapeTablet=55}" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="60" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SelectContactCommand}" />
+                                                </Grid.GestureRecognizers>
+                                                <!--  CONTACT IMAGE  -->
+                                                <local:CircleCachedImage
+                                                    Grid.Column="0"
+                                                    Aspect="AspectFill"
+                                                    BorderColor="{DynamicResource AccentColor}"
+                                                    BorderSize="2"
+                                                    HeightRequest="{grial:OnOrientationDouble Default=45,
+                                                                                              PortraitTablet=55,
+                                                                                              LandscapeTablet=55}"
+                                                    Source="{Binding Image}"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="{grial:OnOrientationDouble Default=45,
+                                                                                             PortraitTablet=55,
+                                                                                             LandscapeTablet=55}" />
+
+                                                <StackLayout
+                                                    Grid.Column="1"
+                                                    Orientation="Vertical"
+                                                    Spacing="{grial:OnOrientationDouble Default=0,
+                                                                                        PortraitTablet=2,
+                                                                                        LandscapeTablet=2}"
+                                                    VerticalOptions="Center">
+
+                                                    <Label
+                                                        FontSize="16"
+                                                        HorizontalOptions="Start"
+                                                        Style="{StaticResource LabelBoldStyle}"
+                                                        Text="{Binding Name}"
+                                                        VerticalOptions="Center" />
+                                                </StackLayout>
+                                            </Grid>
+                                            <BoxView BackgroundColor="{DynamicResource ListViewSeparatorColor}" HeightRequest="1" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                                <CollectionView.EmptyView>
+                                    <Grid>
+                                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="Large"
+                                                HorizontalTextAlignment="Center"
+                                                Text="No tiene invitados" />
+                                        </StackLayout>
+                                    </Grid>
+                                </CollectionView.EmptyView>
+                            </CollectionView>
+                        </RefreshView>
+                        <Button
+                            AbsoluteLayout.LayoutBounds="0.95,0.95,55,55"
+                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                            Command="{Binding AddContactCommand}"
+                            CornerRadius="40"
+                            FontFamily="{StaticResource IconsFontFamily}"
+                            FontSize="35"
+                            Style="{StaticResource CircleActionButtonFlatStyle}"
+                            Text="{x:Static local:GrialIconsFont.UserPlus}" />
+                    </AbsoluteLayout>
+                </xct:TabViewItem.Content>
+            </xct:TabViewItem>
+            <xct:TabViewItem
+                BadgeBackgroundColor="Gray"
+                BadgeBackgroundColorSelected="{DynamicResource OkColor}"
+                BadgeText="{Binding Confirmed}"
+                BadgeTextColor="White"
+                FontAttributes="Bold"
+                FontAttributesSelected="Bold"
+                Text="Confirmados"
+                TextColor="Gray"
+                TextColorSelected="{StaticResource AccentColor}">
+                <xct:TabViewItem.Icon>
+                    <FontImageSource
+                        FontFamily="{StaticResource GrialIconsFill}"
+                        Glyph="{x:Static local:GrialIconsFont.Users}"
+                        Color="Gray" />
+                </xct:TabViewItem.Icon>
+                <xct:TabViewItem.IconSelected>
+                    <FontImageSource
+                        FontFamily="{StaticResource GrialIconsFill}"
+                        Glyph="{x:Static local:GrialIconsFont.Users}"
+                        Color="{StaticResource AccentColor}" />
+                </xct:TabViewItem.IconSelected>
+                <xct:TabViewItem.Content>
+                    <AbsoluteLayout Margin="0,25,0,0">
+                        <RefreshView
+                            Command="{Binding RefreshCommand}"
+                            IsRefreshing="{Binding IsRefreshing}"
+                            RefreshColor="{StaticResource AccentColor}">
+                            <CollectionView ItemSizingStrategy="MeasureAllItems" ItemsSource="{Binding ConfirmedGuests}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout
+                                            Padding="0"
+                                            HeightRequest="{OnIdiom Phone=60,
+                                                                    Tablet=80}"
+                                            HorizontalOptions="Fill"
+                                            Spacing="0">
+
+                                            <!--  MAIN GRID  -->
+                                            <Grid
+                                                Padding="20,0"
+                                                ColumnSpacing="10"
+                                                VerticalOptions="FillAndExpand">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="{grial:OnOrientationDouble Default=45, PortraitTablet=55, LandscapeTablet=55}" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="60" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SelectContactCommand}" />
+                                                </Grid.GestureRecognizers>
+                                                <!--  CONTACT IMAGE  -->
+                                                <local:CircleCachedImage
+                                                    Grid.Column="0"
+                                                    Aspect="AspectFill"
+                                                    BorderColor="{DynamicResource AccentColor}"
+                                                    BorderSize="2"
+                                                    HeightRequest="{grial:OnOrientationDouble Default=45,
+                                                                                              PortraitTablet=55,
+                                                                                              LandscapeTablet=55}"
+                                                    Source="{Binding Image}"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="{grial:OnOrientationDouble Default=45,
+                                                                                             PortraitTablet=55,
+                                                                                             LandscapeTablet=55}" />
+
+                                                <!--  NOTIFICATION  -->
+                                                <StackLayout
+                                                    Grid.Column="1"
+                                                    Orientation="Vertical"
+                                                    Spacing="{grial:OnOrientationDouble Default=0,
+                                                                                        PortraitTablet=2,
+                                                                                        LandscapeTablet=2}"
+                                                    VerticalOptions="Center">
+
+                                                    <Label
+                                                        FontSize="16"
+                                                        HorizontalOptions="Start"
+                                                        Style="{StaticResource LabelBoldStyle}"
+                                                        Text="{Binding Name}"
+                                                        VerticalOptions="Center" />
+                                                </StackLayout>
+
+                                                <!--  TIME DELIVER  -->
+                                                <StackLayout
+                                                    Grid.Column="2"
+                                                    Orientation="Horizontal"
+                                                    VerticalOptions="Center">
+                                                    <Label
+                                                        FontSize="14"
+                                                        HorizontalTextAlignment="End"
+                                                        IsVisible="{Binding IsRead}"
+                                                        Style="{StaticResource FontIcon}"
+                                                        Text="{x:Static local:GrialIconsFont.CheckCircle}"
+                                                        TextColor="{DynamicResource OkColor}"
+                                                        VerticalTextAlignment="Center" />
+                                                </StackLayout>
+                                            </Grid>
+                                            <BoxView BackgroundColor="{DynamicResource ListViewSeparatorColor}" HeightRequest="1" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                                <CollectionView.EmptyView>
+                                    <Grid>
+                                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="Large"
+                                                HorizontalTextAlignment="Center"
+                                                Text="No tiene confirmados" />
+                                        </StackLayout>
+                                    </Grid>
+                                </CollectionView.EmptyView>
+                            </CollectionView>
+                        </RefreshView>
+                        <Button
+                            AbsoluteLayout.LayoutBounds="0.95,0.95,55,55"
+                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                            Command="{Binding AddContactCommand}"
+                            CornerRadius="40"
+                            FontFamily="{StaticResource IconsFontFamily}"
+                            FontSize="35"
+                            Style="{StaticResource CircleActionButtonFlatStyle}"
+                            Text="{x:Static local:GrialIconsFont.UserPlus}" />
+                    </AbsoluteLayout>
+                </xct:TabViewItem.Content>
+            </xct:TabViewItem>
+        </xct:TabView>
+    </Grid>
+</ContentPage>

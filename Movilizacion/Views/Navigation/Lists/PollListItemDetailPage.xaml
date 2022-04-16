@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="Movilizacion.Views.Navigation.Lists.PollListItemDetailPage"
+    xmlns:local="clr-namespace:Movilizacion" 
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+	BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }">
+    <ContentPage.Content>
+
+        <Grid>
+            <grial:GrialNavigationBar
+				UseNavigationPageBarBackgroundColor="true"
+				UseNavigationPageBarBackgroundGradient="true" />
+
+            <!--BACKGROUND IMAGE-->
+            <Image
+				Style="{ StaticResource MainMenuBackgroundImageStyle }" />
+
+            <Grid
+				RowSpacing="0"
+                RowDefinitions="170, *, Auto">
+
+                <!-- CURVED MASK -->
+                <local:CurvedMask
+					Grid.Row="0"
+					VerticalOptions="End"
+					MaskColor="{ DynamicResource MainWrapperBackgroundColor }" />
+
+                <!-- BACKGROUND BOTTOM COLOR -->
+                <BoxView
+					BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
+					Grid.Row="1" />
+
+                <!-- OVERLAPPED CONTENT -->
+                <StackLayout
+					Spacing="0"
+					Grid.RowSpan="2">
+                    <!-- HEADER -->
+                    <Grid
+                        ColumnDefinitions="Auto, *"
+						RowDefinitions="Auto, Auto"
+                        Margin="20,0"
+						ColumnSpacing="12"
+						RowSpacing="0">
+
+                        <!-- ICON -->
+                        <Label
+							Grid.Column="0"
+							Grid.Row="0"
+							FontSize="26"
+							VerticalTextAlignment="Center"
+							TextColor="{ DynamicResource InverseTextColor }"
+							Text="{ x:Static local:IoniconsFont.IosWorldOutline }"
+							FontFamily="{ StaticResource Ionicons }"
+							Style="{ StaticResource FontIcon }"
+							Margin="10,0,0,0" />
+
+                        <!-- TITLE -->
+                        <Label
+							Grid.Column="1"
+							Grid.Row="0"
+							FontSize="26"
+							Text="{ Binding Question.Pregunta }"
+							TextColor="{ DynamicResource InverseTextColor }" />
+                    </Grid>
+                    <!-- LIST -->
+                    <ListView
+						ItemsSource="{ Binding AnswerUsers }"
+                        SelectionMode="None"
+						SeparatorVisibility="None"
+						HasUnevenRows="True"
+                        CachingStrategy="RecycleElement"
+						Margin="0,5">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame
+                                        Padding="20,20"
+										Margin="10"
+										CornerRadius="10">
+                                        <Label
+				                            Grid.Row="0"
+				                            Grid.Column="0"
+				                            Grid.ColumnSpan="2"
+				                            FontAttributes="Bold"
+                                            TextColor="Black"
+				                            Text="{ Binding RespAbierta }"
+				                            FontSize="18"
+				                            VerticalOptions="Center" />
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

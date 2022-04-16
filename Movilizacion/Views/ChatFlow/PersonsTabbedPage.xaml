@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Movilizacion"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:maps="clr-namespace:Movilizacion.Renders"
+	x:Class="Movilizacion.Views.ChatFlow.PersonsTabbedPage"
+	BackgroundColor="Transparent"
+	grial:Effects.ApplyIOSSafeAreaAsPadding="Bottom"
+    Title="Detectados">
+
+    <ContentPage.Resources>
+        <ResourceDictionary
+			Source="/Styles/TabControl/SegmentedTabResources.xaml" />
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <!-- TABS -->
+        <grial:TabControl
+			Style="{ StaticResource SegmentedTabStyle }">
+            <grial:TabItem
+				Text="{ grial:Translate StringPersons }">
+                <StackLayout  
+                    BackgroundColor="{ DynamicResource BasePageColor }" 
+                    Padding="15,0,30,0">
+                    <SearchBar
+				        Grid.Row="0"
+				        Margin="20,0"
+				        HeightRequest="44"
+				        VerticalOptions="Center"
+				        CancelButtonColor="{ DynamicResource BaseTextColor }"
+				        BackgroundColor="Transparent"
+				        Placeholder="Buscar..."
+				        TextColor="{ DynamicResource BaseTextColor }"
+                        Text="{Binding Search}"
+                        SearchCommand="{Binding SearchCommand}"
+				        grial:SearchBarProperties.IconColor="{ DynamicResource BaseTextColor }"
+				        grial:SearchBarProperties.FieldBackgroundColor="Transparent"
+				        grial:SearchBarProperties.BorderWidth="0"
+				        grial:SearchBarProperties.BorderColor="{ DynamicResource BasePageColor }"
+				        grial:Effects.CornerRadius="{ DynamicResource BaseButtonCornerRadius }"
+				        grial:Effects.ApplyIOSSafeAreaAsPadding="Left,Right" />
+                    <StackLayout 
+                        HorizontalOptions="EndAndExpand"
+                        Orientation="Horizontal">
+                        <Label Text="Votó" VerticalOptions="Center"/>
+                        <Switch IsToggled="{Binding IsToggled}" ThumbColor="Blue" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <ListView
+					    x:Name="lstDetectados"
+                        IsPullToRefreshEnabled="True"
+                        IsRefreshing="{Binding IsRefreshing}"
+                        RefreshCommand="{Binding RefreshCommand}"
+					    ItemsSource="{ Binding People }"
+                        SelectedItem="{Binding Person, Mode=TwoWay}"
+					    HasUnevenRows="True"
+                        CachingStrategy="RecycleElement"
+                        VerticalScrollBarVisibility="Never"
+					    BackgroundColor="{ DynamicResource BasePageColor }">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <SwipeView >
+                                        <SwipeView.LeftItems>
+                                            <SwipeItems>
+                                                <SwipeItemView
+                                                    Command="{Binding Source={x:Reference lstDetectados}, Path=BindingContext.ContactPersonCommand}"
+                                                    CommandParameter="{Binding}">
+                                                    <Grid WidthRequest="70">
+                                                        
+                                                        <StackLayout VerticalOptions="Center">
+                                                            <Image Source="{FontImage FontFamily={ StaticResource MaterialCommunityIcons }, Glyph={x:Static local:MaterialCommunityIconsFont.PhoneInTalk}, Size=30, Color=#2382A8}"/>
+                                                            <Label 
+                                                                FontAttributes="Bold"
+                                                                Text="Contacto"
+                                                                HorizontalTextAlignment="Center"
+                                                                VerticalTextAlignment="Center"
+                                                                TextColor="#2382A8"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </SwipeItemView>
+                                            </SwipeItems>
+                                        </SwipeView.LeftItems>
+                                        <Grid 
+                                            RowDefinitions="Auto"
+                                             ColumnDefinitions="*, Auto"
+                                             Margin="0">
+                                            <StackLayout>
+                                                <Grid 
+                                                    RowSpacing="2"
+                                                    RowDefinitions="Auto, Auto, Auto">
+                                                    <Label Grid.Row="0" Text="{Binding NombreCompleto}" Style="{ StaticResource LabelBoldStyle }" />
+                                                    <StackLayout Grid.Row="1" Margin="0,2,0,0" Orientation="Horizontal" >
+                                                        <Label Text="{Binding Domicilio}" FontSize="12"  TextColor="{ DynamicResource ErrorColor }"/>
+                                                    </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="2"
+                                                        Grid.Column="0"
+                                                        Orientation="Horizontal">
+
+                                                        <Image IsVisible="false">
+                                                            <Image.Triggers>
+                                                                <DataTrigger TargetType="Image" Binding="{Binding Color}" Value="Verde">
+                                                                    <Setter Property="Source" Value="{FontImage FontFamily={ StaticResource MaterialCommunityIcons }, Glyph={x:Static local:MaterialCommunityIconsFont.AccountCheck}, Size=30, Color=#1B943F}"/>
+                                                                    <Setter Property="IsVisible" Value="true"/>
+                                                                </DataTrigger>
+                                                            </Image.Triggers>
+                                                        </Image>
+                                                        <Image IsVisible="false">
+                                                            <Image.Triggers>
+                                                            <DataTrigger TargetType="Image" Binding="{Binding Color}" Value="Azul">
+                                                                    <Setter Property="Source" Value="{FontImage FontFamily={ StaticResource MaterialCommunityIcons }, Glyph={x:Static local:MaterialCommunityIconsFont.AccountAlert}, Size=30, Color=#37ACDB}"/>
+                                                                <Setter Property="IsVisible" Value="true"/>
+                                                            </DataTrigger>
+                                                            </Image.Triggers>
+                                                        </Image>
+                                                        <Image IsVisible="false">
+                                                            <Image.Triggers>
+                                                                <DataTrigger TargetType="Image" Binding="{Binding Color}" Value="Rojo">
+                                                                    <Setter Property="Source" Value="{FontImage FontFamily={ StaticResource MaterialCommunityIcons }, Glyph={x:Static local:MaterialCommunityIconsFont.AccountOff}, Size=30, Color=#F2090E}"/>
+                                                                    <Setter Property="IsVisible" Value="true"/>
+                                                                </DataTrigger>
+                                                            </Image.Triggers>
+                                                        </Image>
+                                                        <Label 
+                                                            VerticalOptions="Center"
+                                                            TextColor="{Binding CodeColor}"
+                                                            Text="{Binding Contact.TipoContacto}"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                            <Label
+				                                Grid.Column="1"
+				                                Grid.Row="0"
+				                                Grid.RowSpan="3"
+				                                WidthRequest="20"
+				                                HorizontalOptions="End"
+				                                TextColor="{ DynamicResource BaseTextColor }"
+				                                Style="{ DynamicResource CardsListItemTemplateChevronStyle }"
+				                                Margin="0" />
+                                        </Grid>
+                                    </SwipeView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </grial:TabItem>
+            
+            <grial:TabItem
+				Text="{ grial:Translate StringLocations }">
+                <StackLayout>
+                    <maps:CustomMap x:Name="MyMap"
+                        MapType="Street"/>
+                </StackLayout>
+
+            </grial:TabItem>
+
+        </grial:TabControl>
+
+    </ContentPage.Content>
+</ContentPage>

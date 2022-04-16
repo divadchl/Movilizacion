@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{05E78F20-7D83-438E-AA8E-DCE5A530D6F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Elecciones.Models</RootNamespace>
+    <AssemblyName>Elecciones.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBSMovilizacion\Casillas.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CATDistritoFederal.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CatDistritoFederalDistritoLocal.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CatDistritoFederalMunicipio.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CATDistritoLocal.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CatDistritoLocalDistritoFederal.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CatDistritoLocalMunicipio.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CATEstado.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CATEstatusCasilla.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CATMunicipios.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CATSecciones.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CATTipoCasilla.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CATTipoContacto.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CATTipoCredencial.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CATTipoDocumento.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\CATTipoPregunta.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATCambioSeccion.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATContacto.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATDetectados.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATDoctoPersona.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATDomicilios.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATEncuestas.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DatErrores.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DatGeolocalizacionNoProcesadas.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATInvitados.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATNoticias.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATNotificaciones.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATPersonas.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DatPersonasGeolocalizacion.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATPreguntas.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATProceso.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATReporteCasilla.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATRespuestas.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DATRespUsuario.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DBDeteccionEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBDeteccionEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DBDeteccionEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\DBDeteccionEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBDeteccionEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\Encarte.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\ProcesoUsuario.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\Territorio.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSMovilizacion\UsersDeteccion.cs">
+      <DependentUpon>DBDeteccionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModels\ApplicationGroupRoles.cs">
+      <DependentUpon>Identity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModels\ApplicationGroups.cs">
+      <DependentUpon>Identity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModels\ApplicationUserGroups.cs">
+      <DependentUpon>Identity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModels\AspNetRoles.cs">
+      <DependentUpon>Identity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModels\AspNetUserClaims.cs">
+      <DependentUpon>Identity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModels\AspNetUserLogins.cs">
+      <DependentUpon>Identity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModels\AspNetUsers.cs">
+      <DependentUpon>Identity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModels\Identity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Identity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModels\Identity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Identity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModels\Identity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Identity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ResultViewModel.cs" />
+    <Compile Include="Models\Territory\ETerritorioOrder.cs" />
+    <Compile Include="Models\Territory\ExpressionBuilder.cs" />
+    <Compile Include="Models\Territory\ITerritorio.cs" />
+    <Compile Include="Models\Territory\KeyTerritorio.cs" />
+    <Compile Include="Models\Territory\TerritorioComparer.cs" />
+    <Compile Include="Models\Territory\TerritorioDataManager.cs" />
+    <Compile Include="Models\Territory\VDistritoFederal.cs" />
+    <Compile Include="Models\Territory\VDistritoLocal.cs" />
+    <Compile Include="Models\Territory\VDummy.cs" />
+    <Compile Include="Models\Territory\VEstado.cs" />
+    <Compile Include="Models\Territory\VMunicipio.cs" />
+    <Compile Include="Models\Territory\VSeccion.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="IdentityModels\Identity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Identity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="DBSMovilizacion\DBDeteccionEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBDeteccionEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DBSMovilizacion\DBDeteccionEntities.edmx.diagram">
+      <DependentUpon>DBDeteccionEntities.edmx</DependentUpon>
+    </None>
+    <None Include="IdentityModels\Identity.edmx.diagram">
+      <DependentUpon>Identity.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DBSMovilizacion\DBDeteccionEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBDeteccionEntities.edmx</DependentUpon>
+      <LastGenOutput>DBDeteccionEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DBSMovilizacion\DBDeteccionEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBDeteccionEntities.edmx</DependentUpon>
+      <LastGenOutput>DBDeteccionEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="IdentityModels\Identity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Identity.edmx</DependentUpon>
+      <LastGenOutput>Identity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="IdentityModels\Identity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Identity.edmx</DependentUpon>
+      <LastGenOutput>Identity.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Elecciones.Common\Elecciones.Common.csproj">
+      <Project>{cd292f11-3e7e-43a6-9155-c0796638f631}</Project>
+      <Name>Elecciones.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

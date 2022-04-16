@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBSMovilizacionIdentityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ApplicationUserGroups">
+    <Key>
+      <PropertyRef Name="ApplicationUserId" />
+      <PropertyRef Name="ApplicationGroupId" />
+    </Key>
+    <Property Name="ApplicationUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApplicationGroupId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ApplicationGroups" Relationship="DBSMovilizacionIdentityModel.FK_dbo_ApplicationUserGroups_dbo_ApplicationGroups_ApplicationGroupId" FromRole="ApplicationUserGroups" ToRole="ApplicationGroups" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Paterno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Materno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ContactId" Type="Guid" />
+    <Property Name="Parent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="DBSMovilizacionIdentityModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="DBSMovilizacionIdentityModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="DBSMovilizacionIdentityModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityContainer Name="DBSMovilizacionIdentityEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ApplicationUserGroups" EntityType="Self.ApplicationUserGroups" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="ApplicationGroupRoles" EntityType="DBSMovilizacionIdentityModel.ApplicationGroupRoles" />
+    <EntitySet Name="ApplicationGroups" EntityType="DBSMovilizacionIdentityModel.ApplicationGroups" />
+    <EntitySet Name="AspNetRoles" EntityType="DBSMovilizacionIdentityModel.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="DBSMovilizacionIdentityModel.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="DBSMovilizacionIdentityModel.AspNetUserLogins" />
+    <AssociationSet Name="FK_dbo_ApplicationGroupRoles_dbo_ApplicationGroups_ApplicationGroupId" Association="DBSMovilizacionIdentityModel.FK_dbo_ApplicationGroupRoles_dbo_ApplicationGroups_ApplicationGroupId">
+      <End Role="ApplicationGroups" EntitySet="ApplicationGroups" />
+      <End Role="ApplicationGroupRoles" EntitySet="ApplicationGroupRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ApplicationUserGroups_dbo_ApplicationGroups_ApplicationGroupId" Association="DBSMovilizacionIdentityModel.FK_dbo_ApplicationUserGroups_dbo_ApplicationGroups_ApplicationGroupId">
+      <End Role="ApplicationGroups" EntitySet="ApplicationGroups" />
+      <End Role="ApplicationUserGroups" EntitySet="ApplicationUserGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="DBSMovilizacionIdentityModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="DBSMovilizacionIdentityModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="DBSMovilizacionIdentityModel.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ApplicationGroupRoles">
+    <Key>
+      <PropertyRef Name="ApplicationRoleId" />
+      <PropertyRef Name="ApplicationGroupId" />
+    </Key>
+    <Property Name="ApplicationRoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationGroupId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ApplicationGroups" Relationship="DBSMovilizacionIdentityModel.FK_dbo_ApplicationGroupRoles_dbo_ApplicationGroups_ApplicationGroupId" FromRole="ApplicationGroupRoles" ToRole="ApplicationGroups" />
+  </EntityType>
+  <EntityType Name="ApplicationGroups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LongName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Hierarchy" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ApplicationGroupRoles" Relationship="DBSMovilizacionIdentityModel.FK_dbo_ApplicationGroupRoles_dbo_ApplicationGroups_ApplicationGroupId" FromRole="ApplicationGroups" ToRole="ApplicationGroupRoles" />
+    <NavigationProperty Name="ApplicationUserGroups" Relationship="DBSMovilizacionIdentityModel.FK_dbo_ApplicationUserGroups_dbo_ApplicationGroups_ApplicationGroupId" FromRole="ApplicationGroups" ToRole="ApplicationUserGroups" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DBSMovilizacionIdentityModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DBSMovilizacionIdentityModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DBSMovilizacionIdentityModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <Association Name="FK_dbo_ApplicationGroupRoles_dbo_ApplicationGroups_ApplicationGroupId">
+    <End Type="DBSMovilizacionIdentityModel.ApplicationGroups" Role="ApplicationGroups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DBSMovilizacionIdentityModel.ApplicationGroupRoles" Role="ApplicationGroupRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ApplicationGroups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ApplicationGroupRoles">
+        <PropertyRef Name="ApplicationGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ApplicationUserGroups_dbo_ApplicationGroups_ApplicationGroupId">
+    <End Type="DBSMovilizacionIdentityModel.ApplicationGroups" Role="ApplicationGroups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DBSMovilizacionIdentityModel.ApplicationUserGroups" Role="ApplicationUserGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ApplicationGroups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ApplicationUserGroups">
+        <PropertyRef Name="ApplicationGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="DBSMovilizacionIdentityModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DBSMovilizacionIdentityModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="DBSMovilizacionIdentityModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DBSMovilizacionIdentityModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="DBSMovilizacionIdentityModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+    <End Type="DBSMovilizacionIdentityModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+  </Association>
+</Schema>

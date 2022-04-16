@@ -1,0 +1,905 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenGraphNet</name>
+    </assembly>
+    <members>
+        <member name="T:OpenGraphNet.HttpDownloader">
+            <summary>
+            Http Downloader.
+            </summary>
+            <remarks>
+            Taken from http://stackoverflow.com/a/2700707.
+            </remarks>
+        </member>
+        <member name="F:OpenGraphNet.HttpDownloader.referrer">
+            <summary>
+            The referrer.
+            </summary>
+        </member>
+        <member name="F:OpenGraphNet.HttpDownloader.userAgent">
+            <summary>
+            The user agent.
+            </summary>
+        </member>
+        <member name="M:OpenGraphNet.HttpDownloader.#ctor(System.Uri,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.HttpDownloader"/> class.
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="referrer">The referrer.</param>
+            <param name="userAgent">The user agent.</param>
+        </member>
+        <member name="P:OpenGraphNet.HttpDownloader.Encoding">
+            <summary>
+            Gets or sets the encoding.
+            </summary>
+            <value>
+            The encoding.
+            </value>
+        </member>
+        <member name="P:OpenGraphNet.HttpDownloader.Headers">
+            <summary>
+            Gets the headers.
+            </summary>
+            <value>The headers.</value>
+        </member>
+        <member name="P:OpenGraphNet.HttpDownloader.Url">
+            <summary>
+            Gets or sets the URL.
+            </summary>
+            <value>
+            The URL.
+            </value>
+        </member>
+        <member name="M:OpenGraphNet.HttpDownloader.GetPage">
+            <summary>
+            Gets the page.
+            </summary>
+            <returns>The content of the page.</returns>
+        </member>
+        <member name="M:OpenGraphNet.HttpDownloader.GetPageAsync">
+            <summary>
+            Gets the page asynchronously.
+            </summary>
+            <returns>
+            The content of the page.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.HttpDownloader.ProcessContent(System.Net.HttpWebResponse)">
+            <summary>
+            Processes the content.
+            </summary>
+            <param name="response">The response.</param>
+            <returns>The HTML content.</returns>
+            <exception cref="T:System.InvalidOperationException">Response stream came back as null.</exception>
+        </member>
+        <member name="M:OpenGraphNet.HttpDownloader.SetEncodingFromHeader(System.Net.HttpWebResponse)">
+            <summary>
+            Sets the encoding from header.
+            </summary>
+            <param name="response">The response.</param>
+        </member>
+        <member name="M:OpenGraphNet.HttpDownloader.CheckMetaCharSetAndReEncode(System.IO.Stream,System.String)">
+            <summary>
+            Checks the meta character set and re encode.
+            </summary>
+            <param name="memStream">The memory stream.</param>
+            <param name="html">The HTML.</param>
+            <returns>The HTML content.</returns>
+        </member>
+        <member name="T:OpenGraphNet.InvalidSpecificationException">
+            <summary>
+            An invalid specification exception.
+            </summary>
+        </member>
+        <member name="M:OpenGraphNet.InvalidSpecificationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.InvalidSpecificationException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:OpenGraphNet.InvalidSpecificationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.InvalidSpecificationException"/> class.
+            </summary>
+        </member>
+        <member name="M:OpenGraphNet.InvalidSpecificationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.InvalidSpecificationException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:OpenGraphNet.InvalidSpecificationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.InvalidSpecificationException"/> class.
+            </summary>
+            <param name="serializationInfo">The serialization information.</param>
+            <param name="streamingContext">The streaming context.</param>
+        </member>
+        <member name="T:OpenGraphNet.Messages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:OpenGraphNet.Messages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:OpenGraphNet.Messages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:OpenGraphNet.Messages.Response_stream_came_back_as_null">
+            <summary>
+              Looks up a localized string similar to Response stream came back as null.
+            </summary>
+        </member>
+        <member name="T:OpenGraphNet.Metadata.MetadataBase">
+            <summary>
+            Represents an Open Graph meta element.
+            </summary>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataBase.#ctor(OpenGraphNet.Namespaces.OpenGraphNamespace,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.Metadata.MetadataBase" /> class.
+            </summary>
+            <param name="ns">The ns.</param>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:OpenGraphNet.Metadata.MetadataBase.Namespace">
+            <summary>
+            Gets or sets the namespace.
+            </summary>
+            <value>
+            The namespace.
+            </value>
+        </member>
+        <member name="P:OpenGraphNet.Metadata.MetadataBase.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:OpenGraphNet.Metadata.MetadataBase.Value">
+            <summary>
+            Gets the values.
+            </summary>
+            <value>
+            The values.
+            </value>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataBase.op_Implicit(OpenGraphNet.Metadata.MetadataBase)~System.String">
+            <summary>
+            Performs an implicit conversion from <see cref="T:OpenGraphNet.Metadata.MetadataBase"/> to <see cref="T:System.String"/>.
+            </summary>
+            <param name="element">The element.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataBase.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataBase.CreateDocument">
+            <summary>
+            Creates the document.
+            </summary>
+            <returns>The HTML snippet that represents this element.</returns>
+        </member>
+        <member name="T:OpenGraphNet.Metadata.MetadataHelperExtensions">
+            <summary>
+            Adds some helpful extension methods.
+            </summary>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataHelperExtensions.Value(System.Collections.Generic.IList{OpenGraphNet.Metadata.StructuredMetadata})">
+            <summary>
+            Values the specified metadata.
+            </summary>
+            <param name="metadata">The metadata.</param>
+            <returns>The value of the first item in the list.</returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataHelperExtensions.Value(System.Collections.Generic.IList{OpenGraphNet.Metadata.PropertyMetadata})">
+            <summary>
+            Values the specified metadata.
+            </summary>
+            <param name="metadata">The metadata.</param>
+            <returns>The value of the first item in the list.</returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataHelperExtensions.Namespace(System.Collections.Generic.IList{OpenGraphNet.Metadata.StructuredMetadata})">
+            <summary>
+            Namespaces the specified metadata.
+            </summary>
+            <param name="metadata">The metadata.</param>
+            <returns>The namespace of the first item in the list.</returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataHelperExtensions.Namespace(System.Collections.Generic.IList{OpenGraphNet.Metadata.PropertyMetadata})">
+            <summary>
+            Namespaces the specified metadata.
+            </summary>
+            <param name="metadata">The metadata.</param>
+            <returns>The namespace of the first item in the list.</returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataHelperExtensions.Name(System.Collections.Generic.IList{OpenGraphNet.Metadata.StructuredMetadata})">
+            <summary>
+            Names the specified metadata.
+            </summary>
+            <param name="metadata">The metadata.</param>
+            <returns>The name of the first item in the list.</returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataHelperExtensions.Name(System.Collections.Generic.IList{OpenGraphNet.Metadata.PropertyMetadata})">
+            <summary>
+            Names the specified metadata.
+            </summary>
+            <param name="metadata">The metadata.</param>
+            <returns>The name of the first item in the list.</returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataHelperExtensions.Value(OpenGraphNet.Metadata.MetadataBase)">
+            <summary>
+            Values the specified metadata.
+            </summary>
+            <param name="metadata">The metadata.</param>
+            <returns>The value of the item, or an empty string when null.</returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataHelperExtensions.Namespace(OpenGraphNet.Metadata.MetadataBase)">
+            <summary>
+            Namespaces the specified metadata.
+            </summary>
+            <param name="metadata">The metadata.</param>
+            <returns>The namespace of the item when present; otherwise null.</returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.MetadataHelperExtensions.Name(OpenGraphNet.Metadata.MetadataBase)">
+            <summary>
+            Names the specified metadata.
+            </summary>
+            <param name="metadata">The metadata.</param>
+            <returns>The name of the item when present; otherwise an empty string.</returns>
+        </member>
+        <member name="T:OpenGraphNet.Metadata.NullMetadata">
+            <summary>
+            Represents a null <see cref="T:OpenGraphNet.Metadata.MetadataBase"/>.
+            </summary>
+            <seealso cref="N:OpenGraphNet.Metadata" />
+        </member>
+        <member name="M:OpenGraphNet.Metadata.NullMetadata.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.Metadata.NullMetadata"/> class.
+            </summary>
+        </member>
+        <member name="T:OpenGraphNet.Metadata.PropertyMetadata">
+            <summary>
+            A property meta element.
+            </summary>
+            <seealso cref="N:OpenGraphNet.Metadata" />
+        </member>
+        <member name="M:OpenGraphNet.Metadata.PropertyMetadata.#ctor(OpenGraphNet.Metadata.StructuredMetadata,OpenGraphNet.Namespaces.OpenGraphNamespace,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.Metadata.PropertyMetadata"/> class.
+            </summary>
+            <param name="parentElement">The parent element.</param>
+            <param name="ns">The ns.</param>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.PropertyMetadata.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.Metadata.PropertyMetadata"/> class.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:OpenGraphNet.Metadata.PropertyMetadata.ParentElement">
+            <summary>
+            Gets the parent element.
+            </summary>
+            <value>
+            The parent element.
+            </value>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.PropertyMetadata.CreateDocument">
+            <summary>
+            Creates the document.
+            </summary>
+            <returns>
+            The HTML snippet that represents this element.
+            </returns>
+        </member>
+        <member name="T:OpenGraphNet.Metadata.StructuredMetadata">
+            <summary>
+            A root structured element.
+            </summary>
+            <seealso cref="N:OpenGraphNet.Metadata" />
+        </member>
+        <member name="F:OpenGraphNet.Metadata.StructuredMetadata.internalProperties">
+            <summary>
+            The internal properties.
+            </summary>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadata.#ctor(OpenGraphNet.Namespaces.OpenGraphNamespace,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.Metadata.StructuredMetadata"/> class.
+            </summary>
+            <param name="ns">The ns.</param>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:OpenGraphNet.Metadata.StructuredMetadata.Properties">
+            <summary>
+            Gets the child elements.
+            </summary>
+            <value>
+            The child elements.
+            </value>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadata.AddProperty(System.String,System.String)">
+            <summary>
+            Adds the property.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadata.AddProperty(OpenGraphNet.Metadata.PropertyMetadata)">
+            <summary>
+            Adds the property.
+            </summary>
+            <param name="element">The element.</param>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadata.IsMyProperty(System.String)">
+            <summary>
+            Determines whether the specified property key is a property of this element.
+            </summary>
+            <param name="propertyKey">The property key.</param>
+            <returns>
+              <c>true</c> if the specified property key is a child property of this element; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadata.CreateDocument">
+            <summary>
+            Creates the document.
+            </summary>
+            <returns>
+            The HTML snippet that represents this element.
+            </returns>
+        </member>
+        <member name="T:OpenGraphNet.Metadata.StructuredMetadataDictionary">
+            <summary>
+            A collection class to contain <see cref="T:OpenGraphNet.Metadata.StructuredMetadata"/> objects.
+            </summary>
+        </member>
+        <member name="P:OpenGraphNet.Metadata.StructuredMetadataDictionary.Count">
+            <summary>
+            Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </summary>
+        </member>
+        <member name="P:OpenGraphNet.Metadata.StructuredMetadataDictionary.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
+            </summary>
+        </member>
+        <member name="P:OpenGraphNet.Metadata.StructuredMetadataDictionary.Keys">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.ICollection`1"></see> containing the keys of the <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
+            </summary>
+        </member>
+        <member name="P:OpenGraphNet.Metadata.StructuredMetadataDictionary.Values">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.ICollection`1"></see> containing the values in the <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
+            </summary>
+        </member>
+        <member name="P:OpenGraphNet.Metadata.StructuredMetadataDictionary.InternalCollection">
+            <summary>
+            Gets the internal collection.
+            </summary>
+            <value>
+            The internal collection.
+            </value>
+        </member>
+        <member name="P:OpenGraphNet.Metadata.StructuredMetadataDictionary.Item(System.String)">
+            <summary>
+            Gets or sets the <see cref="T:System.Collections.Generic.IList`1"/> with the specified key.
+            </summary>
+            <value>
+            The <see cref="T:System.Collections.Generic.IList`1"/>.
+            </value>
+            <param name="key">The key.</param>
+            <returns>The metadata at the current specified key.</returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadataDictionary.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            An enumerator that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadataDictionary.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"></see> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadataDictionary.Add(System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IList{OpenGraphNet.Metadata.StructuredMetadata}})">
+            <summary>
+            Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </summary>
+            <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadataDictionary.Clear">
+            <summary>
+            Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </summary>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadataDictionary.Contains(System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IList{OpenGraphNet.Metadata.StructuredMetadata}})">
+            <summary>
+            Determines whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> contains a specific value.
+            </summary>
+            <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
+            <returns>
+            true if <paramref name="item">item</paramref> is found in the <see cref="T:System.Collections.Generic.ICollection`1"></see>; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadataDictionary.CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IList{OpenGraphNet.Metadata.StructuredMetadata}}[],System.Int32)">
+            <summary>
+            Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"></see> to an <see cref="T:System.Array"></see>, starting at a particular <see cref="T:System.Array"></see> index.
+            </summary>
+            <param name="array">The one-dimensional <see cref="T:System.Array"></see> that is the destination of the elements copied from <see cref="T:System.Collections.Generic.ICollection`1"></see>. The <see cref="T:System.Array"></see> must have zero-based indexing.</param>
+            <param name="arrayIndex">The zero-based index in array at which copying begins.</param>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadataDictionary.Remove(System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IList{OpenGraphNet.Metadata.StructuredMetadata}})">
+            <summary>
+            Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </summary>
+            <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
+            <returns>
+            true if <paramref name="item">item</paramref> was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"></see>; otherwise, false. This method also returns false if <paramref name="item">item</paramref> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadataDictionary.Add(System.String,System.Collections.Generic.IList{OpenGraphNet.Metadata.StructuredMetadata})">
+            <summary>
+            Adds an element with the provided key and value to the <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
+            </summary>
+            <param name="key">The object to use as the key of the element to add.</param>
+            <param name="value">The object to use as the value of the element to add.</param>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadataDictionary.ContainsKey(System.String)">
+            <summary>
+            Determines whether the <see cref="T:System.Collections.Generic.IDictionary`2"></see> contains an element with the specified key.
+            </summary>
+            <param name="key">The key to locate in the <see cref="T:System.Collections.Generic.IDictionary`2"></see>.</param>
+            <returns>
+            true if the <see cref="T:System.Collections.Generic.IDictionary`2"></see> contains an element with the key; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadataDictionary.Remove(System.String)">
+            <summary>
+            Removes the element with the specified key from the <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
+            </summary>
+            <param name="key">The key of the element to remove.</param>
+            <returns>
+            true if the element is successfully removed; otherwise, false.  This method also returns false if <paramref name="key">key</paramref> was not found in the original <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.Metadata.StructuredMetadataDictionary.TryGetValue(System.String,System.Collections.Generic.IList{OpenGraphNet.Metadata.StructuredMetadata}@)">
+            <summary>
+            Gets the value associated with the specified key.
+            </summary>
+            <param name="key">The key whose value to get.</param>
+            <param name="value">When this method returns, the value associated with the specified key, if the key is found; otherwise, the default value for the type of the value parameter. This parameter is passed uninitialized.</param>
+            <returns>
+            true if the object that implements <see cref="T:System.Collections.Generic.IDictionary`2"></see> contains an element with the specified key; otherwise, false.
+            </returns>
+        </member>
+        <member name="T:OpenGraphNet.Namespaces.NamespaceRegistry">
+            <summary>
+            A singleton to define supported namespaces.
+            </summary>
+        </member>
+        <member name="F:OpenGraphNet.Namespaces.NamespaceRegistry.SynchronizationLock">
+            <summary>
+            The synchronization lock.
+            </summary>
+        </member>
+        <member name="F:OpenGraphNet.Namespaces.NamespaceRegistry.internalInstance">
+            <summary>
+            The instance.
+            </summary>
+        </member>
+        <member name="M:OpenGraphNet.Namespaces.NamespaceRegistry.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:OpenGraphNet.Namespaces.NamespaceRegistry"/> class from being created.
+            </summary>
+        </member>
+        <member name="P:OpenGraphNet.Namespaces.NamespaceRegistry.Instance">
+            <summary>
+            Gets the instance.
+            </summary>
+            <value>
+            The instance.
+            </value>
+        </member>
+        <member name="P:OpenGraphNet.Namespaces.NamespaceRegistry.DefaultNamespace">
+            <summary>
+            Gets the default namespace.
+            </summary>
+            <value>
+            The default namespace.
+            </value>
+        </member>
+        <member name="P:OpenGraphNet.Namespaces.NamespaceRegistry.Namespaces">
+            <summary>
+            Gets the namespaces.
+            </summary>
+            <value>
+            The namespaces.
+            </value>
+        </member>
+        <member name="P:OpenGraphNet.Namespaces.NamespaceRegistry.InternalNamespaces">
+            <summary>
+            Gets the schemas.
+            </summary>
+            <value>
+            The schemas.
+            </value>
+        </member>
+        <member name="M:OpenGraphNet.Namespaces.NamespaceRegistry.AddNamespace(System.String,System.String,System.String[])">
+            <summary>
+            Adds the namespace.
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <param name="schemaUri">The schema URI.</param>
+            <param name="requiredElements">The required elements.</param>
+        </member>
+        <member name="M:OpenGraphNet.Namespaces.NamespaceRegistry.RemoveNamespace(System.String)">
+            <summary>
+            Removes the namespace.
+            </summary>
+            <param name="prefix">The prefix.</param>
+        </member>
+        <member name="T:OpenGraphNet.Namespaces.OpenGraphNamespace">
+            <summary>
+            An OpenGraph Namespace.
+            </summary>
+        </member>
+        <member name="M:OpenGraphNet.Namespaces.OpenGraphNamespace.#ctor(System.String,System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.Namespaces.OpenGraphNamespace"/> class.
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <param name="schemaUri">The schema URI.</param>
+        </member>
+        <member name="M:OpenGraphNet.Namespaces.OpenGraphNamespace.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.Namespaces.OpenGraphNamespace"/> class.
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <param name="schemaUri">The schema URI.</param>
+        </member>
+        <member name="P:OpenGraphNet.Namespaces.OpenGraphNamespace.Prefix">
+            <summary>
+            Gets the prefix.
+            </summary>
+            <value>
+            The prefix.
+            </value>
+        </member>
+        <member name="P:OpenGraphNet.Namespaces.OpenGraphNamespace.SchemaUri">
+            <summary>
+            Gets the schema URI.
+            </summary>
+            <value>
+            The schema URI.
+            </value>
+        </member>
+        <member name="M:OpenGraphNet.Namespaces.OpenGraphNamespace.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:OpenGraphNet.Namespaces.RegistryNamespace">
+            <summary>
+            The list of known supported Open Graph namespaces.
+            </summary>
+            <seealso cref="T:OpenGraphNet.Namespaces.OpenGraphNamespace" />
+        </member>
+        <member name="M:OpenGraphNet.Namespaces.RegistryNamespace.#ctor(System.String,System.String,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenGraphNet.Namespaces.RegistryNamespace"/> class.
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <param name="schemaUri">The schema URI.</param>
+            <param name="requiredElements">The required elements.</param>
+        </member>
+        <member name="P:OpenGraphNet.Namespaces.RegistryNamespace.RequiredElements">
+            <summary>
+            Gets the required elements.
+            </summary>
+            <value>The required elements.</value>
+        </member>
+        <member name="T:OpenGraphNet.OpenGraph">
+            <summary>
+            Represents Open Graph meta data parsed from HTML.
+            </summary>
+        </member>
+        <member name="F:OpenGraphNet.OpenGraph.internalOpenGraphData">
+            <summary>
+            The open graph data.
+            </summary>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:OpenGraphNet.OpenGraph" /> class from being created.
+            </summary>
+        </member>
+        <member name="P:OpenGraphNet.OpenGraph.Metadata">
+            <summary>
+            Gets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="P:OpenGraphNet.OpenGraph.Namespaces">
+            <summary>
+            Gets the namespaces.
+            </summary>
+            <value>The namespaces.</value>
+        </member>
+        <member name="P:OpenGraphNet.OpenGraph.Type">
+            <summary>
+            Gets the type.
+            </summary>
+            <value>The type of open graph document.</value>
+        </member>
+        <member name="P:OpenGraphNet.OpenGraph.Title">
+            <summary>
+            Gets the title of the open graph document.
+            </summary>
+            <value>The title.</value>
+        </member>
+        <member name="P:OpenGraphNet.OpenGraph.Image">
+            <summary>
+            Gets the image for the open graph document.
+            </summary>
+            <value>The image.</value>
+        </member>
+        <member name="P:OpenGraphNet.OpenGraph.Url">
+            <summary>
+            Gets the URL for the open graph document.
+            </summary>
+            <value>The URL.</value>
+        </member>
+        <member name="P:OpenGraphNet.OpenGraph.OriginalUrl">
+            <summary>
+            Gets the original URL used to generate this graph.
+            </summary>
+            <value>The original URL.</value>
+        </member>
+        <member name="P:OpenGraphNet.OpenGraph.OriginalHtml">
+            <summary>
+            Gets the original HTML content.
+            </summary>
+            <value>
+            The original HTML content.
+            </value>
+        </member>
+        <member name="P:OpenGraphNet.OpenGraph.HeadPrefixAttributeValue">
+            <summary>
+            Gets the head prefix attribute value.
+            </summary>
+            <value>
+            The head prefix attribute value.
+            </value>
+        </member>
+        <member name="P:OpenGraphNet.OpenGraph.HtmlXmlnsValues">
+            <summary>
+            Gets the HTML XML namespace values.
+            </summary>
+            <value>
+            The HTML XML namespace values.
+            </value>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.MakeGraph(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.IList{System.String},System.String)">
+            <summary>
+            Makes the graph.
+            </summary>
+            <param name="title">The title.</param>
+            <param name="type">The type.</param>
+            <param name="image">The image.</param>
+            <param name="url">The URL.</param>
+            <param name="description">The description.</param>
+            <param name="siteName">Name of the site.</param>
+            <param name="audio">The audio.</param>
+            <param name="video">The video.</param>
+            <param name="locale">The locale.</param>
+            <param name="localeAlternates">The locale alternates.</param>
+            <param name="determiner">The determiner.</param>
+            <returns><see cref="T:OpenGraphNet.OpenGraph"/>.</returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.ParseUrl(System.String,System.String,System.Boolean)">
+            <summary>
+            Downloads the HTML of the specified URL and parses it for open graph content.
+            </summary>
+            <param name="url">The URL to download the HTML from.</param>
+            <param name="userAgent">The user agent to use when downloading content.  The default is <c>"facebookexternalhit"</c> which is required for some site (like amazon) to include open graph data.</param>
+            <param name="validateSpecification">if set to <c>true</c> <see cref="T:OpenGraphNet.OpenGraph"/> will validate against the specification.</param>
+            <returns>
+              <see cref="T:OpenGraphNet.OpenGraph" />.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.ParseUrlAsync(System.String,System.String,System.Boolean)">
+            <summary>
+            Parses the URL asynchronous.
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="userAgent">The user agent.</param>
+            <param name="validateSpecification">if set to <c>true</c> validate minimum Open Graph specification.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task`1"/>.</returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.ParseUrlAsync(System.Uri,System.String,System.Boolean)">
+            <summary>
+            Parses the URL asynchronous.
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="userAgent">The user agent.</param>
+            <param name="validateSpecification">if set to <c>true</c> [validate specification].</param>
+            <returns><see cref="T:System.Threading.Tasks.Task`1"/>.</returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.ParseHtml(System.String,System.Boolean)">
+            <summary>
+            Parses the HTML for open graph content.
+            </summary>
+            <param name="content">The HTML to parse.</param>
+            <param name="validateSpecification">if set to <c>true</c> verify that the document meets the required attributes of the open graph specification.</param>
+            <returns><see cref="T:OpenGraphNet.OpenGraph"/>.</returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.AddMetadata(OpenGraphNet.Metadata.StructuredMetadata)">
+            <summary>
+            Adds the meta element.
+            </summary>
+            <param name="element">The element.</param>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.AddMetadata(System.String,System.String,System.String)">
+            <summary>
+            Adds the metadata.
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+            <exception cref="T:System.InvalidOperationException">The prefix {prefix} does not exist in the NamespaceRegistry.</exception>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.HtmlDecodeUrl(System.String)">
+            <summary>
+            Safes the HTML decode URL.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The string.</returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.GetOpenGraphKey(HtmlAgilityPack.HtmlNode)">
+            <summary>
+            Gets the open graph key.
+            </summary>
+            <param name="metaTag">The meta tag.</param>
+            <returns>Returns the key stored from the meta tag.</returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.GetOpenGraphPrefix(HtmlAgilityPack.HtmlNode)">
+            <summary>
+            Gets the open graph prefix.
+            </summary>
+            <param name="metaTag">The meta tag.</param>
+            <returns>The prefix.</returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.CleanOpenGraphKey(System.String,System.String)">
+            <summary>
+            Cleans the open graph key.
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <param name="value">The value.</param>
+            <returns>
+            strips the namespace prefix from the value.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.GetOpenGraphValue(HtmlAgilityPack.HtmlNode)">
+            <summary>
+            Gets the open graph value.
+            </summary>
+            <param name="metaTag">The meta tag.</param>
+            <returns>Returns the value from the meta tag.</returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.ParseNamespaces(OpenGraphNet.OpenGraph,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Initializes the <see cref="T:OpenGraphNet.OpenGraph" /> class.
+            </summary>
+            <param name="result">The result.</param>
+            <param name="document">The document.</param>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.MatchesNamespacePredicate(System.String)">
+            <summary>
+            Matches the namespace predicate.
+            </summary>
+            <param name="value">The value.</param>
+            <returns><c>true</c> when the element has a namespace; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.SetNamespace(OpenGraphNet.OpenGraph,System.String)">
+            <summary>
+            Sets the namespace.
+            </summary>
+            <param name="graph">The graph.</param>
+            <param name="prefix">The prefix.</param>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.MakeDocumentToParse(System.String)">
+            <summary>
+            Makes the document to parse.
+            </summary>
+            <param name="content">The content.</param>
+            <returns>The <see cref="T:HtmlAgilityPack.HtmlDocument"/>.</returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.ParseHtml(OpenGraphNet.OpenGraph,System.String,System.Boolean)">
+            <summary>
+            Parses the HTML.
+            </summary>
+            <param name="result">The result.</param>
+            <param name="content">The content.</param>
+            <param name="validateSpecification">if set to <c>true</c> [validate specification].</param>
+            <returns><see cref="T:OpenGraphNet.OpenGraph"/>.</returns>
+            <exception cref="T:OpenGraphNet.InvalidSpecificationException">The parsed HTML does not meet the open graph specification.</exception>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.IsChildOfExistingElement(OpenGraphNet.Metadata.StructuredMetadataDictionary,System.String)">
+            <summary>
+            Determines whether [is child of existing element] [the specified property].
+            </summary>
+            <param name="collection">The collection.</param>
+            <param name="property">The property.</param>
+            <returns>
+              <c>true</c> if this child of existing element] [the specified property]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.GetUri(OpenGraphNet.OpenGraph,System.String)">
+            <summary>
+            Gets the URI.
+            </summary>
+            <param name="result">The result.</param>
+            <param name="property">The property.</param>
+            <returns>The Uri.</returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.HtmlDecodeUrl(System.String,System.String)">
+            <summary>
+            HTMLs the decode URLs.
+            </summary>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <returns>The decoded URL value.</returns>
+        </member>
+        <member name="M:OpenGraphNet.OpenGraph.ValidateSpecification(OpenGraphNet.OpenGraph)">
+            <summary>
+            Validates the specification.
+            </summary>
+            <param name="result">The result.</param>
+            <exception cref="T:OpenGraphNet.InvalidSpecificationException">The parsed HTML does not meet the open graph specification, missing element: {required}.</exception>
+        </member>
+    </members>
+</doc>

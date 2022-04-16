@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial" 
+    xmlns:local="clr-namespace:Deteccion" 
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	x:Class="Deteccion.Views.Theme.NoticePrivacyPage"
+    NavigationPage.HasBackButton="False"
+	Title="{ grial:Translate PageTitleNoticePrivacy }"
+	BackgroundColor="{ DynamicResource BasePageColor }">
+    <ContentPage.Resources>
+        <!-- PAGE RESOURCES, CAN BE MOVED TO APP.XAML-->
+        <ResourceDictionary>
+            <Style
+				x:Key="AboutTextStyle"
+				TargetType="Label">
+                <Setter
+					Property="TextColor"
+					Value="{ DynamicResource BaseTextColor }" />
+            </Style>
+
+            <Style
+				x:Key="AboutTitleStyle"
+				TargetType="Label"
+				BasedOn="{ StaticResource LabelBoldStyle }">
+                <Setter
+					Property="FontSize"
+					Value="18" />
+                <Setter
+					Property="TextColor"
+					Value="{ DynamicResource BaseTextColor }" />
+            </Style>
+            <Style
+				x:Key="CompanyLogoStyle"
+				TargetType="ffimageloading:CachedImage"
+				ApplyToDerivedTypes="true">
+                <Setter
+					Property="HorizontalOptions"
+					Value="Center" />
+                <Setter
+					Property="WidthRequest"
+					Value="240" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout
+            Padding="20,30,20,15"
+			Spacing="0"
+			Style="{ StaticResource ResponsiveLandscapeMarginStyle }">
+            <!--LOGO-->
+            <ffimageloading:CachedImage
+				Style="{ StaticResource CompanyLogoStyle }"
+				HeightRequest="60"
+                WidthRequest="60"
+				VerticalOptions="Center"
+				Source="icon.png" />
+            <!--TITLE-->
+            <Label
+				Style="{ StaticResource AboutTitleStyle }"
+				Text="{ grial:Translate StringNoticePrivacy }"
+				HorizontalTextAlignment="Center" />
+            <ScrollView Margin="0,15,0,0">
+                <StackLayout>
+                    <!--TEXT-->
+                    <Label
+					    Text="{Binding NoticePrivacy}"/>
+                    <StackLayout
+                        VerticalOptions="EndAndExpand"
+				        Padding="20"
+				        grial:Effects.ApplyIOSSafeAreaAsPadding="Left,Right">
+                        <!-- Outline -->
+                        <Button
+                            Command="{Binding AcceptCommand}"
+					        Text="{grial:Translate StringAccept}"
+					        Style="{ StaticResource OutlineButtonStyle }" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,574 @@
+﻿/*body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+*/
+ Set padding to keep content from hitting the edges 
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+ Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+ Set width on the form input elements since they're 100% wide by default 
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.box {
+    display: block;
+    z-index: 1999;
+    position: relative;
+    border: 1px solid #ccc;
+    background: transparent;
+    margin-bottom: 20px;
+}
+
+.box-header {
+    color: #505559;
+    position: relative;
+    overflow: hidden;
+    height: 24px;
+    border-bottom: 1px solid #ccc;
+    background-color: #eaeaea;
+    background-image: -webkit-linear-gradient(top, #eaeaea, #e0e0e0);
+    background-image: -moz-linear-gradient(top, #eaeaea, #e0e0e0);
+    background-image: -ms-linear-gradient(top, #eaeaea, #e0e0e0);
+    background-image: -o-linear-gradient(top, #eaeaea, #e0e0e0);
+    background-image: linear-gradient(to bottom, #eaeaea, #e0e0e0);
+}
+
+.error {
+    border-color: red;
+}
+
+input:required,
+textarea:required {
+    border-color: red !important;
+}
+
+    input:required + label {
+        color: red;
+    }
+
+form {
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+    form div {
+        padding: 5px;
+    }
+
+label {
+    display: block;
+}
+
+input + label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+input[type=text],
+input[type=email],
+textarea {
+    border: 1px solid #999;
+    padding: 5px;
+    width: 100%;
+}
+
+
+.box-name, .modal-header-name {
+    padding-left: 15px;
+    line-height: 24px;
+}
+
+    .box-name:hover {
+        cursor: move;
+    }
+
+    .box-name > i {
+        margin-right: 5px;
+    }
+
+.box-content .form-group, .devoops-modal-inner .form-group {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.input-group .form-control {
+    margin: 0;
+}
+
+.input-group-addon {
+    padding: 0px 6px;
+}
+
+.form-group .form-control, .form-group .input-group {
+    margin-bottom: 5px;
+}
+
+
+.form-control {
+    height: 26px;
+    padding: 2px 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+
+#personTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #personTable td, #personTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #personTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #personTable tr:hover {
+    background-color: #ddd;
+}
+
+    #personTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c86af;
+        color: white;
+    }
+
+
+
+
+
+
+#encuestaTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #encuestaTable td, #encuestaTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #encuestaTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+        #encuestaTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #encuestaTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c86af;
+        color: white;
+    }
+
+
+
+#questionTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #questionTable td, #questionTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #questionTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+        #questionTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #questionTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c86af;
+        color: white;
+    }
+
+
+
+
+#PreguntaRespuestaTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #PreguntaRespuestaTable td, #PreguntaRespuestaTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #PreguntaRespuestaTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+        #PreguntaRespuestaTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #PreguntaRespuestaTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c96af;
+        color: white;
+    }
+
+
+
+
+#questionDetailTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #questionDetailTable td, #questionDetailTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #questionDetailTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+        #questionDetailTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #questionDetailTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c86af;
+        color: white;
+    }
+
+
+
+#questionResponseDetailTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #questionResponseDetailTable td, #questionResponseDetailTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #questionResponseDetailTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+        #questionResponseDetailTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #questionResponseDetailTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c96af;
+        color: white;
+    }
+
+
+
+
+
+#answerOpenedTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #answerOpenedTable td, #answerOpenedTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #answerOpenedTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+        #questionResponseDetailTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #answerOpenedTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c96af;
+        color: white;
+    }
+
+
+
+#noticiasTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #noticiasTable td, #noticiasTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #noticiasTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+        #questionResponseDetailTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #noticiasTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c96af;
+        color: white;
+    }
+
+.gm-style-iw {
+    width: 350px !important;
+    top: 15px !important;
+    left: 0px !important;
+    background-color: #fff;
+    box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+    border: 1px solid rgba(80, 85, 89, 0.6);
+    border-radius: 2px 2px 10px 10px;
+}
+
+#iw-container {
+    margin-bottom: 10px;
+}
+
+    #iw-container .iw-title {
+        width: 350px !important;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        padding: 2px 10px;
+        background-color: #505559;
+        color: white;
+        margin: 0;
+        border-radius: 2px 2px 0 0;
+    }
+
+    #iw-container .iw-content {
+        font-size: 13px;
+        line-height: 18px;
+        font-weight: 400;
+        margin-right: 1px;
+        padding: 15px 5px 20px 15px;
+        max-height: 140px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+.iw-bottom-gradient {
+    position: absolute;
+    width: 326px;
+    height: 25px;
+    bottom: 10px;
+    right: 18px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+}
+
+
+#procesosTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #procesosTable td, #procesosTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #procesosTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #procesosTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c96af;
+        color: white;
+    }
+
+
+
+#usersByProcessTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #usersByProcessTable td, #usersByProcessTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #usersByProcessTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #usersByProcessTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #usersByProcessTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c86af;
+        color: white;
+    }
+
+
+
+
+
+#territoryTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #territoryTable td, #territoryTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #territoryTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #territoryTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #territoryTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c86af;
+        color: white;
+    }
+
+
+
+#notificationsTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #notificationsTable td, #notificationsTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #notificationsTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #notificationsTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #notificationsTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c86af;
+        color: white;
+    }
+
+
+
+#boxesTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #boxesTable td, #boxesTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #boxesTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #boxesTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #boxesTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4c86af;
+        color: white;
+    }
+
+.pointer {
+    cursor: pointer;
+}
+
+body.waiting * {
+    cursor: progress;
+}
+
+​
+/*
+.cursorLoading {
+    cursor: wait;
+}
+
+.cursorNone {
+    cursor: none;
+}*/

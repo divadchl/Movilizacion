@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Movilizacion.Views.Messages.GetListContactsPage"
+    xmlns:local="clr-namespace:Movilizacion"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+	BackgroundColor="{ DynamicResource BasePageColor }"
+	Title="{ grial:Translate PageTitleContactsList }">
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar
+				Grid.Row="0"
+				Margin="20,0"
+				HeightRequest="44"
+				VerticalOptions="Center"
+				CancelButtonColor="{ DynamicResource BaseTextColor }"
+				BackgroundColor="Transparent"
+				Placeholder="Buscar contacto"
+				TextColor="{ DynamicResource BaseTextColor }"
+                Text="{Binding Search}"
+                SearchCommand="{Binding SearchCommand}"
+				grial:SearchBarProperties.IconColor="{ DynamicResource BaseTextColor }"
+				grial:SearchBarProperties.FieldBackgroundColor="Transparent"
+				grial:SearchBarProperties.BorderWidth="0"
+				grial:SearchBarProperties.BorderColor="{ DynamicResource BasePageColor }"
+				grial:Effects.CornerRadius="{ DynamicResource BaseButtonCornerRadius }"
+				grial:Effects.ApplyIOSSafeAreaAsPadding="Left,Right" />
+            <ListView
+				SelectionMode="Single"
+				ItemsSource="{ Binding Contacts }"
+				SeparatorVisibility="Default"
+				SeparatorColor="{ DynamicResource ListViewSeparatorColor }"
+				HasUnevenRows="False"
+				CachingStrategy="RecycleElement">
+
+                <ListView.RowHeight>
+                    <OnIdiom
+						x:TypeArguments="x:Int32"
+						Phone="80"
+						Tablet="100" />
+                </ListView.RowHeight>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!-- MAIN WRAPPER-->
+                            <StackLayout
+								Spacing="0"
+								Padding="0"
+								HorizontalOptions="Fill">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectContactoCommand}"/>
+                                </StackLayout.GestureRecognizers>
+
+                                <!-- MAIN GRID -->
+                                <Grid
+									Padding="20,0"
+									ColumnSpacing="10"
+									VerticalOptions="FillAndExpand">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition
+											Width="{ grial:OnOrientationDouble 
+											Default=45,
+											PortraitTablet=55,
+											LandscapeTablet=55 }" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="60" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- CONTACT IMAGE -->
+                                    <local:CircleCachedImage
+										Grid.Column="0"
+										Source="{ Binding ImageFull }"
+										BorderColor="{ DynamicResource AccentColor }"
+										BorderSize="2"
+										Aspect="AspectFill"
+										WidthRequest="{ grial:OnOrientationDouble 
+											Default=45,
+											PortraitTablet=55,
+											LandscapeTablet=55 }"
+										HeightRequest="{ grial:OnOrientationDouble 
+											Default=45,
+											PortraitTablet=55,
+											LandscapeTablet=55 }"
+										VerticalOptions="Center" />
+
+                                    <!-- DATA CONTACT -->
+                                    <StackLayout
+										Grid.Column="1"
+										Spacing="{ grial:OnOrientationDouble 
+											Default=0,
+											PortraitTablet=2,
+											LandscapeTablet=2 }"
+										Orientation="Vertical"
+										VerticalOptions="Center">
+
+                                        <Label
+											Style="{ StaticResource LabelBoldStyle }"
+											Text="{ Binding Name }"
+											VerticalOptions="Center"
+											HorizontalOptions="Start"
+											FontSize="16" />
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

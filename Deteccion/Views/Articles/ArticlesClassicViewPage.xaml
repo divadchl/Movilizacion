@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="Deteccion.ArticlesClassicViewPage" 
+    xmlns:local="clr-namespace:Deteccion"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+    IconImageSource="{FontImage FontFamily={ StaticResource MaterialCommunityIcons }, Glyph={x:Static local:MaterialCommunityIconsFont.Newspaper}, Size=20, Color=Gray}"
+	BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
+    Title="{grial:Translate PageTitleNews}">
+    
+    <CollectionView ItemsSource="{ Binding News }">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout Spacing="0" Padding="0">
+                    <Grid
+                        ColumnDefinitions="100, *"
+                        RowDefinitions="24, 16, *,1"
+		                RowSpacing="5"
+		                ColumnSpacing="10"
+		                Padding="14"
+		                BackgroundColor="{ DynamicResource BasePageColor }">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectNewsCommand}"/>
+                        </Grid.GestureRecognizers>
+                        <ffimageloading:CachedImage
+			                Grid.Row="0"
+			                Grid.RowSpan="3"
+			                FadeAnimationEnabled="true"
+			                Source="{ Binding UriImage }"
+			                Aspect="AspectFill"
+			                HeightRequest="100" />
+
+                        <Label
+			                Grid.Row="0"
+			                Grid.Column="1"
+                            Grid.RowSpan="3"
+			                Text="{ Binding Title }"
+			                Style="{ StaticResource LabelBoldStyle }"
+			                FontSize="18"
+			                LineBreakMode="WordWrap"
+			                TextColor="{ DynamicResource AccentColor }" />
+                    </Grid>
+                    <BoxView
+						BackgroundColor="{ DynamicResource ListViewSeparatorColor }"
+						HeightRequest="1"/>
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        <CollectionView.EmptyView>
+            <Grid>
+                <StackLayout 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalTextAlignment="Center"
+                        Text="No hay noticias"/>
+                </StackLayout>
+            </Grid>
+        </CollectionView.EmptyView>
+    </CollectionView>
+</ContentPage>

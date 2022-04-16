@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Deteccion.Views.Messages.NotificationsListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:local="clr-namespace:Deteccion"
+    Title="{grial:Translate PageTitleNotifications}"
+    grial:Effects.ApplyIOSSafeAreaAsPadding="Left,Right"
+    BackgroundColor="{DynamicResource BasePageColor}">
+
+    <RefreshView
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefreshing}"
+        RefreshColor="{StaticResource AccentColor}">
+        <CollectionView
+            x:Name="lstNotifications"
+            HeightRequest="{OnIdiom Phone=120,
+                                    Tablet=160}"
+            ItemsSource="{Binding Notifications}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItemView Command="{Binding Source={x:Reference lstNotifications}, Path=BindingContext.DeleteNotificationCommand}" CommandParameter="{Binding}">
+                                    <Grid WidthRequest="70">
+                                        <StackLayout VerticalOptions="Center">
+                                            <Image Source="{FontImage FontFamily={StaticResource MaterialCommunityIcons}, Glyph={x:Static local:MaterialCommunityIconsFont.DeleteSweep}, Size=30, Color={StaticResource AccentColor}}" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                HorizontalTextAlignment="Center"
+                                                Text="Eliminar"
+                                                TextColor="{StaticResource AccentColor}"
+                                                VerticalTextAlignment="Center" />
+                                        </StackLayout>
+                                    </Grid>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <local:MessageItemTemplate />
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <Grid>
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            HorizontalTextAlignment="Center"
+                            Text="No tiene notificaciones" />
+                    </StackLayout>
+                </Grid>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

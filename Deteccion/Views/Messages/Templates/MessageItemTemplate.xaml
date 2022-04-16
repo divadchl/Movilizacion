@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Deteccion.MessageItemTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:local="clr-namespace:Deteccion">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <grial:BooleanToObjectConverter
+                x:Key="isStaredIconConverter"
+                x:TypeArguments="x:String"
+                FalseValue="{x:Static local:GrialIconsFont.Star}"
+                TrueValue="{x:Static local:GrialIconsFont.StarFill}" />
+
+            <grial:BooleanToObjectConverter x:Key="isReadConverter" x:TypeArguments="FontAttributes">
+                <grial:BooleanToObjectConverter.TrueValue>
+                    <FontAttributes>None</FontAttributes>
+                </grial:BooleanToObjectConverter.TrueValue>
+
+                <grial:BooleanToObjectConverter.FalseValue>
+                    <FontAttributes>Bold</FontAttributes>
+                </grial:BooleanToObjectConverter.FalseValue>
+            </grial:BooleanToObjectConverter>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <StackLayout Spacing="0">
+        <StackLayout
+            Padding="10,5,5,5"
+            Orientation="Horizontal"
+            Spacing="0"
+            VerticalOptions="Center">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SelectNotificationCommand}" />
+            </StackLayout.GestureRecognizers>
+            <local:CircleCachedImage
+                Aspect="AspectFill"
+                HorizontalOptions="Center"
+                Source="{Binding Icon}"
+                Style="{StaticResource Avatar}"
+                TranslationX="8"
+                TranslationY="14"
+                VerticalOptions="Start" />
+            <StackLayout
+                Padding="10,0,0,0"
+                Orientation="Horizontal"
+                Spacing="0">
+                <StackLayout
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            FontAttributes="{Binding IsRead, Converter={StaticResource isReadConverter}}"
+                            HorizontalOptions="Fill"
+                            Text="{Binding Title}"
+                            TextColor="{DynamicResource AccentColor}"
+                            VerticalOptions="EndAndExpand" />
+                    </StackLayout>
+                    <Label
+                        HorizontalOptions="Start"
+                        Text="{Binding Description}"
+                        VerticalOptions="FillAndExpand" />
+                    <StackLayout Padding="0,8,0,0" Orientation="Horizontal">
+                        <Label
+                            LineBreakMode="WordWrap"
+                            Text="{Binding DateTimeAgo}"
+                            VerticalOptions="FillAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        <BoxView BackgroundColor="{DynamicResource ListViewSeparatorColor}" HeightRequest="1" />
+    </StackLayout>
+</ContentView>

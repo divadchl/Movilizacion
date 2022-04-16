@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<local:WalkthroughBasePage
+    x:Class="Deteccion.WalkthroughMinimalPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:local="clr-namespace:Deteccion"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    NavigationPage.HasNavigationBar="False"
+    Style="{StaticResource WalkthroughPageStyle}">
+
+    <local:WalkthroughMinimalStepItemTemplate
+        ButtonText="{grial:Translate StringNext}"
+        Header="{grial:Translate WalkthroughHeaderWelcome}"
+        IconColor="#7ED321"
+        IconText="{x:Static local:GrialIconsFont.CheckCircle}"
+        Text="{grial:Translate WalkthroughTextWelcome}" />
+</local:WalkthroughBasePage>

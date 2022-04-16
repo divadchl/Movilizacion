@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial" 
+	x:Class="Deteccion.Views.Forms.AddressPage"
+	Title="{ grial:Translate PageTitleAddress }"
+	BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }">
+
+    <ContentPage.Content>
+        <ScrollView
+			grial:Effects.IgnoreIOSSafeAreaOnScrollView="Bottom">
+            <Grid
+                RowDefinitions="*, Auto"
+				RowSpacing="0"
+				grial:Effects.ApplyIOSSafeAreaAsPadding="Bottom"
+				grial:Effects.IOSSafeAreaBottomSize="15"
+				Padding="20"
+				Style="{ StaticResource ResponsiveLandscapeMarginStyle }">
+
+                <!-- FIELD CONTAINERS -->
+                <StackLayout
+					Spacing="20">
+
+                    <!-- Street -->
+                    <Entry
+                        Text="{Binding Address.Street}"
+						Placeholder="Calle"
+						VerticalOptions="Center"
+						HorizontalOptions="FillAndExpand" />
+
+                    <StackLayout
+						Orientation="Horizontal"
+						Spacing="14">
+
+                        <!-- Outdoor Number -->
+                        <Entry
+                            Text="{Binding Address.OutdoorNumber}"
+							Placeholder="No. Exterior"
+							VerticalOptions="Center"
+							HorizontalOptions="FillAndExpand" />
+
+                        <!-- Interior Number -->
+                        <Entry
+                            Text="{Binding Address.InteriorNumber}"
+							Placeholder="No. Interior"
+							VerticalOptions="Center"
+							HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+
+                    <!-- Colony -->
+                    <Entry
+                        Text="{Binding Address.Colony}"
+						Placeholder="Colonia"
+						VerticalOptions="Center"
+						HorizontalOptions="FillAndExpand" />
+
+                    <StackLayout
+						Orientation="Horizontal"
+						Spacing="14">
+
+                        <!-- State -->
+                        <Picker
+                            ItemDisplayBinding="{Binding Name}"
+                            ItemsSource="{Binding States}"
+                            SelectedItem="{Binding State}"
+                            Title="Estado"
+                            VerticalOptions="Center"
+                            HorizontalOptions="FillAndExpand"/>
+                        <!--<Entry
+                            Text="{Binding Address.State}"
+							Placeholder="Estado"
+							VerticalOptions="Center"
+							HorizontalOptions="FillAndExpand" />-->
+
+                        <!-- Postal Code -->
+                        <Entry
+                            Text="{Binding Address.CP}"
+							Placeholder="Código Postal"
+							VerticalOptions="Center"
+							HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+
+                    <!-- Municipality -->
+                    <Picker
+                        ItemDisplayBinding="{Binding Description}"
+                        ItemsSource="{Binding Municipalities}"
+                        SelectedItem="{Binding Municipality}"
+                        Title="Municipio"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"/>
+
+                    <!--<Entry
+                        Text="{Binding Address.Municipality}"
+						Placeholder="Municiio"
+						VerticalOptions="Center"
+						HorizontalOptions="FillAndExpand" />-->
+                </StackLayout>
+
+                <!-- Primary Button -->
+                <Button
+                    Command="{Binding SaveCommand}"
+                    IsEnabled="{Binding IsEnabled}"
+					Margin="0,20,0,0"
+					Grid.Row="1"
+					HeightRequest="44"
+					VerticalOptions="CenterAndExpand"
+					Text="Guardar"
+					Style="{ StaticResource PrimaryActionButtonStyle }" />
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

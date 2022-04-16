@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="Movilizacion.Views.Articles.NewsPage"
+    xmlns:local="clr-namespace:Movilizacion"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    IconImageSource="{FontImage FontFamily={ StaticResource MaterialCommunityIcons }, Glyph={x:Static local:MaterialCommunityIconsFont.Newspaper}, Size=20, Color=Gray}"
+	BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
+    Title="{grial:Translate PageTitleNews}">
+    <ListView
+		SeparatorVisibility="Default"
+		ItemsSource="{ Binding News }"
+		HasUnevenRows="false"
+		RowHeight="140">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid
+                        ColumnDefinitions="100, *"
+                        RowDefinitions="24, 16, *"
+		                RowSpacing="5"
+		                ColumnSpacing="10"
+		                Padding="14"
+		                BackgroundColor="{ DynamicResource BasePageColor }">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectNewsCommand}"/>
+                        </Grid.GestureRecognizers>
+                        <ffimageloading:CachedImage
+			                Grid.Row="0"
+			                Grid.RowSpan="3"
+			                FadeAnimationEnabled="true"
+			                Source="{ Binding UriImage }"
+			                Aspect="AspectFill"
+			                HeightRequest="100" />
+
+                        <Label
+			                Grid.Row="0"
+			                Grid.Column="1"
+                            Grid.RowSpan="3"
+			                Text="{ Binding Title }"
+			                Style="{ StaticResource LabelBoldStyle }"
+			                FontSize="18"
+			                LineBreakMode="WordWrap"
+			                TextColor="{ DynamicResource AccentColor }" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>

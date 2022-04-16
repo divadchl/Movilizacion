@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:WalkthroughBasePage
+    x:Class="Deteccion.Views.Onboarding.VotePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:local="clr-namespace:Deteccion"
+    xmlns:local2="clr-namespace:Deteccion.Views.Onboarding.Templates"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    NavigationPage.HasNavigationBar="False"
+    Style="{StaticResource WalkthroughPageStyle}">
+
+    <local2:VoteTemplate
+        ButtonText="{grial:Translate StringNext}"
+        Header="{grial:Translate WalkthroughHeaderWelcome}"
+        IconColor="#2382A8"
+        IconText="{x:Static local:FontawesomeSolidFont.ThumbsUp}"
+        Text="{grial:Translate WalkthroughTextWelcome}" />
+</local:WalkthroughBasePage>

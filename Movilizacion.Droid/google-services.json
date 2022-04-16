@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "284517142983",
+    "firebase_url": "https://mymov-66aec.firebaseio.com",
+    "project_id": "mymov-66aec",
+    "storage_bucket": "mymov-66aec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284517142983:android:564ccaa1020f25b9eb09e2",
+        "android_client_info": {
+          "package_name": "com.mydecmov.MyMov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "284517142983-i7kchndpirifagv486vkhgaagsl410tp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtMw-QuXHkhAJgRGxyt7m6ECMNZxE1FGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "284517142983-i7kchndpirifagv486vkhgaagsl410tp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

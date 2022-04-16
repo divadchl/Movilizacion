@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Deteccion.Views.Navigation.Lists.PollsListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:local="clr-namespace:Deteccion"
+    Title="{grial:Translate PageTitleNavigationPollsList}"
+    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}">
+
+    <ListView
+        Margin="0,5"
+        CachingStrategy="RecycleElement"
+        HasUnevenRows="false"
+        ItemsSource="{Binding Polls}"
+        SeparatorColor="Transparent"
+        SeparatorVisibility="None">
+        <ListView.RowHeight>
+            <OnIdiom
+                x:TypeArguments="x:Int32"
+                Phone="100"
+                Tablet="120" />
+        </ListView.RowHeight>
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <grial:CardView
+                        Margin="15,6"
+                        grial:Effects.BackgroundGradient="{DynamicResource DashboardCardItemTemplateGradient}"
+                        BackgroundColor="{DynamicResource BasePageColor}"
+                        ColumnSpacing="20">
+                        <grial:CardView.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </grial:CardView.RowDefinitions>
+
+                        <grial:CardView.ColumnDefinitions>
+                            <ColumnDefinition Width="{grial:OnOrientationDouble Default=80, PortraitTablet=110, LandscapeTablet=110}" />
+                            <ColumnDefinition Width="*" />
+                        </grial:CardView.ColumnDefinitions>
+
+                        <grial:CardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectPollCommand}" />
+                        </grial:CardView.GestureRecognizers>
+                        <!--  BACKGROUND CIRCLE  -->
+                        <BoxView
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            grial:Effects.CornerRadius="{grial:OnOrientationDouble Default=28,
+                                                                                   PortraitTablet=33,
+                                                                                   LandscapeTablet=33}"
+                            BackgroundColor="{Binding BackgroundColor}"
+                            HeightRequest="{grial:OnOrientationDouble Default=56,
+                                                                      PortraitTablet=66,
+                                                                      LandscapeTablet=66}"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="{grial:OnOrientationDouble Default=56,
+                                                                     PortraitTablet=66,
+                                                                     LandscapeTablet=66}" />
+
+                        <!--  ICON  -->
+                        <Label
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            FontSize="{grial:OnOrientationDouble Default=27,
+                                                                 PortraitTablet=32,
+                                                                 LandscapeTablet=32}"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource FontIcon}"
+                            Text="{Binding Icon}"
+                            TextColor="White"
+                            VerticalTextAlignment="Center" />
+
+                        <!--  CATEGORY  -->
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding Poll}"
+                            TextColor="{DynamicResource BaseTextColor}"
+                            VerticalTextAlignment="End" />
+
+                        <!--  ITEM COUNT  -->
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontAttributes="Italic"
+                            FontSize="14"
+                            Opacity=".5"
+                            Text="{Binding Validity, StringFormat='Cierra el {0:dd/MM/yyyy}'}"
+                            TextColor="{DynamicResource BaseTextColor}"
+                            VerticalTextAlignment="Start" />
+
+                        <!--  CHEVRON  -->
+                        <Label
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            HorizontalOptions="End"
+                            Style="{DynamicResource CardsListItemTemplateChevronStyle}"
+                            TextColor="{Binding BackgroundColor}"
+                            WidthRequest="20" />
+
+                    </grial:CardView>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

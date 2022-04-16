@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Elecciones.Movilizacion.Views.MenuMasterPage">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu"
+                 BackgroundColor="#005591">
+
+            <StackLayout Orientation="Vertical">
+
+                <StackLayout BackgroundColor="#005591"
+                     HeightRequest="110">
+
+                    <Label Text="Movilización"
+                        FontSize="20"
+                        VerticalOptions="CenterAndExpand"
+                        TextColor="White"
+                        HorizontalOptions="Center"/>
+                    <Image Source="pan"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                            WidthRequest="60"
+                            HeightRequest="60"/>
+                </StackLayout>
+                <StackLayout
+                    Orientation="Vertical">
+                </StackLayout>
+
+                <ListView x:Name="ListMenu"
+                      RowHeight="50"
+                      SeparatorVisibility="None"
+                      BackgroundColor="White"
+                      ItemSelected="ListMenu_ItemSelected">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Menu items -->
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                        Orientation="Horizontal"
+                                        Padding="20,10,0,10"
+                                        Spacing="20">
+
+                                    <Image Source="{Binding Icono}"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        VerticalOptions="Center" />
+
+                                    <Label Text="{Binding MenuTitle}"
+                                        FontSize="Medium"
+                                        VerticalOptions="Center"
+                                        TextColor="Black"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

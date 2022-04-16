@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Deteccion.Views.Messages.InvitationsListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:local="clr-namespace:Deteccion"
+    Title="{grial:Translate PageTitleInvitations}"
+    grial:Effects.ApplyIOSSafeAreaAsPadding="Left,Right"
+    BackgroundColor="{DynamicResource BasePageColor}">
+
+    <RefreshView
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefreshing}"
+        RefreshColor="{StaticResource AccentColor}">
+        <CollectionView
+            x:Name="listInvitations"
+            HeightRequest="{OnIdiom Phone=120,
+                                    Tablet=160}"
+            ItemsSource="{Binding Invitations}"
+            SelectedItem="{Binding Invitation}"
+            SelectionChangedCommand="{Binding SelectedProcessCommand}"
+            SelectionChangedCommandParameter="{Binding Source={x:Reference listInvitations}, Path=SelectedItems}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <StackLayout HeightRequest="50" Orientation="Horizontal">
+                            <Image Source="{FontImage FontFamily={StaticResource MaterialCommunityIcons}, Glyph={x:Static local:MaterialCommunityIconsFont.CubeSend}, Size=50, Color={StaticResource AccentColor}}" />
+                            <Label Text="{Binding NameProcess}" VerticalOptions="Center" FontSize="Medium"/>
+                            <!--  CHEVRON  -->
+                            <Label
+                                HorizontalOptions="EndAndExpand"
+                                Style="{DynamicResource CardsListItemTemplateChevronStyle}"
+                                TextColor="{Binding BackgroundColor}"
+                                WidthRequest="20" />
+                        </StackLayout>
+                        <BoxView BackgroundColor="Black" HeightRequest="1" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <Grid>
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            HorizontalTextAlignment="Center"
+                            Text="No tiene invitaciones" />
+
+                    </StackLayout>
+                </Grid>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

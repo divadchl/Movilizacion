@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:local="clr-namespace:Movilizacion"
+	x:Class="Movilizacion.MainMenuPage"
+	NavigationPage.HasNavigationBar="false"
+	Icon="{ StaticResource HamburguerIcon }"
+	Style="{ StaticResource MainMenuStyle }"
+	Title="{ grial:Translate PageTitleMainMenu }">
+
+    <Grid>
+        <BoxView
+			Style="{ StaticResource MainMenuOrModalBackgroundStyle }"
+			Opacity="1" />
+
+        <Image
+			Style="{ StaticResource MainMenuBackgroundImageStyle }" /> 
+        
+        <Grid
+            RowDefinitions="Auto, Auto, *, Auto"
+			grial:Effects.ApplyIOSSafeAreaAsPadding="Left,Right"
+			RowSpacing="0"
+			VerticalOptions="FillAndExpand">
+
+            <local:BrandBlock
+				Grid.Row="0"
+				Grid.Column="0"
+				Margin="20,40,20,30"
+				VerticalOptions="Start"
+				HorizontalOptions="Start" />
+
+            <Label 
+                Margin="20,0,0,0"
+                FontAttributes="Bold"
+                FontSize="24"
+                TextColor="White"
+                Grid.Row="1"
+                Text="{Binding Process, StringFormat='Proceso: {0}'}"/>
+
+            <!-- MENU ENTRIES -->
+            <ListView
+				Margin="0,10,0,10"
+				Grid.Row="2"
+				x:Name="sampleListView"
+				SelectedItem="{ Binding MainMenuSelectedItem, Mode=TwoWay }"
+				ItemsSource="{ Binding MainMenuEntries }"
+				VerticalOptions="FillAndExpand"
+				Style="{ StaticResource MainMenuListViewStyle }"
+				CachingStrategy="RecycleElement">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <local:MainMenuItemTemplate />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label
+                x:Name="lblVersion"
+                HorizontalOptions="End"
+                TextColor="White"
+                Grid.Row="3"
+                Text="Version"/>
+        </Grid>
+    </Grid>
+</ContentPage>

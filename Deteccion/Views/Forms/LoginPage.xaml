@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
+    x:Class="Deteccion.LoginPage" 
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial" 
+    xmlns:local="clr-namespace:Deteccion"
+	NavigationPage.HasNavigationBar="False"
+	Style="{ StaticResource MainMenuOrModalBackgroundStyle }"
+	Title="{ grial:Translate PageTitleLogin }">
+    <ContentPage.Content>
+        <Grid
+            Margin="0,0,0,15">
+            <!-- IMAGE -->
+            <Image
+				Style="{ StaticResource MainMenuBackgroundImageStyle }" /> 
+            
+            <ScrollView
+				Padding="{ StaticResource MainWrapperPadding }">
+                <!-- MAIN CONTAINER -->
+                <Grid
+                    RowDefinitions="80, Auto, *, Auto"
+					Style="{ StaticResource LoginFormsContentStyle }"
+					ColumnSpacing="0"
+					RowSpacing="0"
+					HorizontalOptions="Fill"
+					VerticalOptions="FillAndExpand">
+                    
+                    <!-- LOGO -->
+                    <Image
+						Grid.Row="0"
+                        Source="logo.png"
+						Margin="16,0"
+                        HeightRequest="60"
+                        WidthRequest="60"
+                        VerticalOptions="End"
+						HorizontalOptions="Start"/>
+                    
+                    <!--CLAIM TEXT-->
+                    <StackLayout
+						Grid.Row="1"
+						Spacing="10"
+						Padding="20,10,50,10"
+						Orientation="Vertical"
+						VerticalOptions="Center">
+                        <Label
+							LineBreakMode="WordWrap"
+							Text="{ grial:Translate Key=LabelLoginOrRegisterUsinMailOrPass }"
+							TextColor="{ DynamicResource InverseTextColor }"
+							VerticalTextAlignment="Center"
+							Style="{ StaticResource LabelBoldStyle }">
+                                <Label.FontSize> 
+                                    <OnIdiom
+									x:TypeArguments="x:Double"
+									Phone="24"
+									Tablet="34" />
+                                </Label.FontSize>
+                        </Label>
+                        
+                        <BoxView
+							Style="{ DynamicResource BrandNameOrnamentStyle }"
+							BackgroundColor="{ DynamicResource InverseTextColor }" />
+                        
+                    </StackLayout>
+                    
+                    <!---FIELDS CONTAINER-->
+                    <Grid
+						Grid.Row="2"
+						Padding="40,0"
+						ColumnSpacing="0"
+						RowSpacing="0"
+						VerticalOptions="CenterAndExpand"
+						HeightRequest="130">
+                        <StackLayout
+							Grid.Row="0"
+							VerticalOptions="StartAndExpand">
+                            <!---EMAIL ENTRY--> 
+                            <Entry
+                                Keyboard="Email"
+                                Text="{Binding Email}"
+								Placeholder="{ grial:Translate StringEmail }"
+								Style="{ StaticResource SingleLineEntryStyle }">
+                                <Entry.Behaviors>
+                                    <grial:EmailValidatorBehavior
+										x:Name="emailValidator" />
+                                </Entry.Behaviors>
+                            </Entry>
+
+                            <local:RoundedLabel
+								Text="{ grial:Translate Key=ErrorPleaseEnterValidEmail }"
+								IsVisible="false"
+								Style="{ StaticResource ValidationEntryErrorStyle }">
+                                <local:RoundedLabel.Triggers>
+                                    <DataTrigger
+										TargetType="local:RoundedLabel"
+										Binding="{ Binding Source={ x:Reference emailValidator }, Path=IsValid }"
+										Value="false">
+                                        <Setter
+											Property="IsVisible"
+											Value="true" />
+                                    </DataTrigger> 
+                                </local:RoundedLabel.Triggers>
+                            </local:RoundedLabel>
+
+                        </StackLayout>
+
+                        <!---PASSWORD FIELD-->
+                        <Entry
+                            Text="{Binding Password}"
+							Grid.Row="2"
+							Placeholder="{ grial:Translate StringPassword }"
+							IsPassword="true"
+							Style="{ StaticResource SingleLineEntryStyle }"
+							VerticalOptions="StartAndExpand" />
+
+                    </Grid>
+                        
+                    <!-- FOOTER -->
+                    <StackLayout
+						HorizontalOptions="Fill"
+						VerticalOptions="EndAndExpand"
+						Padding="20,20,20,0"
+						Spacing="14"
+						Grid.Row="3">
+                        <!-- Forgot password -->
+                        <Label
+                            Margin="0,0,0,15"
+							Text="{grial:Translate StringNoticePrivacy}"
+							VerticalOptions="Center"
+							HorizontalOptions="Center"
+							TextColor="{ DynamicResource InverseTextColor }">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NoticePrivacyCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Button
+                            Command="{Binding RegisterCommand}"
+							Style="{ DynamicResource OutlineInverseButtonStyle }"
+							VerticalOptions="End"
+							Text="{grial:Translate Key=StringRegister}"
+							WidthRequest="{
+                                grial:OnOrientationDouble
+                                    LandscapePhone=200,
+                                    LandscapeTablet=400 
+                            }"
+							HorizontalOptions="{ 
+                                grial:OnOrientationLayoutOptions
+                                    PortraitPhone=Fill,
+                                    LandscapePhone=Center,
+                                    PortraitTablet=Fill,
+                                    LandscapeTablet=Center 
+                            }" />
+
+                        <Button
+                            Command="{Binding LoginCommand}"
+							Style="{ StaticResource TranslucidButtonStyle }"
+							VerticalOptions="End"
+							Text="{ grial:Translate Key=StringLogin }"
+							WidthRequest="{ 
+                                grial:OnOrientationDouble
+                                    LandscapePhone=200,
+                                    LandscapeTablet=400 
+                            }"
+							HorizontalOptions="{ 
+                                grial:OnOrientationLayoutOptions
+                                    PortraitPhone=Fill,
+                                    LandscapePhone=Center,
+                                    PortraitTablet=Fill,
+                                    LandscapeTablet=Center 
+                            }" />
+                        
+                        <!-- Forgot password -->
+                        <Label
+							Text="Olvidó su contraseña?"
+							VerticalOptions="Center"
+							HorizontalOptions="Center"
+							TextColor="{ DynamicResource InverseTextColor }">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        
+                    </StackLayout>
+                </Grid>
+                
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

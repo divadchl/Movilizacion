@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBSMovilizacionModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Casillas">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.Casillas">
+        <MappingFragment StoreEntitySet="Casillas">
+          <ScalarProperty Name="ESTATUS2018" ColumnName="ESTATUS2018" />
+          <ScalarProperty Name="CAMBIO" ColumnName="CAMBIO" />
+          <ScalarProperty Name="IdTipoCasilla" ColumnName="IdTipoCasilla" />
+          <ScalarProperty Name="IdEncarte" ColumnName="IdEncarte" />
+          <ScalarProperty Name="IdDistritoFederal" ColumnName="IdDistritoFederal" />
+          <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="latitud" ColumnName="latitud" />
+          <ScalarProperty Name="logitud" ColumnName="logitud" />
+          <ScalarProperty Name="referencia" ColumnName="referencia" />
+          <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+          <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+          <ScalarProperty Name="casilla" ColumnName="casilla" />
+          <ScalarProperty Name="manzana" ColumnName="manzana" />
+          <ScalarProperty Name="nlocalidad" ColumnName="nlocalidad" />
+          <ScalarProperty Name="localidad" ColumnName="localidad" />
+          <ScalarProperty Name="seccion" ColumnName="seccion" />
+          <ScalarProperty Name="nmunicipio" ColumnName="nmunicipio" />
+          <ScalarProperty Name="municipio" ColumnName="municipio" />
+          <ScalarProperty Name="distrito" ColumnName="distrito" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="IdCasilla" ColumnName="IdCasilla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATDistritoFederal">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CATDistritoFederal">
+        <MappingFragment StoreEntitySet="CATDistritoFederal">
+          <ScalarProperty Name="IdEncarte" ColumnName="IdEncarte" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="Cabecera" ColumnName="Cabecera" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="DistritoFederal" ColumnName="DistritoFederal" />
+          <ScalarProperty Name="IdDistritoFederal" ColumnName="IdDistritoFederal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATDistritoLocal">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CATDistritoLocal">
+        <MappingFragment StoreEntitySet="CATDistritoLocal">
+          <ScalarProperty Name="IdEncarte" ColumnName="IdEncarte" />
+          <ScalarProperty Name="Cabecera" ColumnName="Cabecera" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="DistritoLocal" ColumnName="DistritoLocal" />
+          <ScalarProperty Name="IdDistritoLocal" ColumnName="IdDistritoLocal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEstado">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CATEstado">
+        <MappingFragment StoreEntitySet="CATEstado">
+          <ScalarProperty Name="Abreviacion" ColumnName="Abreviacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEstatusCasilla">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CATEstatusCasilla">
+        <MappingFragment StoreEntitySet="CATEstatusCasilla">
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="EstatusCasilla" ColumnName="EstatusCasilla" />
+          <ScalarProperty Name="IdEstatusCasilla" ColumnName="IdEstatusCasilla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATMunicipios">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CATMunicipios">
+        <MappingFragment StoreEntitySet="CATMunicipios">
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="abreviatura" ColumnName="abreviatura" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="municipio" ColumnName="municipio" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATSecciones">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CATSecciones">
+        <MappingFragment StoreEntitySet="CATSecciones">
+          <ScalarProperty Name="IdEncarte" ColumnName="IdEncarte" />
+          <ScalarProperty Name="Seccion" ColumnName="Seccion" />
+          <ScalarProperty Name="IdDistritoFederal" ColumnName="IdDistritoFederal" />
+          <ScalarProperty Name="IdDistritoLocal" ColumnName="IdDistritoLocal" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATTipoCasilla">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CATTipoCasilla">
+        <MappingFragment StoreEntitySet="CATTipoCasilla">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdTipoCasilla" ColumnName="IdTipoCasilla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATTipoContacto">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CATTipoContacto">
+        <MappingFragment StoreEntitySet="CATTipoContacto">
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="TipoContacto" ColumnName="TipoContacto" />
+          <ScalarProperty Name="IdTipoContacto" ColumnName="IdTipoContacto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATTipoCredencial">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CATTipoCredencial">
+        <MappingFragment StoreEntitySet="CATTipoCredencial">
+          <ScalarProperty Name="TipoCrecencial" ColumnName="TipoCrecencial" />
+          <ScalarProperty Name="IdTipoCredencial" ColumnName="IdTipoCredencial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATTipoDocumento">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CATTipoDocumento">
+        <MappingFragment StoreEntitySet="CATTipoDocumento">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdTipoDocumento" ColumnName="IdTipoDocumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATTipoPregunta">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CATTipoPregunta">
+        <MappingFragment StoreEntitySet="CATTipoPregunta">
+          <ScalarProperty Name="TipoPregunta" ColumnName="TipoPregunta" />
+          <ScalarProperty Name="IdTipoPregunta" ColumnName="IdTipoPregunta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATCambioSeccion">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATCambioSeccion">
+        <MappingFragment StoreEntitySet="DATCambioSeccion">
+          <ScalarProperty Name="AddUser" ColumnName="AddUser" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="IdEncarte" ColumnName="IdEncarte" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="SeccionVieja" ColumnName="SeccionVieja" />
+          <ScalarProperty Name="IdSeccionNueva" ColumnName="IdSeccionNueva" />
+          <ScalarProperty Name="IdCambio" ColumnName="IdCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATContacto">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATContacto">
+        <MappingFragment StoreEntitySet="DATContacto">
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="IdTipoContacto" ColumnName="IdTipoContacto" />
+          <ScalarProperty Name="Voto" ColumnName="Voto" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="IdContacto" ColumnName="IdContacto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATDoctoPersona">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATDoctoPersona">
+        <MappingFragment StoreEntitySet="DATDoctoPersona">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="IdTipoDocumento" ColumnName="IdTipoDocumento" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="IdDoctoPersona" ColumnName="IdDoctoPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATDomicilios">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATDomicilios">
+        <MappingFragment StoreEntitySet="DATDomicilios">
+          <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+          <ScalarProperty Name="NoInterior" ColumnName="NoInterior" />
+          <ScalarProperty Name="NoExterior" ColumnName="NoExterior" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="IdDomicilio" ColumnName="IdDomicilio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATEncuestas">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATEncuestas">
+        <MappingFragment StoreEntitySet="DATEncuestas">
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+          <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+          <ScalarProperty Name="InsertedUser" ColumnName="InsertedUser" />
+          <ScalarProperty Name="NotificacionEnviada" ColumnName="NotificacionEnviada" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="IdDistritoLocal" ColumnName="IdDistritoLocal" />
+          <ScalarProperty Name="IdDistritoFederal" ColumnName="IdDistritoFederal" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="Vigencia" ColumnName="Vigencia" />
+          <ScalarProperty Name="NoPregutas" ColumnName="NoPregutas" />
+          <ScalarProperty Name="Encuesta" ColumnName="Encuesta" />
+          <ScalarProperty Name="IdEncuesta" ColumnName="IdEncuesta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DatErrores">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DatErrores">
+        <MappingFragment StoreEntitySet="DatErrores">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Aplicacion" ColumnName="Aplicacion" />
+          <ScalarProperty Name="IdError" ColumnName="IdError" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DatGeolocalizacionNoProcesadas">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DatGeolocalizacionNoProcesadas">
+        <MappingFragment StoreEntitySet="DatGeolocalizacionNoProcesadas">
+          <ScalarProperty Name="IdDomicilio" ColumnName="IdDomicilio" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATInvitados">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATInvitados">
+        <MappingFragment StoreEntitySet="DATInvitados">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="App" ColumnName="App" />
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="CodigoInvitacion" ColumnName="CodigoInvitacion" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="IdInvitado" ColumnName="IdInvitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATNoticias">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATNoticias">
+        <MappingFragment StoreEntitySet="DATNoticias">
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+          <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+          <ScalarProperty Name="InsertedUser" ColumnName="InsertedUser" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdDistritoLocal" ColumnName="IdDistritoLocal" />
+          <ScalarProperty Name="IdDistritoFederal" ColumnName="IdDistritoFederal" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="IdNoticia" ColumnName="IdNoticia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATNotificaciones">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATNotificaciones">
+        <MappingFragment StoreEntitySet="DATNotificaciones">
+          <ScalarProperty Name="Aplicacion" ColumnName="Aplicacion" />
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+          <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+          <ScalarProperty Name="InsertedUser" ColumnName="InsertedUser" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdDistritoLocal" ColumnName="IdDistritoLocal" />
+          <ScalarProperty Name="IdDistritoFederal" ColumnName="IdDistritoFederal" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="Enviada" ColumnName="Enviada" />
+          <ScalarProperty Name="Notificacion" ColumnName="Notificacion" />
+          <ScalarProperty Name="IdNotificacion" ColumnName="IdNotificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATPersonas">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATPersonas">
+        <MappingFragment StoreEntitySet="DATPersonas">
+          <ScalarProperty Name="IdUserPadre" ColumnName="IdUserPadre" />
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+          <ScalarProperty Name="IdTipoCredencial" ColumnName="IdTipoCredencial" />
+          <ScalarProperty Name="IdInvitado" ColumnName="IdInvitado" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
+          <ScalarProperty Name="IdDistritoLocal" ColumnName="IdDistritoLocal" />
+          <ScalarProperty Name="IdDistritoFederal" ColumnName="IdDistritoFederal" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+          <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdPadre" ColumnName="IdPadre" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="NoEmision" ColumnName="NoEmision" />
+          <ScalarProperty Name="RegistroINE" ColumnName="RegistroINE" />
+          <ScalarProperty Name="CIC" ColumnName="CIC" />
+          <ScalarProperty Name="OCR" ColumnName="OCR" />
+          <ScalarProperty Name="Vigencia" ColumnName="Vigencia" />
+          <ScalarProperty Name="Emision" ColumnName="Emision" />
+          <ScalarProperty Name="Seccion" ColumnName="Seccion" />
+          <ScalarProperty Name="NoMunicipio" ColumnName="NoMunicipio" />
+          <ScalarProperty Name="NoEstado" ColumnName="NoEstado" />
+          <ScalarProperty Name="CURP" ColumnName="CURP" />
+          <ScalarProperty Name="ClaveINE" ColumnName="ClaveINE" />
+          <ScalarProperty Name="Municipio" ColumnName="Municipio" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+          <ScalarProperty Name="NoInterior" ColumnName="NoInterior" />
+          <ScalarProperty Name="NoExterior" ColumnName="NoExterior" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Materno" ColumnName="Materno" />
+          <ScalarProperty Name="Paterno" ColumnName="Paterno" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DatPersonasGeolocalizacion">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DatPersonasGeolocalizacion">
+        <MappingFragment StoreEntitySet="DatPersonasGeolocalizacion">
+          <ScalarProperty Name="Point" ColumnName="Point" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATPreguntas">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATPreguntas">
+        <MappingFragment StoreEntitySet="DATPreguntas">
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+          <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+          <ScalarProperty Name="InsertedUser" ColumnName="InsertedUser" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="IdTipoPregunta" ColumnName="IdTipoPregunta" />
+          <ScalarProperty Name="IdEncuesta" ColumnName="IdEncuesta" />
+          <ScalarProperty Name="Pregunta" ColumnName="Pregunta" />
+          <ScalarProperty Name="IdPregunta" ColumnName="IdPregunta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATProceso">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATProceso">
+        <MappingFragment StoreEntitySet="DATProceso">
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdEncarte" ColumnName="IdEncarte" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="AddUser" ColumnName="AddUser" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Archivado" ColumnName="Archivado" />
+          <ScalarProperty Name="FechaProceso" ColumnName="FechaProceso" />
+          <ScalarProperty Name="Local" ColumnName="Local" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATReporteCasilla">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATReporteCasilla">
+        <MappingFragment StoreEntitySet="DATReporteCasilla">
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="IdEstatusCasilla" ColumnName="IdEstatusCasilla" />
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="IdCasilla" ColumnName="IdCasilla" />
+          <ScalarProperty Name="IdReporteCasilla" ColumnName="IdReporteCasilla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATRespuestas">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATRespuestas">
+        <MappingFragment StoreEntitySet="DATRespuestas">
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+          <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+          <ScalarProperty Name="InsertedUser" ColumnName="InsertedUser" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="IdPregunta" ColumnName="IdPregunta" />
+          <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+          <ScalarProperty Name="IdRespuestas" ColumnName="IdRespuestas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATRespUsuario">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATRespUsuario">
+        <MappingFragment StoreEntitySet="DATRespUsuario">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="RespAbierta" ColumnName="RespAbierta" />
+          <ScalarProperty Name="IdRespuesta" ColumnName="IdRespuesta" />
+          <ScalarProperty Name="IdPregunta" ColumnName="IdPregunta" />
+          <ScalarProperty Name="IdRespUsuario" ColumnName="IdRespUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Encarte">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.Encarte">
+        <MappingFragment StoreEntitySet="Encarte">
+          <ScalarProperty Name="ModUser" ColumnName="ModUser" />
+          <ScalarProperty Name="ModDate" ColumnName="ModDate" />
+          <ScalarProperty Name="AddUser" ColumnName="AddUser" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdEncarte" ColumnName="IdEncarte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProcesoUsuario">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.ProcesoUsuario">
+        <MappingFragment StoreEntitySet="ProcesoUsuario">
+          <ScalarProperty Name="ApplicationGroup" ColumnName="ApplicationGroup" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Territorio">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.Territorio">
+        <MappingFragment StoreEntitySet="Territorio">
+          <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
+          <ScalarProperty Name="IdDistritoLocal" ColumnName="IdDistritoLocal" />
+          <ScalarProperty Name="IdDistritoFederal" ColumnName="IdDistritoFederal" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="IdTerritorio" ColumnName="IdTerritorio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersDeteccion">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.UsersDeteccion">
+        <MappingFragment StoreEntitySet="UsersDeteccion">
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="isRegister" ColumnName="isRegister" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatDistritoFederalDistritoLocal">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CatDistritoFederalDistritoLocal">
+        <MappingFragment StoreEntitySet="CatDistritoFederalDistritoLocal">
+          <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
+          <ScalarProperty Name="IdDistritoLocal" ColumnName="IdDistritoLocal" />
+          <ScalarProperty Name="IdDistritoFederal" ColumnName="IdDistritoFederal" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdEncarte" ColumnName="IdEncarte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatDistritoFederalMunicipio">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CatDistritoFederalMunicipio">
+        <MappingFragment StoreEntitySet="CatDistritoFederalMunicipio">
+          <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
+          <ScalarProperty Name="IdDistritoFederal" ColumnName="IdDistritoFederal" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdEncarte" ColumnName="IdEncarte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatDistritoLocalDistritoFederal">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CatDistritoLocalDistritoFederal">
+        <MappingFragment StoreEntitySet="CatDistritoLocalDistritoFederal">
+          <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
+          <ScalarProperty Name="IdDistritoFederal" ColumnName="IdDistritoFederal" />
+          <ScalarProperty Name="IdDistritoLocal" ColumnName="IdDistritoLocal" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdEncarte" ColumnName="IdEncarte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatDistritoLocalMunicipio">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.CatDistritoLocalMunicipio">
+        <MappingFragment StoreEntitySet="CatDistritoLocalMunicipio">
+          <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
+          <ScalarProperty Name="IdDistritoLocal" ColumnName="IdDistritoLocal" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdEncarte" ColumnName="IdEncarte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATDetectados">
+      <EntityTypeMapping TypeName="DBSMovilizacionModel.DATDetectados">
+        <MappingFragment StoreEntitySet="DATDetectados">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdPadre" ColumnName="IdPadre" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="NoEmision" ColumnName="NoEmision" />
+          <ScalarProperty Name="RegistroINE" ColumnName="RegistroINE" />
+          <ScalarProperty Name="OCR" ColumnName="OCR" />
+          <ScalarProperty Name="Vigencia" ColumnName="Vigencia" />
+          <ScalarProperty Name="Emision" ColumnName="Emision" />
+          <ScalarProperty Name="Seccion" ColumnName="Seccion" />
+          <ScalarProperty Name="NoMunicipio" ColumnName="NoMunicipio" />
+          <ScalarProperty Name="NoEstado" ColumnName="NoEstado" />
+          <ScalarProperty Name="CURP" ColumnName="CURP" />
+          <ScalarProperty Name="ClaveINE" ColumnName="ClaveINE" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Municipio" ColumnName="Municipio" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+          <ScalarProperty Name="NoInterior" ColumnName="NoInterior" />
+          <ScalarProperty Name="NoExterior" ColumnName="NoExterior" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Materno" ColumnName="Materno" />
+          <ScalarProperty Name="Paterno" ColumnName="Paterno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

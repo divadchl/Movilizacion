@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Deteccion"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+	x:Class="Deteccion.Views.Navigation.Lists.PollListItemPage"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        
+            <Grid >
+                <grial:GrialNavigationBar
+				    UseNavigationPageBarBackgroundColor="true"
+				    UseNavigationPageBarBackgroundGradient="true" />
+
+                <!--BACKGROUND IMAGE-->
+                <Image
+				    Style="{ StaticResource MainMenuBackgroundImageStyle }" />
+
+                <Grid
+				    RowSpacing="0"
+                    RowDefinitions="170, *, Auto">
+
+                    <!-- CURVED MASK -->
+                    <local:CurvedMask
+					    Grid.Row="0"
+					    VerticalOptions="End"
+					    MaskColor="{ DynamicResource MainWrapperBackgroundColor }" />
+
+                    <!-- BACKGROUND BOTTOM COLOR -->
+                    <BoxView
+					    BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
+					    Grid.Row="1" />
+
+                    <!-- OVERLAPPED CONTENT -->
+                    <StackLayout
+					    Spacing="0"
+					    Grid.RowSpan="2">
+                        <!-- LIST -->
+                        <ListView
+						    ItemsSource="{ Binding Questions }"
+                            SelectionMode="None"
+						    SeparatorVisibility="None"
+						    HasUnevenRows="true"
+						    Margin="0,10">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame
+                                            Padding="20,20"
+										    Margin="10"
+										    CornerRadius="10">
+                                        <Grid
+                                            ColumnDefinitions="*, Auto"
+                                            RowDefinitions="Auto, Auto"
+										    RowSpacing="10">
+
+                                            <Label
+				                                Grid.Row="0"
+				                                Grid.Column="0"
+				                                Grid.ColumnSpan="2"
+				                                Style="{ StaticResource LabelBoldStyle }"
+				                                Text="{ Binding Query }"
+				                                FontSize="16"
+				                                VerticalOptions="Center" />
+                                            <Grid
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+				                                Grid.ColumnSpan="2"
+							                    Padding="10,0"
+							                    VerticalOptions="Center"
+                                                IsVisible="false"
+							                    grial:Effects.ApplyIOSSafeAreaAsPadding="Left,Right">
+                                                <Grid.Triggers>
+                                                    <DataTrigger TargetType="Grid" Binding="{Binding IdTypeQuestion}" Value="1">
+                                                        <Setter Property="IsVisible" Value="true"/>
+                                                    </DataTrigger>
+                                                </Grid.Triggers>
+                                                <input:RadioButtonGroupView>
+                                                <StackLayout
+                                                    Spacing="0"
+                                                    Margin="0"
+                                                    Padding="0"
+                                                    BindableLayout.ItemsSource="{Binding Answers}">
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <input:RadioButton 
+                                                                IsChecked="{Binding IsClicked, Mode=TwoWay}"
+                                                                Value="{Binding AnswerUser}"
+                                                                TextFontSize="16"
+                                                                Padding="0,4"
+                                                                ClickCommand="{Binding SelectClickCommand}"
+                                                                Text="{Binding Response}"/>
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
+                                                </StackLayout>
+                                                </input:RadioButtonGroupView>
+                                            </Grid>
+                                            <Grid
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+				                                Grid.ColumnSpan="2"
+							                    Padding="10,0"
+							                    VerticalOptions="Center"
+                                                IsVisible="false"
+							                    grial:Effects.ApplyIOSSafeAreaAsPadding="Left,Right">
+                                                <Grid.Triggers>
+                                                    <DataTrigger TargetType="Grid" Binding="{Binding IdTypeQuestion}" Value="2">
+                                                        <Setter Property="IsVisible" Value="true"/>
+                                                    </DataTrigger>
+                                                </Grid.Triggers>
+                                                    <StackLayout
+                                                        Spacing="0"
+                                                        Margin="0"
+                                                        Padding="0"
+                                                        BindableLayout.ItemsSource="{Binding Answers}">
+                                                        <BindableLayout.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <input:CheckBox 
+                                                                    TextFontSize="16"
+                                                                    IsChecked="{Binding IsChecked}"
+                                                                    Padding="0,4"
+                                                                    CheckChangedCommand="{Binding SelectCheckCommand}"
+                                                                    Text="{Binding Response}"
+                                                                    Type="Material"/>
+                                                            </DataTemplate>
+                                                        </BindableLayout.ItemTemplate>
+                                                        
+                                                    </StackLayout>
+                                            </Grid>
+                                            <Editor
+                                                Text="{Binding AnswerUser.OpenResponse}"
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+				                                Grid.ColumnSpan="2"
+                                                IsVisible="false"
+									            grial:EditorProperties.Placeholder="{ grial:Translate TypeYourAnswer }">
+                                                <Editor.Triggers>
+                                                    <DataTrigger TargetType="Editor" Binding="{Binding IdTypeQuestion}" Value="3">
+                                                        <Setter Property="IsVisible" Value="true"/>
+                                                    </DataTrigger>
+                                                </Editor.Triggers>
+                                            </Editor>
+                                        </Grid>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                    <!-- FOOTER -->
+                <StackLayout
+                    BackgroundColor="White"
+					HorizontalOptions="Fill"
+					VerticalOptions="EndAndExpand"
+					Grid.Row="2">
+                    <!-- SINGUP BUTTON -->
+                    <Button
+                        Padding="20,0"
+						Margin="20"
+                        Command="{Binding SendPollCommand}"
+                        IsEnabled="{Binding IsEnabled}"
+						Style="{ StaticResource PrimaryActionButtonStyle }"
+						VerticalOptions="End"
+						Text="{ grial:Translate StringSendPoll }"
+						WidthRequest="{ 
+                            grial:OnOrientationDouble
+                                LandscapePhone=200,
+                                LandscapeTablet=400 
+                        }"
+						HorizontalOptions="{ 
+                            grial:OnOrientationLayoutOptions
+                                PortraitPhone=Fill,
+                                LandscapePhone=Center,
+                                PortraitTablet=Fill,
+                                LandscapeTablet=Center 
+                        }" />
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

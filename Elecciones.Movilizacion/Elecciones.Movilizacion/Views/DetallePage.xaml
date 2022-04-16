@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Elecciones.Movilizacion.Views.DetallePage"
+              BackgroundImage="back"
+              Title="Detalle Persona">
+    <ContentPage.Content>
+        <Frame>
+            <StackLayout Padding="20,35,20,20">
+                <Grid Padding="0,0,0,20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+             
+                </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="AUTO"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Text="NOMBRE: "/>
+                    <Label Grid.Column="0" Grid.Row="1" Text="PATERNO: "/>
+                    <Label Grid.Column="0" Grid.Row="2" Text="MATERNO: "/>
+                    <Label Grid.Column="0" Grid.Row="3" Text=""/>
+                    <Label Grid.Column="0" Grid.Row="4" Text="CLAVE INE: "/>
+                    <Label Grid.Column="0" Grid.Row="5" Text=""/>
+                    <Label Grid.Column="0" Grid.Row="6" Text="AV. COYOACAN 1546"/>
+                    <Label Grid.Column="0" Grid.Row="7" Text="COLONIA DEL VALLE"/>
+                    <Label Grid.Column="0" Grid.Row="8" Text="CP: 03100"/>
+                    <Label Grid.Column="0" Grid.Row="9" Text="BENITO JUAREZ"/>
+                    <Image Source="location" Grid.ColumnSpan="3" Grid.Row="9" HeightRequest="50" WidthRequest="50"/>
+                    <Label Grid.Column="0" Grid.Row="10" Text="CIUDAD DE MEXICO"/>
+                    <Label Grid.Column="0" Grid.Row="11" Text=""/>
+                    <Label Grid.Column="0" Grid.Row="12" Text="ESTADO: 09"/>
+                    <Label Grid.Column="0" Grid.Row="13" Text="MUNICIPIO: 014"/>
+                    <Label Grid.Column="0" Grid.Row="14" Text="SECCION: 4380"/>
+
+                    <Label Grid.Column="1" Grid.Row="0" Text="JUAN CARLOS" />
+                    <Label Grid.Column="1" Grid.Row="1" Text="MALDONADO"/>
+                    <Label Grid.Column="1" Grid.Row="2" Text="JIMENEZ"/>
+                    <Label Grid.Column="1" Grid.Row="3" Text=""/>
+                    <Label Grid.Column="1" Grid.Row="4" Text="MlIMJU90051009H800"/>
+                </Grid>
+                <StackLayout>
+                    <Image Source="ine" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

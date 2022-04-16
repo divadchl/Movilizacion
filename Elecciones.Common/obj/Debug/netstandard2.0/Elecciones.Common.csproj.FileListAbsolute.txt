@@ -1,0 +1,17 @@
+C:\Project\master\Elecciones.Common\bin\Debug\netstandard2.0\Elecciones.Common.deps.json
+C:\Project\master\Elecciones.Common\bin\Debug\netstandard2.0\Elecciones.Common.dll
+C:\Project\master\Elecciones.Common\bin\Debug\netstandard2.0\Elecciones.Common.pdb
+C:\Project\master\Elecciones.Common\bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.dll
+C:\Project\master\Elecciones.Common\bin\Debug\netstandard2.0\System.Configuration.dll
+C:\Project\master\Elecciones.Common\bin\Debug\netstandard2.0\System.Security.dll
+C:\Project\master\Elecciones.Common\bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.xml
+C:\Project\master\Elecciones.Common\bin\Debug\netstandard2.0\System.Configuration.xml
+C:\Project\master\Elecciones.Common\bin\Debug\netstandard2.0\System.Security.xml
+C:\Project\master\Elecciones.Common\obj\Debug\netstandard2.0\Elecciones.Common.csproj.AssemblyReference.cache
+C:\Project\master\Elecciones.Common\obj\Debug\netstandard2.0\Elecciones.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Project\master\Elecciones.Common\obj\Debug\netstandard2.0\Elecciones.Common.AssemblyInfoInputs.cache
+C:\Project\master\Elecciones.Common\obj\Debug\netstandard2.0\Elecciones.Common.AssemblyInfo.cs
+C:\Project\master\Elecciones.Common\obj\Debug\netstandard2.0\Elecciones.Common.csproj.CoreCompileInputs.cache
+C:\Project\master\Elecciones.Common\obj\Debug\netstandard2.0\Elecciones.Common.csproj.CopyComplete
+C:\Project\master\Elecciones.Common\obj\Debug\netstandard2.0\Elecciones.Common.dll
+C:\Project\master\Elecciones.Common\obj\Debug\netstandard2.0\Elecciones.Common.pdb

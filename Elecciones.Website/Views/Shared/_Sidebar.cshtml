@@ -1,0 +1,163 @@
+<!-- START Sidebar (left)-->
+<div class="aside-inner">
+    <nav class="sidebar" data-sidebar-anyclick-close="">
+
+        <!-- START sidebar nav-->
+        <ul class="sidebar-nav">
+            <!-- START user info-->
+            <li class="has-user-block">
+                <div id="user-block" class="collapse">
+                    <div class="item user-block">
+                        <!-- User picture-->
+                        <div class="user-block-picture">
+                            <div class="user-block-status">
+                                <img src="~/Content/Images/user/02.jpg" alt="Avatar" width="60" height="60" class="img-thumbnail rounded-circle" />
+                                <div class="circle bg-success circle-lg"></div>
+                            </div>
+                        </div>
+                        <!-- Name and Job-->
+                        <div class="user-block-info">
+                            <span class="user-block-name">Hello, Mike</span>
+                            <span class="user-block-role">Designer</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- END user info-->
+            <!-- Iterates over all sidebar items-->
+            <li class="nav-heading">
+                <span>Menú Principal</span>
+            </li>
+            <li>
+                <a href="#home" title="Home" data-toggle="collapse">
+                    <em class="icon-home"></em>
+                    <span>Home</span>
+                </a>
+                <ul id="home" class="sidebar-nav sidebar-subnav collapse">
+                    <li class="sidebar-subnav-header">Home</li>
+                    <li class="@Html.isActive("Home", "Index")">
+                        <a href="@Url.Action("Index", "Home")" title="Procesos">
+                            <span>Procesos</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @if (User.IsInRole("Movilizacion"))
+            {
+                <li>
+                    <a href="#persons" title="Persons" data-toggle="collapse">
+                        <em class="icon-people"></em>
+                        <span>Movilización</span>
+                    </a>
+                    <ul id="persons" class="sidebar-nav sidebar-subnav collapse">
+                        <li class="sidebar-subnav-header">Movilización</li>
+                        <li class="@Html.isActive("Deteccion", "Index")">
+                            <a href="@Url.Action("Index", "Deteccion")" title="Personas">
+                                <span>Personas</span>
+                            </a>
+                        </li>
+                        <li class="@Html.isActive("Deteccion", "Boxes")">
+                            <a href="@Url.Action("Boxes", "Deteccion")" title="Casillas">
+                                <span>Casillas</span>
+                            </a>
+                        </li>
+                        <li class="@Html.isActive("Deteccion", "Locations")">
+                            <a href="@Url.Action("Locations", "Deteccion")" title="Ubicaciones">
+                                <span>Ubicaciones</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }
+            @if (User.IsInRole("Encuestas"))
+            {
+
+                <li>
+                    <a href="#polls" title="Polls" data-toggle="collapse">
+                        <em class="icon-book-open"></em>
+                        <span>Encuestas</span>
+                    </a>
+                    <ul id="polls" class="sidebar-nav sidebar-subnav collapse">
+                        <li class="sidebar-subnav-header">Encuestas</li>
+                        <li class="@Html.isActive("Poll", "Index")">
+                            <a href="@Url.Action("Index", "Poll")" title="Encuestas">
+                                <span>Encuestas</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }
+            @if (User.IsInRole("Noticias"))
+            {
+                <li>
+                    <a href="#news" title="News" data-toggle="collapse">
+                        <em class="icon-link"></em>
+                        <span>Noticias</span>
+                    </a>
+                    <ul id="news" class="sidebar-nav sidebar-subnav collapse">
+                        <li class="sidebar-subnav-header">Noticias</li>
+                        <li class="@Html.isActive("News", "Index")">
+                            <a href="@Url.Action("Index", "News")" title="Noticias">
+                                <span>Noticias</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }
+            @if (User.IsInRole("Usuarios"))
+            {
+                <li>
+                    <a href="#users" title="Users" data-toggle="collapse">
+                        <em class="icon-user"></em>
+                        <span>Usuarios</span>
+                    </a>
+                    <ul id="users" class="sidebar-nav sidebar-subnav collapse">
+                        <li class="sidebar-subnav-header">Usuarios</li>
+                        <li class="@Html.isActive("Users", "Index")">
+                            <a href="@Url.Action("Index", "Users")" title="Usuarios">
+                                <span>Usuarios</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }
+            @if (User.IsInRole("Notificaciones"))
+            {
+                <li>
+                    <a href="#notificaciones" title="Notificaciones" data-toggle="collapse">
+                        <em class="icon-info"></em>
+                        <span>Notificaciones</span>
+                    </a>
+                    <ul id="notificaciones" class="sidebar-nav sidebar-subnav collapse">
+                        <li class="sidebar-subnav-header">Notificaciones</li>
+                        <li class="@Html.isActive("Notifications", "Index")">
+                            <a href="@Url.Action("Index", "Notifications")" title="Notificaciones">
+                                <span>Notificaciones</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }
+            @if (User.IsInRole("Configuracion"))
+            {
+                <li>
+                    <a href="#conf" title="News" data-toggle="collapse">
+                        <em class="icon-settings"></em>
+                        <span>Configuración</span>
+                    </a>
+                    <ul id="conf" class="sidebar-nav sidebar-subnav collapse">
+                        <li class="sidebar-subnav-header">Configuración</li>
+                        <li class="@Html.isActive("Configuration", "IndexProcess")">
+                            <a href="@Url.Action("IndexProcess", "Configuration")" title="Configuración">
+                                <span>Procesos</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }
+
+        </ul>
+        <!-- END sidebar nav-->
+    </nav>
+</div>
+<!-- END Sidebar (left)-->

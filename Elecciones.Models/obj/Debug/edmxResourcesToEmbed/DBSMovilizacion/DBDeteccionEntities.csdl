@@ -1,0 +1,1747 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBSMovilizacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Casillas" EntityType="DBSMovilizacionModel.Casillas" />
+    <EntitySet Name="CATDistritoFederal" EntityType="DBSMovilizacionModel.CATDistritoFederal" />
+    <EntitySet Name="CATDistritoLocal" EntityType="DBSMovilizacionModel.CATDistritoLocal" />
+    <EntitySet Name="CATEstado" EntityType="DBSMovilizacionModel.CATEstado" />
+    <EntitySet Name="CATEstatusCasilla" EntityType="DBSMovilizacionModel.CATEstatusCasilla" />
+    <EntitySet Name="CATMunicipios" EntityType="DBSMovilizacionModel.CATMunicipios" />
+    <EntitySet Name="CATSecciones" EntityType="DBSMovilizacionModel.CATSecciones" />
+    <EntitySet Name="CATTipoCasilla" EntityType="DBSMovilizacionModel.CATTipoCasilla" />
+    <EntitySet Name="CATTipoContacto" EntityType="DBSMovilizacionModel.CATTipoContacto" />
+    <EntitySet Name="CATTipoCredencial" EntityType="DBSMovilizacionModel.CATTipoCredencial" />
+    <EntitySet Name="CATTipoDocumento" EntityType="DBSMovilizacionModel.CATTipoDocumento" />
+    <EntitySet Name="CATTipoPregunta" EntityType="DBSMovilizacionModel.CATTipoPregunta" />
+    <EntitySet Name="DATCambioSeccion" EntityType="DBSMovilizacionModel.DATCambioSeccion" />
+    <EntitySet Name="DATContacto" EntityType="DBSMovilizacionModel.DATContacto" />
+    <EntitySet Name="DATDoctoPersona" EntityType="DBSMovilizacionModel.DATDoctoPersona" />
+    <EntitySet Name="DATDomicilios" EntityType="DBSMovilizacionModel.DATDomicilios" />
+    <EntitySet Name="DATEncuestas" EntityType="DBSMovilizacionModel.DATEncuestas" />
+    <EntitySet Name="DatErrores" EntityType="DBSMovilizacionModel.DatErrores" />
+    <EntitySet Name="DatGeolocalizacionNoProcesadas" EntityType="DBSMovilizacionModel.DatGeolocalizacionNoProcesadas" />
+    <EntitySet Name="DATInvitados" EntityType="DBSMovilizacionModel.DATInvitados" />
+    <EntitySet Name="DATNoticias" EntityType="DBSMovilizacionModel.DATNoticias" />
+    <EntitySet Name="DATNotificaciones" EntityType="DBSMovilizacionModel.DATNotificaciones" />
+    <EntitySet Name="DATPersonas" EntityType="DBSMovilizacionModel.DATPersonas" />
+    <EntitySet Name="DatPersonasGeolocalizacion" EntityType="DBSMovilizacionModel.DatPersonasGeolocalizacion" />
+    <EntitySet Name="DATPreguntas" EntityType="DBSMovilizacionModel.DATPreguntas" />
+    <EntitySet Name="DATProceso" EntityType="DBSMovilizacionModel.DATProceso" />
+    <EntitySet Name="DATReporteCasilla" EntityType="DBSMovilizacionModel.DATReporteCasilla" />
+    <EntitySet Name="DATRespuestas" EntityType="DBSMovilizacionModel.DATRespuestas" />
+    <EntitySet Name="DATRespUsuario" EntityType="DBSMovilizacionModel.DATRespUsuario" />
+    <EntitySet Name="Encarte" EntityType="DBSMovilizacionModel.Encarte" />
+    <EntitySet Name="ProcesoUsuario" EntityType="DBSMovilizacionModel.ProcesoUsuario" />
+    <EntitySet Name="Territorio" EntityType="DBSMovilizacionModel.Territorio" />
+    <EntitySet Name="UsersDeteccion" EntityType="DBSMovilizacionModel.UsersDeteccion" />
+    <AssociationSet Name="FK_Casillas_CATDistritoFederal" Association="DBSMovilizacionModel.FK_Casillas_CATDistritoFederal">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="Casillas" EntitySet="Casillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Casillas_CATEstado" Association="DBSMovilizacionModel.FK_Casillas_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="Casillas" EntitySet="Casillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Casillas_CATMunicipios" Association="DBSMovilizacionModel.FK_Casillas_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="Casillas" EntitySet="Casillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Casillas_CATSecciones" Association="DBSMovilizacionModel.FK_Casillas_CATSecciones">
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+      <End Role="Casillas" EntitySet="Casillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Casillas_CATTipoCasilla" Association="DBSMovilizacionModel.FK_Casillas_CATTipoCasilla">
+      <End Role="CATTipoCasilla" EntitySet="CATTipoCasilla" />
+      <End Role="Casillas" EntitySet="Casillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Casillas_Encarte" Association="DBSMovilizacionModel.FK_Casillas_Encarte">
+      <End Role="Encarte" EntitySet="Encarte" />
+      <End Role="Casillas" EntitySet="Casillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATReporteCasilla_Casillas" Association="DBSMovilizacionModel.FK_DATReporteCasilla_Casillas">
+      <End Role="Casillas" EntitySet="Casillas" />
+      <End Role="DATReporteCasilla" EntitySet="DATReporteCasilla" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DATPerson__IdDis__7B264821" Association="DBSMovilizacionModel.FK__DATPerson__IdDis__7B264821">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATDistritoFederal_CATEstado" Association="DBSMovilizacionModel.FK_CATDistritoFederal_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATDistritoFederal_CATMunicipios" Association="DBSMovilizacionModel.FK_CATDistritoFederal_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATDistritoFederal_Encarte" Association="DBSMovilizacionModel.FK_CATDistritoFederal_Encarte">
+      <End Role="Encarte" EntitySet="Encarte" />
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATSecciones_CATDistritoFederal" Association="DBSMovilizacionModel.FK_CATSecciones_CATDistritoFederal">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATEncuestas_CATDistritoFederal" Association="DBSMovilizacionModel.FK_DATEncuestas_CATDistritoFederal">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="DATEncuestas" EntitySet="DATEncuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNoticias_CATDistritoFederal" Association="DBSMovilizacionModel.FK_DATNoticias_CATDistritoFederal">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="DATNoticias" EntitySet="DATNoticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNotificaciones_CATDistritoFederal" Association="DBSMovilizacionModel.FK_DATNotificaciones_CATDistritoFederal">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="DATNotificaciones" EntitySet="DATNotificaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_CATDistritoFederal" Association="DBSMovilizacionModel.FK_Territorio_CATDistritoFederal">
+      <End Role="CATDistritoFederal" EntitySet="CATDistritoFederal" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DATPerson__IdDis__7C1A6C5A" Association="DBSMovilizacionModel.FK__DATPerson__IdDis__7C1A6C5A">
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATDistritoLocal_CATEstado" Association="DBSMovilizacionModel.FK_CATDistritoLocal_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATDistritoLocal_Encarte" Association="DBSMovilizacionModel.FK_CATDistritoLocal_Encarte">
+      <End Role="Encarte" EntitySet="Encarte" />
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATSecciones_CATDistritoLocal" Association="DBSMovilizacionModel.FK_CATSecciones_CATDistritoLocal">
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATEncuestas_CATDistritoLocal" Association="DBSMovilizacionModel.FK_DATEncuestas_CATDistritoLocal">
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+      <End Role="DATEncuestas" EntitySet="DATEncuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNoticias_CATDistritoLocal" Association="DBSMovilizacionModel.FK_DATNoticias_CATDistritoLocal">
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+      <End Role="DATNoticias" EntitySet="DATNoticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNotificaciones_CATDistritoLocal" Association="DBSMovilizacionModel.FK_DATNotificaciones_CATDistritoLocal">
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+      <End Role="DATNotificaciones" EntitySet="DATNotificaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_CATDistritoLocal" Association="DBSMovilizacionModel.FK_Territorio_CATDistritoLocal">
+      <End Role="CATDistritoLocal" EntitySet="CATDistritoLocal" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DATPerson__IdEst__76619304" Association="DBSMovilizacionModel.FK__DATPerson__IdEst__76619304">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATMunicipios_CATEstado" Association="DBSMovilizacionModel.FK_CATMunicipios_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATSecciones_CATEstado" Association="DBSMovilizacionModel.FK_CATSecciones_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATCambioSeccion_CATEstado" Association="DBSMovilizacionModel.FK_DATCambioSeccion_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATCambioSeccion" EntitySet="DATCambioSeccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATDomicilios_CATEstado" Association="DBSMovilizacionModel.FK_DATDomicilios_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATDomicilios" EntitySet="DATDomicilios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATEncuestas_CATEstado" Association="DBSMovilizacionModel.FK_DATEncuestas_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATEncuestas" EntitySet="DATEncuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNoticias_CATEstado" Association="DBSMovilizacionModel.FK_DATNoticias_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATNoticias" EntitySet="DATNoticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNotificaciones_CATEstado" Association="DBSMovilizacionModel.FK_DATNotificaciones_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATNotificaciones" EntitySet="DATNotificaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATProceso_CATEstado" Association="DBSMovilizacionModel.FK_DATProceso_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="DATProceso" EntitySet="DATProceso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_CATEstado" Association="DBSMovilizacionModel.FK_Territorio_CATEstado">
+      <End Role="CATEstado" EntitySet="CATEstado" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATReporteCasilla_CATEstatusCasilla" Association="DBSMovilizacionModel.FK_DATReporteCasilla_CATEstatusCasilla">
+      <End Role="CATEstatusCasilla" EntitySet="CATEstatusCasilla" />
+      <End Role="DATReporteCasilla" EntitySet="DATReporteCasilla" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DATPerson__IdMun__7A3223E8" Association="DBSMovilizacionModel.FK__DATPerson__IdMun__7A3223E8">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATSecciones_CATMunicipios" Association="DBSMovilizacionModel.FK_CATSecciones_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATDomicilios_CATMunicipios" Association="DBSMovilizacionModel.FK_DATDomicilios_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="DATDomicilios" EntitySet="DATDomicilios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATEncuestas_CATMunicipios" Association="DBSMovilizacionModel.FK_DATEncuestas_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="DATEncuestas" EntitySet="DATEncuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNoticias_CATMunicipios" Association="DBSMovilizacionModel.FK_DATNoticias_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="DATNoticias" EntitySet="DATNoticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATNotificaciones_CATMunicipios" Association="DBSMovilizacionModel.FK_DATNotificaciones_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="DATNotificaciones" EntitySet="DATNotificaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_CATMunicipios" Association="DBSMovilizacionModel.FK_Territorio_CATMunicipios">
+      <End Role="CATMunicipios" EntitySet="CATMunicipios" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DATPerson__IdSec__7D0E9093" Association="DBSMovilizacionModel.FK__DATPerson__IdSec__7D0E9093">
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATSecciones_Encarte" Association="DBSMovilizacionModel.FK_CATSecciones_Encarte">
+      <End Role="Encarte" EntitySet="Encarte" />
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATCambioSeccion_CATSecciones" Association="DBSMovilizacionModel.FK_DATCambioSeccion_CATSecciones">
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+      <End Role="DATCambioSeccion" EntitySet="DATCambioSeccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_CATSecciones" Association="DBSMovilizacionModel.FK_Territorio_CATSecciones">
+      <End Role="CATSecciones" EntitySet="CATSecciones" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATContacto_CATTipoContacto" Association="DBSMovilizacionModel.FK_DATContacto_CATTipoContacto">
+      <End Role="CATTipoContacto" EntitySet="CATTipoContacto" />
+      <End Role="DATContacto" EntitySet="DATContacto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATPersonas_CATTipoCredencial" Association="DBSMovilizacionModel.FK_DATPersonas_CATTipoCredencial">
+      <End Role="CATTipoCredencial" EntitySet="CATTipoCredencial" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATDoctoPersona_CATTipoDocumento" Association="DBSMovilizacionModel.FK_DATDoctoPersona_CATTipoDocumento">
+      <End Role="CATTipoDocumento" EntitySet="CATTipoDocumento" />
+      <End Role="DATDoctoPersona" EntitySet="DATDoctoPersona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATPreguntas_CATTipoPregunta" Association="DBSMovilizacionModel.FK_DATPreguntas_CATTipoPregunta">
+      <End Role="CATTipoPregunta" EntitySet="CATTipoPregunta" />
+      <End Role="DATPreguntas" EntitySet="DATPreguntas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATCambioSeccion_Encarte" Association="DBSMovilizacionModel.FK_DATCambioSeccion_Encarte">
+      <End Role="Encarte" EntitySet="Encarte" />
+      <End Role="DATCambioSeccion" EntitySet="DATCambioSeccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATContacto_DATPersonas" Association="DBSMovilizacionModel.FK_DATContacto_DATPersonas">
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+      <End Role="DATContacto" EntitySet="DATContacto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATContacto_DATProceso" Association="DBSMovilizacionModel.FK_DATContacto_DATProceso">
+      <End Role="DATProceso" EntitySet="DATProceso" />
+      <End Role="DATContacto" EntitySet="DATContacto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATDoctoPersona_DATPersonas" Association="DBSMovilizacionModel.FK_DATDoctoPersona_DATPersonas">
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+      <End Role="DATDoctoPersona" EntitySet="DATDoctoPersona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATDomicilios_DATPersonas" Association="DBSMovilizacionModel.FK_DATDomicilios_DATPersonas">
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+      <End Role="DATDomicilios" EntitySet="DATDomicilios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATPreguntas_DATEncuestas" Association="DBSMovilizacionModel.FK_DATPreguntas_DATEncuestas">
+      <End Role="DATEncuestas" EntitySet="DATEncuestas" />
+      <End Role="DATPreguntas" EntitySet="DATPreguntas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATInvitados_DATPersonas" Association="DBSMovilizacionModel.FK_DATInvitados_DATPersonas">
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+      <End Role="DATInvitados" EntitySet="DATInvitados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATPersonas_UsersDeteccion" Association="DBSMovilizacionModel.FK_DATPersonas_UsersDeteccion">
+      <End Role="UsersDeteccion" EntitySet="UsersDeteccion" />
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATRespUsuario_DATPersonas" Association="DBSMovilizacionModel.FK_DATRespUsuario_DATPersonas">
+      <End Role="DATPersonas" EntitySet="DATPersonas" />
+      <End Role="DATRespUsuario" EntitySet="DATRespUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATRespuestas_DATPreguntas" Association="DBSMovilizacionModel.FK_DATRespuestas_DATPreguntas">
+      <End Role="DATPreguntas" EntitySet="DATPreguntas" />
+      <End Role="DATRespuestas" EntitySet="DATRespuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATRespUsuario_DATPreguntas" Association="DBSMovilizacionModel.FK_DATRespUsuario_DATPreguntas">
+      <End Role="DATPreguntas" EntitySet="DATPreguntas" />
+      <End Role="DATRespUsuario" EntitySet="DATRespUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATProceso_Encarte" Association="DBSMovilizacionModel.FK_DATProceso_Encarte">
+      <End Role="Encarte" EntitySet="Encarte" />
+      <End Role="DATProceso" EntitySet="DATProceso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATReporteCasilla_DATProceso" Association="DBSMovilizacionModel.FK_DATReporteCasilla_DATProceso">
+      <End Role="DATProceso" EntitySet="DATProceso" />
+      <End Role="DATReporteCasilla" EntitySet="DATReporteCasilla" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProcesoUsuario_DATProceso" Association="DBSMovilizacionModel.FK_ProcesoUsuario_DATProceso">
+      <End Role="DATProceso" EntitySet="DATProceso" />
+      <End Role="ProcesoUsuario" EntitySet="ProcesoUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_DATProceso" Association="DBSMovilizacionModel.FK_Territorio_DATProceso">
+      <End Role="DATProceso" EntitySet="DATProceso" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATRespUsuario_DATRespuestas" Association="DBSMovilizacionModel.FK_DATRespUsuario_DATRespuestas">
+      <End Role="DATRespuestas" EntitySet="DATRespuestas" />
+      <End Role="DATRespUsuario" EntitySet="DATRespUsuario" />
+    </AssociationSet>
+    <EntitySet Name="CatDistritoFederalDistritoLocal" EntityType="DBSMovilizacionModel.CatDistritoFederalDistritoLocal" />
+    <EntitySet Name="CatDistritoFederalMunicipio" EntityType="DBSMovilizacionModel.CatDistritoFederalMunicipio" />
+    <EntitySet Name="CatDistritoLocalDistritoFederal" EntityType="DBSMovilizacionModel.CatDistritoLocalDistritoFederal" />
+    <EntitySet Name="CatDistritoLocalMunicipio" EntityType="DBSMovilizacionModel.CatDistritoLocalMunicipio" />
+    <EntitySet Name="DATDetectados" EntityType="DBSMovilizacionModel.DATDetectados" />
+  </EntityContainer>
+  <EntityType Name="Casillas">
+    <Key>
+      <PropertyRef Name="IdCasilla" />
+    </Key>
+    <Property Name="IdCasilla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estado" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="distrito" Type="Decimal" Precision="28" Scale="0" />
+    <Property Name="municipio" Type="Decimal" Precision="28" Scale="0" />
+    <Property Name="nmunicipio" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="seccion" Type="Decimal" Precision="28" Scale="0" />
+    <Property Name="localidad" Type="Decimal" Precision="28" Scale="0" />
+    <Property Name="nlocalidad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="manzana" Type="Decimal" Precision="28" Scale="0" />
+    <Property Name="casilla" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="domicilio" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="ubicacion" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="referencia" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="logitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="latitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstado" Type="Int32" />
+    <Property Name="IdMunicipio" Type="Int32" />
+    <Property Name="IdSeccion" Type="Int32" />
+    <Property Name="IdDistritoFederal" Type="Int32" />
+    <Property Name="IdEncarte" Type="Int32" Nullable="false" />
+    <Property Name="IdTipoCasilla" Type="Int32" Nullable="false" />
+    <Property Name="CAMBIO" Type="Int32" />
+    <Property Name="ESTATUS2018" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CATDistritoFederal" Relationship="DBSMovilizacionModel.FK_Casillas_CATDistritoFederal" FromRole="Casillas" ToRole="CATDistritoFederal" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK_Casillas_CATEstado" FromRole="Casillas" ToRole="CATEstado" />
+    <NavigationProperty Name="CATMunicipios" Relationship="DBSMovilizacionModel.FK_Casillas_CATMunicipios" FromRole="Casillas" ToRole="CATMunicipios" />
+    <NavigationProperty Name="CATSecciones" Relationship="DBSMovilizacionModel.FK_Casillas_CATSecciones" FromRole="Casillas" ToRole="CATSecciones" />
+    <NavigationProperty Name="CATTipoCasilla" Relationship="DBSMovilizacionModel.FK_Casillas_CATTipoCasilla" FromRole="Casillas" ToRole="CATTipoCasilla" />
+    <NavigationProperty Name="Encarte" Relationship="DBSMovilizacionModel.FK_Casillas_Encarte" FromRole="Casillas" ToRole="Encarte" />
+    <NavigationProperty Name="DATReporteCasilla" Relationship="DBSMovilizacionModel.FK_DATReporteCasilla_Casillas" FromRole="Casillas" ToRole="DATReporteCasilla" />
+  </EntityType>
+  <EntityType Name="CATDistritoFederal">
+    <Key>
+      <PropertyRef Name="IdDistritoFederal" />
+    </Key>
+    <Property Name="IdDistritoFederal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistritoFederal" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="Cabecera" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IdMunicipio" Type="Int32" />
+    <Property Name="IdEncarte" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Casillas" Relationship="DBSMovilizacionModel.FK_Casillas_CATDistritoFederal" FromRole="CATDistritoFederal" ToRole="Casillas" />
+    <NavigationProperty Name="DATPersonas" Relationship="DBSMovilizacionModel.FK__DATPerson__IdDis__7B264821" FromRole="CATDistritoFederal" ToRole="DATPersonas" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK_CATDistritoFederal_CATEstado" FromRole="CATDistritoFederal" ToRole="CATEstado" />
+    <NavigationProperty Name="CATMunicipios" Relationship="DBSMovilizacionModel.FK_CATDistritoFederal_CATMunicipios" FromRole="CATDistritoFederal" ToRole="CATMunicipios" />
+    <NavigationProperty Name="Encarte" Relationship="DBSMovilizacionModel.FK_CATDistritoFederal_Encarte" FromRole="CATDistritoFederal" ToRole="Encarte" />
+    <NavigationProperty Name="CATSecciones" Relationship="DBSMovilizacionModel.FK_CATSecciones_CATDistritoFederal" FromRole="CATDistritoFederal" ToRole="CATSecciones" />
+    <NavigationProperty Name="DATEncuestas" Relationship="DBSMovilizacionModel.FK_DATEncuestas_CATDistritoFederal" FromRole="CATDistritoFederal" ToRole="DATEncuestas" />
+    <NavigationProperty Name="DATNoticias" Relationship="DBSMovilizacionModel.FK_DATNoticias_CATDistritoFederal" FromRole="CATDistritoFederal" ToRole="DATNoticias" />
+    <NavigationProperty Name="DATNotificaciones" Relationship="DBSMovilizacionModel.FK_DATNotificaciones_CATDistritoFederal" FromRole="CATDistritoFederal" ToRole="DATNotificaciones" />
+    <NavigationProperty Name="Territorio" Relationship="DBSMovilizacionModel.FK_Territorio_CATDistritoFederal" FromRole="CATDistritoFederal" ToRole="Territorio" />
+  </EntityType>
+  <EntityType Name="CATDistritoLocal">
+    <Key>
+      <PropertyRef Name="IdDistritoLocal" />
+    </Key>
+    <Property Name="IdDistritoLocal" Type="Int32" Nullable="false" />
+    <Property Name="DistritoLocal" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cabecera" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IdEncarte" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DATPersonas" Relationship="DBSMovilizacionModel.FK__DATPerson__IdDis__7C1A6C5A" FromRole="CATDistritoLocal" ToRole="DATPersonas" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK_CATDistritoLocal_CATEstado" FromRole="CATDistritoLocal" ToRole="CATEstado" />
+    <NavigationProperty Name="Encarte" Relationship="DBSMovilizacionModel.FK_CATDistritoLocal_Encarte" FromRole="CATDistritoLocal" ToRole="Encarte" />
+    <NavigationProperty Name="CATSecciones" Relationship="DBSMovilizacionModel.FK_CATSecciones_CATDistritoLocal" FromRole="CATDistritoLocal" ToRole="CATSecciones" />
+    <NavigationProperty Name="DATEncuestas" Relationship="DBSMovilizacionModel.FK_DATEncuestas_CATDistritoLocal" FromRole="CATDistritoLocal" ToRole="DATEncuestas" />
+    <NavigationProperty Name="DATNoticias" Relationship="DBSMovilizacionModel.FK_DATNoticias_CATDistritoLocal" FromRole="CATDistritoLocal" ToRole="DATNoticias" />
+    <NavigationProperty Name="DATNotificaciones" Relationship="DBSMovilizacionModel.FK_DATNotificaciones_CATDistritoLocal" FromRole="CATDistritoLocal" ToRole="DATNotificaciones" />
+    <NavigationProperty Name="Territorio" Relationship="DBSMovilizacionModel.FK_Territorio_CATDistritoLocal" FromRole="CATDistritoLocal" ToRole="Territorio" />
+  </EntityType>
+  <EntityType Name="CATEstado">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Abreviacion" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Casillas" Relationship="DBSMovilizacionModel.FK_Casillas_CATEstado" FromRole="CATEstado" ToRole="Casillas" />
+    <NavigationProperty Name="CATDistritoFederal" Relationship="DBSMovilizacionModel.FK_CATDistritoFederal_CATEstado" FromRole="CATEstado" ToRole="CATDistritoFederal" />
+    <NavigationProperty Name="CATDistritoLocal" Relationship="DBSMovilizacionModel.FK_CATDistritoLocal_CATEstado" FromRole="CATEstado" ToRole="CATDistritoLocal" />
+    <NavigationProperty Name="DATPersonas" Relationship="DBSMovilizacionModel.FK__DATPerson__IdEst__76619304" FromRole="CATEstado" ToRole="DATPersonas" />
+    <NavigationProperty Name="CATMunicipios" Relationship="DBSMovilizacionModel.FK_CATMunicipios_CATEstado" FromRole="CATEstado" ToRole="CATMunicipios" />
+    <NavigationProperty Name="CATSecciones" Relationship="DBSMovilizacionModel.FK_CATSecciones_CATEstado" FromRole="CATEstado" ToRole="CATSecciones" />
+    <NavigationProperty Name="DATCambioSeccion" Relationship="DBSMovilizacionModel.FK_DATCambioSeccion_CATEstado" FromRole="CATEstado" ToRole="DATCambioSeccion" />
+    <NavigationProperty Name="DATDomicilios" Relationship="DBSMovilizacionModel.FK_DATDomicilios_CATEstado" FromRole="CATEstado" ToRole="DATDomicilios" />
+    <NavigationProperty Name="DATEncuestas" Relationship="DBSMovilizacionModel.FK_DATEncuestas_CATEstado" FromRole="CATEstado" ToRole="DATEncuestas" />
+    <NavigationProperty Name="DATNoticias" Relationship="DBSMovilizacionModel.FK_DATNoticias_CATEstado" FromRole="CATEstado" ToRole="DATNoticias" />
+    <NavigationProperty Name="DATNotificaciones" Relationship="DBSMovilizacionModel.FK_DATNotificaciones_CATEstado" FromRole="CATEstado" ToRole="DATNotificaciones" />
+    <NavigationProperty Name="DATProceso" Relationship="DBSMovilizacionModel.FK_DATProceso_CATEstado" FromRole="CATEstado" ToRole="DATProceso" />
+    <NavigationProperty Name="Territorio" Relationship="DBSMovilizacionModel.FK_Territorio_CATEstado" FromRole="CATEstado" ToRole="Territorio" />
+  </EntityType>
+  <EntityType Name="CATEstatusCasilla">
+    <Key>
+      <PropertyRef Name="IdEstatusCasilla" />
+    </Key>
+    <Property Name="IdEstatusCasilla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EstatusCasilla" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DATReporteCasilla" Relationship="DBSMovilizacionModel.FK_DATReporteCasilla_CATEstatusCasilla" FromRole="CATEstatusCasilla" ToRole="DATReporteCasilla" />
+  </EntityType>
+  <EntityType Name="CATMunicipios">
+    <Key>
+      <PropertyRef Name="IdMunicipio" />
+    </Key>
+    <Property Name="IdMunicipio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="municipio" Type="Decimal" Nullable="false" Precision="28" Scale="0" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="abreviatura" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstado" Type="Int32" />
+    <NavigationProperty Name="Casillas" Relationship="DBSMovilizacionModel.FK_Casillas_CATMunicipios" FromRole="CATMunicipios" ToRole="Casillas" />
+    <NavigationProperty Name="CATDistritoFederal" Relationship="DBSMovilizacionModel.FK_CATDistritoFederal_CATMunicipios" FromRole="CATMunicipios" ToRole="CATDistritoFederal" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK_CATMunicipios_CATEstado" FromRole="CATMunicipios" ToRole="CATEstado" />
+    <NavigationProperty Name="DATPersonas" Relationship="DBSMovilizacionModel.FK__DATPerson__IdMun__7A3223E8" FromRole="CATMunicipios" ToRole="DATPersonas" />
+    <NavigationProperty Name="CATSecciones" Relationship="DBSMovilizacionModel.FK_CATSecciones_CATMunicipios" FromRole="CATMunicipios" ToRole="CATSecciones" />
+    <NavigationProperty Name="DATDomicilios" Relationship="DBSMovilizacionModel.FK_DATDomicilios_CATMunicipios" FromRole="CATMunicipios" ToRole="DATDomicilios" />
+    <NavigationProperty Name="DATEncuestas" Relationship="DBSMovilizacionModel.FK_DATEncuestas_CATMunicipios" FromRole="CATMunicipios" ToRole="DATEncuestas" />
+    <NavigationProperty Name="DATNoticias" Relationship="DBSMovilizacionModel.FK_DATNoticias_CATMunicipios" FromRole="CATMunicipios" ToRole="DATNoticias" />
+    <NavigationProperty Name="DATNotificaciones" Relationship="DBSMovilizacionModel.FK_DATNotificaciones_CATMunicipios" FromRole="CATMunicipios" ToRole="DATNotificaciones" />
+    <NavigationProperty Name="Territorio" Relationship="DBSMovilizacionModel.FK_Territorio_CATMunicipios" FromRole="CATMunicipios" ToRole="Territorio" />
+  </EntityType>
+  <EntityType Name="CATSecciones">
+    <Key>
+      <PropertyRef Name="IdSeccion" />
+    </Key>
+    <Property Name="IdSeccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="IdMunicipio" Type="Int32" Nullable="false" />
+    <Property Name="IdDistritoLocal" Type="Int32" Nullable="false" />
+    <Property Name="IdDistritoFederal" Type="Int32" Nullable="false" />
+    <Property Name="Seccion" Type="Int32" Nullable="false" />
+    <Property Name="IdEncarte" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Casillas" Relationship="DBSMovilizacionModel.FK_Casillas_CATSecciones" FromRole="CATSecciones" ToRole="Casillas" />
+    <NavigationProperty Name="CATDistritoFederal" Relationship="DBSMovilizacionModel.FK_CATSecciones_CATDistritoFederal" FromRole="CATSecciones" ToRole="CATDistritoFederal" />
+    <NavigationProperty Name="CATDistritoLocal" Relationship="DBSMovilizacionModel.FK_CATSecciones_CATDistritoLocal" FromRole="CATSecciones" ToRole="CATDistritoLocal" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK_CATSecciones_CATEstado" FromRole="CATSecciones" ToRole="CATEstado" />
+    <NavigationProperty Name="CATMunicipios" Relationship="DBSMovilizacionModel.FK_CATSecciones_CATMunicipios" FromRole="CATSecciones" ToRole="CATMunicipios" />
+    <NavigationProperty Name="DATPersonas" Relationship="DBSMovilizacionModel.FK__DATPerson__IdSec__7D0E9093" FromRole="CATSecciones" ToRole="DATPersonas" />
+    <NavigationProperty Name="Encarte" Relationship="DBSMovilizacionModel.FK_CATSecciones_Encarte" FromRole="CATSecciones" ToRole="Encarte" />
+    <NavigationProperty Name="DATCambioSeccion" Relationship="DBSMovilizacionModel.FK_DATCambioSeccion_CATSecciones" FromRole="CATSecciones" ToRole="DATCambioSeccion" />
+    <NavigationProperty Name="Territorio" Relationship="DBSMovilizacionModel.FK_Territorio_CATSecciones" FromRole="CATSecciones" ToRole="Territorio" />
+  </EntityType>
+  <EntityType Name="CATTipoCasilla">
+    <Key>
+      <PropertyRef Name="IdTipoCasilla" />
+    </Key>
+    <Property Name="IdTipoCasilla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Casillas" Relationship="DBSMovilizacionModel.FK_Casillas_CATTipoCasilla" FromRole="CATTipoCasilla" ToRole="Casillas" />
+  </EntityType>
+  <EntityType Name="CATTipoContacto">
+    <Key>
+      <PropertyRef Name="IdTipoContacto" />
+    </Key>
+    <Property Name="IdTipoContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoContacto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DATContacto" Relationship="DBSMovilizacionModel.FK_DATContacto_CATTipoContacto" FromRole="CATTipoContacto" ToRole="DATContacto" />
+  </EntityType>
+  <EntityType Name="CATTipoCredencial">
+    <Key>
+      <PropertyRef Name="IdTipoCredencial" />
+    </Key>
+    <Property Name="IdTipoCredencial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoCrecencial" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DATPersonas" Relationship="DBSMovilizacionModel.FK_DATPersonas_CATTipoCredencial" FromRole="CATTipoCredencial" ToRole="DATPersonas" />
+  </EntityType>
+  <EntityType Name="CATTipoDocumento">
+    <Key>
+      <PropertyRef Name="IdTipoDocumento" />
+    </Key>
+    <Property Name="IdTipoDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DATDoctoPersona" Relationship="DBSMovilizacionModel.FK_DATDoctoPersona_CATTipoDocumento" FromRole="CATTipoDocumento" ToRole="DATDoctoPersona" />
+  </EntityType>
+  <EntityType Name="CATTipoPregunta">
+    <Key>
+      <PropertyRef Name="IdTipoPregunta" />
+    </Key>
+    <Property Name="IdTipoPregunta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoPregunta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DATPreguntas" Relationship="DBSMovilizacionModel.FK_DATPreguntas_CATTipoPregunta" FromRole="CATTipoPregunta" ToRole="DATPreguntas" />
+  </EntityType>
+  <EntityType Name="DATCambioSeccion">
+    <Key>
+      <PropertyRef Name="IdCambio" />
+    </Key>
+    <Property Name="IdCambio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdSeccionNueva" Type="Int32" Nullable="false" />
+    <Property Name="SeccionVieja" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="IdEncarte" Type="Int32" Nullable="false" />
+    <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddUser" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK_DATCambioSeccion_CATEstado" FromRole="DATCambioSeccion" ToRole="CATEstado" />
+    <NavigationProperty Name="CATSecciones" Relationship="DBSMovilizacionModel.FK_DATCambioSeccion_CATSecciones" FromRole="DATCambioSeccion" ToRole="CATSecciones" />
+    <NavigationProperty Name="Encarte" Relationship="DBSMovilizacionModel.FK_DATCambioSeccion_Encarte" FromRole="DATCambioSeccion" ToRole="Encarte" />
+  </EntityType>
+  <EntityType Name="DATContacto">
+    <Key>
+      <PropertyRef Name="IdContacto" />
+    </Key>
+    <Property Name="IdContacto" Type="Guid" Nullable="false" />
+    <Property Name="IdProceso" Type="Guid" Nullable="false" />
+    <Property Name="IdPersona" Type="Guid" Nullable="false" />
+    <Property Name="Voto" Type="Boolean" Nullable="false" />
+    <Property Name="IdTipoContacto" Type="Int32" Nullable="false" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaHora" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CATTipoContacto" Relationship="DBSMovilizacionModel.FK_DATContacto_CATTipoContacto" FromRole="DATContacto" ToRole="CATTipoContacto" />
+    <NavigationProperty Name="DATPersonas" Relationship="DBSMovilizacionModel.FK_DATContacto_DATPersonas" FromRole="DATContacto" ToRole="DATPersonas" />
+    <NavigationProperty Name="DATProceso" Relationship="DBSMovilizacionModel.FK_DATContacto_DATProceso" FromRole="DATContacto" ToRole="DATProceso" />
+  </EntityType>
+  <EntityType Name="DATDoctoPersona">
+    <Key>
+      <PropertyRef Name="IdDoctoPersona" />
+    </Key>
+    <Property Name="IdDoctoPersona" Type="Guid" Nullable="false" />
+    <Property Name="IdPersona" Type="Guid" Nullable="false" />
+    <Property Name="IdTipoDocumento" Type="Int32" Nullable="false" />
+    <Property Name="Documento" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CATTipoDocumento" Relationship="DBSMovilizacionModel.FK_DATDoctoPersona_CATTipoDocumento" FromRole="DATDoctoPersona" ToRole="CATTipoDocumento" />
+    <NavigationProperty Name="DATPersonas" Relationship="DBSMovilizacionModel.FK_DATDoctoPersona_DATPersonas" FromRole="DATDoctoPersona" ToRole="DATPersonas" />
+  </EntityType>
+  <EntityType Name="DATDomicilios">
+    <Key>
+      <PropertyRef Name="IdDomicilio" />
+    </Key>
+    <Property Name="IdDomicilio" Type="Guid" Nullable="false" />
+    <Property Name="Calle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="NoExterior" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoInterior" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Colonia" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="IdMunicipio" Type="Int32" Nullable="false" />
+    <Property Name="CP" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="IdPersona" Type="Guid" Nullable="false" />
+    <Property Name="Longitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Latitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK_DATDomicilios_CATEstado" FromRole="DATDomicilios" ToRole="CATEstado" />
+    <NavigationProperty Name="CATMunicipios" Relationship="DBSMovilizacionModel.FK_DATDomicilios_CATMunicipios" FromRole="DATDomicilios" ToRole="CATMunicipios" />
+    <NavigationProperty Name="DATPersonas" Relationship="DBSMovilizacionModel.FK_DATDomicilios_DATPersonas" FromRole="DATDomicilios" ToRole="DATPersonas" />
+  </EntityType>
+  <EntityType Name="DATEncuestas">
+    <Key>
+      <PropertyRef Name="IdEncuesta" />
+    </Key>
+    <Property Name="IdEncuesta" Type="Guid" Nullable="false" />
+    <Property Name="Encuesta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoPregutas" Type="Int32" Nullable="false" />
+    <Property Name="Vigencia" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdEstado" Type="Int32" />
+    <Property Name="IdMunicipio" Type="Int32" />
+    <Property Name="IdDistritoFederal" Type="Int32" />
+    <Property Name="IdDistritoLocal" Type="Int32" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="NotificacionEnviada" Type="Boolean" />
+    <Property Name="InsertedUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IdProceso" Type="Guid" />
+    <NavigationProperty Name="CATDistritoFederal" Relationship="DBSMovilizacionModel.FK_DATEncuestas_CATDistritoFederal" FromRole="DATEncuestas" ToRole="CATDistritoFederal" />
+    <NavigationProperty Name="CATDistritoLocal" Relationship="DBSMovilizacionModel.FK_DATEncuestas_CATDistritoLocal" FromRole="DATEncuestas" ToRole="CATDistritoLocal" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK_DATEncuestas_CATEstado" FromRole="DATEncuestas" ToRole="CATEstado" />
+    <NavigationProperty Name="CATMunicipios" Relationship="DBSMovilizacionModel.FK_DATEncuestas_CATMunicipios" FromRole="DATEncuestas" ToRole="CATMunicipios" />
+    <NavigationProperty Name="DATPreguntas" Relationship="DBSMovilizacionModel.FK_DATPreguntas_DATEncuestas" FromRole="DATEncuestas" ToRole="DATPreguntas" />
+  </EntityType>
+  <EntityType Name="DatErrores">
+    <Key>
+      <PropertyRef Name="IdError" />
+    </Key>
+    <Property Name="IdError" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Aplicacion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="DatGeolocalizacionNoProcesadas">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="Guid" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdDomicilio" Type="Guid" />
+  </EntityType>
+  <EntityType Name="DATInvitados">
+    <Key>
+      <PropertyRef Name="IdInvitado" />
+    </Key>
+    <Property Name="IdInvitado" Type="Guid" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdPersona" Type="Guid" />
+    <Property Name="CodigoInvitacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IdProceso" Type="Guid" />
+    <Property Name="App" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdUser" Type="Guid" />
+    <NavigationProperty Name="DATPersonas" Relationship="DBSMovilizacionModel.FK_DATInvitados_DATPersonas" FromRole="DATInvitados" ToRole="DATPersonas" />
+  </EntityType>
+  <EntityType Name="DATNoticias">
+    <Key>
+      <PropertyRef Name="IdNoticia" />
+    </Key>
+    <Property Name="IdNoticia" Type="Guid" Nullable="false" />
+    <Property Name="Link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstado" Type="Int32" />
+    <Property Name="IdMunicipio" Type="Int32" />
+    <Property Name="IdDistritoFederal" Type="Int32" />
+    <Property Name="IdDistritoLocal" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="InsertedUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IdProceso" Type="Guid" />
+    <NavigationProperty Name="CATDistritoFederal" Relationship="DBSMovilizacionModel.FK_DATNoticias_CATDistritoFederal" FromRole="DATNoticias" ToRole="CATDistritoFederal" />
+    <NavigationProperty Name="CATDistritoLocal" Relationship="DBSMovilizacionModel.FK_DATNoticias_CATDistritoLocal" FromRole="DATNoticias" ToRole="CATDistritoLocal" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK_DATNoticias_CATEstado" FromRole="DATNoticias" ToRole="CATEstado" />
+    <NavigationProperty Name="CATMunicipios" Relationship="DBSMovilizacionModel.FK_DATNoticias_CATMunicipios" FromRole="DATNoticias" ToRole="CATMunicipios" />
+  </EntityType>
+  <EntityType Name="DATNotificaciones">
+    <Key>
+      <PropertyRef Name="IdNotificacion" />
+    </Key>
+    <Property Name="IdNotificacion" Type="Guid" Nullable="false" />
+    <Property Name="Notificacion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Enviada" Type="Boolean" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" />
+    <Property Name="IdMunicipio" Type="Int32" />
+    <Property Name="IdDistritoFederal" Type="Int32" />
+    <Property Name="IdDistritoLocal" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="InsertedUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IdProceso" Type="Guid" />
+    <Property Name="Aplicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CATDistritoFederal" Relationship="DBSMovilizacionModel.FK_DATNotificaciones_CATDistritoFederal" FromRole="DATNotificaciones" ToRole="CATDistritoFederal" />
+    <NavigationProperty Name="CATDistritoLocal" Relationship="DBSMovilizacionModel.FK_DATNotificaciones_CATDistritoLocal" FromRole="DATNotificaciones" ToRole="CATDistritoLocal" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK_DATNotificaciones_CATEstado" FromRole="DATNotificaciones" ToRole="CATEstado" />
+    <NavigationProperty Name="CATMunicipios" Relationship="DBSMovilizacionModel.FK_DATNotificaciones_CATMunicipios" FromRole="DATNotificaciones" ToRole="CATMunicipios" />
+  </EntityType>
+  <EntityType Name="DATPersonas">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="Guid" Nullable="false" />
+    <Property Name="Paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Materno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Calle" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="NoExterior" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoInterior" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Colonia" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Municipio" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ClaveINE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CURP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoEstado" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="NoMunicipio" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Seccion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Emision" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Vigencia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="OCR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RegistroINE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoEmision" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdPadre" Type="Guid" />
+    <Property Name="IdUsuario" Type="Guid" />
+    <Property Name="Latitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Longitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdMunicipio" Type="Int32" />
+    <Property Name="IdDistritoFederal" Type="Int32" />
+    <Property Name="IdDistritoLocal" Type="Int32" />
+    <Property Name="IdSeccion" Type="Int32" />
+    <Property Name="IdEstado" Type="Int32" />
+    <Property Name="IdInvitado" Type="Guid" />
+    <Property Name="IdTipoCredencial" Type="Int32" />
+    <Property Name="Vigente" Type="Boolean" />
+    <Property Name="IdProceso" Type="Guid" />
+    <Property Name="IdUserPadre" Type="Guid" />
+    <NavigationProperty Name="CATDistritoFederal" Relationship="DBSMovilizacionModel.FK__DATPerson__IdDis__7B264821" FromRole="DATPersonas" ToRole="CATDistritoFederal" />
+    <NavigationProperty Name="CATDistritoLocal" Relationship="DBSMovilizacionModel.FK__DATPerson__IdDis__7C1A6C5A" FromRole="DATPersonas" ToRole="CATDistritoLocal" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK__DATPerson__IdEst__76619304" FromRole="DATPersonas" ToRole="CATEstado" />
+    <NavigationProperty Name="CATMunicipios" Relationship="DBSMovilizacionModel.FK__DATPerson__IdMun__7A3223E8" FromRole="DATPersonas" ToRole="CATMunicipios" />
+    <NavigationProperty Name="CATSecciones" Relationship="DBSMovilizacionModel.FK__DATPerson__IdSec__7D0E9093" FromRole="DATPersonas" ToRole="CATSecciones" />
+    <NavigationProperty Name="CATTipoCredencial" Relationship="DBSMovilizacionModel.FK_DATPersonas_CATTipoCredencial" FromRole="DATPersonas" ToRole="CATTipoCredencial" />
+    <NavigationProperty Name="DATContacto" Relationship="DBSMovilizacionModel.FK_DATContacto_DATPersonas" FromRole="DATPersonas" ToRole="DATContacto" />
+    <NavigationProperty Name="DATDoctoPersona" Relationship="DBSMovilizacionModel.FK_DATDoctoPersona_DATPersonas" FromRole="DATPersonas" ToRole="DATDoctoPersona" />
+    <NavigationProperty Name="DATDomicilios" Relationship="DBSMovilizacionModel.FK_DATDomicilios_DATPersonas" FromRole="DATPersonas" ToRole="DATDomicilios" />
+    <NavigationProperty Name="DATInvitados" Relationship="DBSMovilizacionModel.FK_DATInvitados_DATPersonas" FromRole="DATPersonas" ToRole="DATInvitados" />
+    <NavigationProperty Name="UsersDeteccion" Relationship="DBSMovilizacionModel.FK_DATPersonas_UsersDeteccion" FromRole="DATPersonas" ToRole="UsersDeteccion" />
+    <NavigationProperty Name="DATRespUsuario" Relationship="DBSMovilizacionModel.FK_DATRespUsuario_DATPersonas" FromRole="DATPersonas" ToRole="DATRespUsuario" />
+  </EntityType>
+  <EntityType Name="DatPersonasGeolocalizacion">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="Guid" Nullable="false" />
+    <Property Name="Point" Type="Geography" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DATPreguntas">
+    <Key>
+      <PropertyRef Name="IdPregunta" />
+    </Key>
+    <Property Name="IdPregunta" Type="Guid" Nullable="false" />
+    <Property Name="Pregunta" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="IdEncuesta" Type="Guid" Nullable="false" />
+    <Property Name="IdTipoPregunta" Type="Int32" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="InsertedUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IdProceso" Type="Guid" />
+    <NavigationProperty Name="CATTipoPregunta" Relationship="DBSMovilizacionModel.FK_DATPreguntas_CATTipoPregunta" FromRole="DATPreguntas" ToRole="CATTipoPregunta" />
+    <NavigationProperty Name="DATEncuestas" Relationship="DBSMovilizacionModel.FK_DATPreguntas_DATEncuestas" FromRole="DATPreguntas" ToRole="DATEncuestas" />
+    <NavigationProperty Name="DATRespuestas" Relationship="DBSMovilizacionModel.FK_DATRespuestas_DATPreguntas" FromRole="DATPreguntas" ToRole="DATRespuestas" />
+    <NavigationProperty Name="DATRespUsuario" Relationship="DBSMovilizacionModel.FK_DATRespUsuario_DATPreguntas" FromRole="DATPreguntas" ToRole="DATRespUsuario" />
+  </EntityType>
+  <EntityType Name="DATProceso">
+    <Key>
+      <PropertyRef Name="IdProceso" />
+    </Key>
+    <Property Name="IdProceso" Type="Guid" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Local" Type="Boolean" Nullable="false" />
+    <Property Name="FechaProceso" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Archivado" Type="Boolean" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="AddUser" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdEncarte" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK_DATProceso_CATEstado" FromRole="DATProceso" ToRole="CATEstado" />
+    <NavigationProperty Name="DATContacto" Relationship="DBSMovilizacionModel.FK_DATContacto_DATProceso" FromRole="DATProceso" ToRole="DATContacto" />
+    <NavigationProperty Name="Encarte" Relationship="DBSMovilizacionModel.FK_DATProceso_Encarte" FromRole="DATProceso" ToRole="Encarte" />
+    <NavigationProperty Name="DATReporteCasilla" Relationship="DBSMovilizacionModel.FK_DATReporteCasilla_DATProceso" FromRole="DATProceso" ToRole="DATReporteCasilla" />
+    <NavigationProperty Name="ProcesoUsuario" Relationship="DBSMovilizacionModel.FK_ProcesoUsuario_DATProceso" FromRole="DATProceso" ToRole="ProcesoUsuario" />
+    <NavigationProperty Name="Territorio" Relationship="DBSMovilizacionModel.FK_Territorio_DATProceso" FromRole="DATProceso" ToRole="Territorio" />
+  </EntityType>
+  <EntityType Name="DATReporteCasilla">
+    <Key>
+      <PropertyRef Name="IdReporteCasilla" />
+    </Key>
+    <Property Name="IdReporteCasilla" Type="Guid" Nullable="false" />
+    <Property Name="IdCasilla" Type="Int32" Nullable="false" />
+    <Property Name="IdProceso" Type="Guid" Nullable="false" />
+    <Property Name="IdEstatusCasilla" Type="Int32" Nullable="false" />
+    <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comentario" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Casillas" Relationship="DBSMovilizacionModel.FK_DATReporteCasilla_Casillas" FromRole="DATReporteCasilla" ToRole="Casillas" />
+    <NavigationProperty Name="CATEstatusCasilla" Relationship="DBSMovilizacionModel.FK_DATReporteCasilla_CATEstatusCasilla" FromRole="DATReporteCasilla" ToRole="CATEstatusCasilla" />
+    <NavigationProperty Name="DATProceso" Relationship="DBSMovilizacionModel.FK_DATReporteCasilla_DATProceso" FromRole="DATReporteCasilla" ToRole="DATProceso" />
+  </EntityType>
+  <EntityType Name="DATRespuestas">
+    <Key>
+      <PropertyRef Name="IdRespuestas" />
+    </Key>
+    <Property Name="IdRespuestas" Type="Guid" Nullable="false" />
+    <Property Name="Respuesta" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="IdPregunta" Type="Guid" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="InsertedUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IdProceso" Type="Guid" />
+    <NavigationProperty Name="DATPreguntas" Relationship="DBSMovilizacionModel.FK_DATRespuestas_DATPreguntas" FromRole="DATRespuestas" ToRole="DATPreguntas" />
+    <NavigationProperty Name="DATRespUsuario" Relationship="DBSMovilizacionModel.FK_DATRespUsuario_DATRespuestas" FromRole="DATRespuestas" ToRole="DATRespUsuario" />
+  </EntityType>
+  <EntityType Name="DATRespUsuario">
+    <Key>
+      <PropertyRef Name="IdRespUsuario" />
+    </Key>
+    <Property Name="IdRespUsuario" Type="Guid" Nullable="false" />
+    <Property Name="IdPregunta" Type="Guid" Nullable="false" />
+    <Property Name="IdRespuesta" Type="Guid" />
+    <Property Name="RespAbierta" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="IdPersona" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="DATPersonas" Relationship="DBSMovilizacionModel.FK_DATRespUsuario_DATPersonas" FromRole="DATRespUsuario" ToRole="DATPersonas" />
+    <NavigationProperty Name="DATPreguntas" Relationship="DBSMovilizacionModel.FK_DATRespUsuario_DATPreguntas" FromRole="DATRespUsuario" ToRole="DATPreguntas" />
+    <NavigationProperty Name="DATRespuestas" Relationship="DBSMovilizacionModel.FK_DATRespUsuario_DATRespuestas" FromRole="DATRespUsuario" ToRole="DATRespuestas" />
+  </EntityType>
+  <EntityType Name="Encarte">
+    <Key>
+      <PropertyRef Name="IdEncarte" />
+    </Key>
+    <Property Name="IdEncarte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddUser" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ModDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModUser" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Casillas" Relationship="DBSMovilizacionModel.FK_Casillas_Encarte" FromRole="Encarte" ToRole="Casillas" />
+    <NavigationProperty Name="CATDistritoFederal" Relationship="DBSMovilizacionModel.FK_CATDistritoFederal_Encarte" FromRole="Encarte" ToRole="CATDistritoFederal" />
+    <NavigationProperty Name="CATDistritoLocal" Relationship="DBSMovilizacionModel.FK_CATDistritoLocal_Encarte" FromRole="Encarte" ToRole="CATDistritoLocal" />
+    <NavigationProperty Name="CATSecciones" Relationship="DBSMovilizacionModel.FK_CATSecciones_Encarte" FromRole="Encarte" ToRole="CATSecciones" />
+    <NavigationProperty Name="DATCambioSeccion" Relationship="DBSMovilizacionModel.FK_DATCambioSeccion_Encarte" FromRole="Encarte" ToRole="DATCambioSeccion" />
+    <NavigationProperty Name="DATProceso" Relationship="DBSMovilizacionModel.FK_DATProceso_Encarte" FromRole="Encarte" ToRole="DATProceso" />
+  </EntityType>
+  <EntityType Name="ProcesoUsuario">
+    <Key>
+      <PropertyRef Name="IdProceso" />
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="IdProceso" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ApplicationGroup" Type="Guid" />
+    <NavigationProperty Name="DATProceso" Relationship="DBSMovilizacionModel.FK_ProcesoUsuario_DATProceso" FromRole="ProcesoUsuario" ToRole="DATProceso" />
+  </EntityType>
+  <EntityType Name="Territorio">
+    <Key>
+      <PropertyRef Name="IdTerritorio" />
+    </Key>
+    <Property Name="IdTerritorio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProceso" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstado" Type="Int32" />
+    <Property Name="IdMunicipio" Type="Int32" />
+    <Property Name="IdDistritoFederal" Type="Int32" />
+    <Property Name="IdDistritoLocal" Type="Int32" />
+    <Property Name="IdSeccion" Type="Int32" />
+    <NavigationProperty Name="CATDistritoFederal" Relationship="DBSMovilizacionModel.FK_Territorio_CATDistritoFederal" FromRole="Territorio" ToRole="CATDistritoFederal" />
+    <NavigationProperty Name="CATDistritoLocal" Relationship="DBSMovilizacionModel.FK_Territorio_CATDistritoLocal" FromRole="Territorio" ToRole="CATDistritoLocal" />
+    <NavigationProperty Name="CATEstado" Relationship="DBSMovilizacionModel.FK_Territorio_CATEstado" FromRole="Territorio" ToRole="CATEstado" />
+    <NavigationProperty Name="CATMunicipios" Relationship="DBSMovilizacionModel.FK_Territorio_CATMunicipios" FromRole="Territorio" ToRole="CATMunicipios" />
+    <NavigationProperty Name="CATSecciones" Relationship="DBSMovilizacionModel.FK_Territorio_CATSecciones" FromRole="Territorio" ToRole="CATSecciones" />
+    <NavigationProperty Name="DATProceso" Relationship="DBSMovilizacionModel.FK_Territorio_DATProceso" FromRole="Territorio" ToRole="DATProceso" />
+  </EntityType>
+  <EntityType Name="UsersDeteccion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="salt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isRegister" Type="Boolean" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="token" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DATPersonas" Relationship="DBSMovilizacionModel.FK_DATPersonas_UsersDeteccion" FromRole="UsersDeteccion" ToRole="DATPersonas" />
+  </EntityType>
+  <Association Name="FK_Casillas_CATDistritoFederal">
+    <End Type="DBSMovilizacionModel.CATDistritoFederal" Role="CATDistritoFederal" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.Casillas" Role="Casillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="Casillas">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Casillas_CATEstado">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.Casillas" Role="Casillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="Casillas">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Casillas_CATMunicipios">
+    <End Type="DBSMovilizacionModel.CATMunicipios" Role="CATMunicipios" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.Casillas" Role="Casillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="Casillas">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Casillas_CATSecciones">
+    <End Type="DBSMovilizacionModel.CATSecciones" Role="CATSecciones" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.Casillas" Role="Casillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATSecciones">
+        <PropertyRef Name="IdSeccion" />
+      </Principal>
+      <Dependent Role="Casillas">
+        <PropertyRef Name="IdSeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Casillas_CATTipoCasilla">
+    <End Type="DBSMovilizacionModel.CATTipoCasilla" Role="CATTipoCasilla" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.Casillas" Role="Casillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATTipoCasilla">
+        <PropertyRef Name="IdTipoCasilla" />
+      </Principal>
+      <Dependent Role="Casillas">
+        <PropertyRef Name="IdTipoCasilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Casillas_Encarte">
+    <End Type="DBSMovilizacionModel.Encarte" Role="Encarte" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.Casillas" Role="Casillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encarte">
+        <PropertyRef Name="IdEncarte" />
+      </Principal>
+      <Dependent Role="Casillas">
+        <PropertyRef Name="IdEncarte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATReporteCasilla_Casillas">
+    <End Type="DBSMovilizacionModel.Casillas" Role="Casillas" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATReporteCasilla" Role="DATReporteCasilla" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Casillas">
+        <PropertyRef Name="IdCasilla" />
+      </Principal>
+      <Dependent Role="DATReporteCasilla">
+        <PropertyRef Name="IdCasilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DATPerson__IdDis__7B264821">
+    <End Type="DBSMovilizacionModel.CATDistritoFederal" Role="CATDistritoFederal" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATPersonas" Role="DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATDistritoFederal_CATEstado">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.CATDistritoFederal" Role="CATDistritoFederal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="CATDistritoFederal">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATDistritoFederal_CATMunicipios">
+    <End Type="DBSMovilizacionModel.CATMunicipios" Role="CATMunicipios" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.CATDistritoFederal" Role="CATDistritoFederal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="CATDistritoFederal">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATDistritoFederal_Encarte">
+    <End Type="DBSMovilizacionModel.Encarte" Role="Encarte" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.CATDistritoFederal" Role="CATDistritoFederal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encarte">
+        <PropertyRef Name="IdEncarte" />
+      </Principal>
+      <Dependent Role="CATDistritoFederal">
+        <PropertyRef Name="IdEncarte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATSecciones_CATDistritoFederal">
+    <End Type="DBSMovilizacionModel.CATDistritoFederal" Role="CATDistritoFederal" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.CATSecciones" Role="CATSecciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="CATSecciones">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATEncuestas_CATDistritoFederal">
+    <End Type="DBSMovilizacionModel.CATDistritoFederal" Role="CATDistritoFederal" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATEncuestas" Role="DATEncuestas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="DATEncuestas">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNoticias_CATDistritoFederal">
+    <End Type="DBSMovilizacionModel.CATDistritoFederal" Role="CATDistritoFederal" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATNoticias" Role="DATNoticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="DATNoticias">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNotificaciones_CATDistritoFederal">
+    <End Type="DBSMovilizacionModel.CATDistritoFederal" Role="CATDistritoFederal" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATNotificaciones" Role="DATNotificaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="DATNotificaciones">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_CATDistritoFederal">
+    <End Type="DBSMovilizacionModel.CATDistritoFederal" Role="CATDistritoFederal" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.Territorio" Role="Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoFederal">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="IdDistritoFederal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DATPerson__IdDis__7C1A6C5A">
+    <End Type="DBSMovilizacionModel.CATDistritoLocal" Role="CATDistritoLocal" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATPersonas" Role="DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoLocal">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATDistritoLocal_CATEstado">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.CATDistritoLocal" Role="CATDistritoLocal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="CATDistritoLocal">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATDistritoLocal_Encarte">
+    <End Type="DBSMovilizacionModel.Encarte" Role="Encarte" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.CATDistritoLocal" Role="CATDistritoLocal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encarte">
+        <PropertyRef Name="IdEncarte" />
+      </Principal>
+      <Dependent Role="CATDistritoLocal">
+        <PropertyRef Name="IdEncarte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATSecciones_CATDistritoLocal">
+    <End Type="DBSMovilizacionModel.CATDistritoLocal" Role="CATDistritoLocal" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.CATSecciones" Role="CATSecciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoLocal">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Principal>
+      <Dependent Role="CATSecciones">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATEncuestas_CATDistritoLocal">
+    <End Type="DBSMovilizacionModel.CATDistritoLocal" Role="CATDistritoLocal" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATEncuestas" Role="DATEncuestas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoLocal">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Principal>
+      <Dependent Role="DATEncuestas">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNoticias_CATDistritoLocal">
+    <End Type="DBSMovilizacionModel.CATDistritoLocal" Role="CATDistritoLocal" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATNoticias" Role="DATNoticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoLocal">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Principal>
+      <Dependent Role="DATNoticias">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNotificaciones_CATDistritoLocal">
+    <End Type="DBSMovilizacionModel.CATDistritoLocal" Role="CATDistritoLocal" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATNotificaciones" Role="DATNotificaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoLocal">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Principal>
+      <Dependent Role="DATNotificaciones">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_CATDistritoLocal">
+    <End Type="DBSMovilizacionModel.CATDistritoLocal" Role="CATDistritoLocal" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.Territorio" Role="Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATDistritoLocal">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="IdDistritoLocal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DATPerson__IdEst__76619304">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATPersonas" Role="DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATMunicipios_CATEstado">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.CATMunicipios" Role="CATMunicipios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="CATMunicipios">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATSecciones_CATEstado">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.CATSecciones" Role="CATSecciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="CATSecciones">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATCambioSeccion_CATEstado">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATCambioSeccion" Role="DATCambioSeccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATCambioSeccion">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATDomicilios_CATEstado">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATDomicilios" Role="DATDomicilios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATDomicilios">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATEncuestas_CATEstado">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATEncuestas" Role="DATEncuestas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATEncuestas">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNoticias_CATEstado">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATNoticias" Role="DATNoticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATNoticias">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNotificaciones_CATEstado">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATNotificaciones" Role="DATNotificaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATNotificaciones">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATProceso_CATEstado">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATProceso" Role="DATProceso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="DATProceso">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_CATEstado">
+    <End Type="DBSMovilizacionModel.CATEstado" Role="CATEstado" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.Territorio" Role="Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATReporteCasilla_CATEstatusCasilla">
+    <End Type="DBSMovilizacionModel.CATEstatusCasilla" Role="CATEstatusCasilla" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATReporteCasilla" Role="DATReporteCasilla" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEstatusCasilla">
+        <PropertyRef Name="IdEstatusCasilla" />
+      </Principal>
+      <Dependent Role="DATReporteCasilla">
+        <PropertyRef Name="IdEstatusCasilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DATPerson__IdMun__7A3223E8">
+    <End Type="DBSMovilizacionModel.CATMunicipios" Role="CATMunicipios" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATPersonas" Role="DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATSecciones_CATMunicipios">
+    <End Type="DBSMovilizacionModel.CATMunicipios" Role="CATMunicipios" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.CATSecciones" Role="CATSecciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="CATSecciones">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATDomicilios_CATMunicipios">
+    <End Type="DBSMovilizacionModel.CATMunicipios" Role="CATMunicipios" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATDomicilios" Role="DATDomicilios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="DATDomicilios">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATEncuestas_CATMunicipios">
+    <End Type="DBSMovilizacionModel.CATMunicipios" Role="CATMunicipios" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATEncuestas" Role="DATEncuestas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="DATEncuestas">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNoticias_CATMunicipios">
+    <End Type="DBSMovilizacionModel.CATMunicipios" Role="CATMunicipios" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATNoticias" Role="DATNoticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="DATNoticias">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATNotificaciones_CATMunicipios">
+    <End Type="DBSMovilizacionModel.CATMunicipios" Role="CATMunicipios" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATNotificaciones" Role="DATNotificaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="DATNotificaciones">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_CATMunicipios">
+    <End Type="DBSMovilizacionModel.CATMunicipios" Role="CATMunicipios" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.Territorio" Role="Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATMunicipios">
+        <PropertyRef Name="IdMunicipio" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="IdMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DATPerson__IdSec__7D0E9093">
+    <End Type="DBSMovilizacionModel.CATSecciones" Role="CATSecciones" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATPersonas" Role="DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATSecciones">
+        <PropertyRef Name="IdSeccion" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdSeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATSecciones_Encarte">
+    <End Type="DBSMovilizacionModel.Encarte" Role="Encarte" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.CATSecciones" Role="CATSecciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encarte">
+        <PropertyRef Name="IdEncarte" />
+      </Principal>
+      <Dependent Role="CATSecciones">
+        <PropertyRef Name="IdEncarte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATCambioSeccion_CATSecciones">
+    <End Type="DBSMovilizacionModel.CATSecciones" Role="CATSecciones" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATCambioSeccion" Role="DATCambioSeccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATSecciones">
+        <PropertyRef Name="IdSeccion" />
+      </Principal>
+      <Dependent Role="DATCambioSeccion">
+        <PropertyRef Name="IdSeccionNueva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_CATSecciones">
+    <End Type="DBSMovilizacionModel.CATSecciones" Role="CATSecciones" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.Territorio" Role="Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATSecciones">
+        <PropertyRef Name="IdSeccion" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="IdSeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATContacto_CATTipoContacto">
+    <End Type="DBSMovilizacionModel.CATTipoContacto" Role="CATTipoContacto" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATContacto" Role="DATContacto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATTipoContacto">
+        <PropertyRef Name="IdTipoContacto" />
+      </Principal>
+      <Dependent Role="DATContacto">
+        <PropertyRef Name="IdTipoContacto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATPersonas_CATTipoCredencial">
+    <End Type="DBSMovilizacionModel.CATTipoCredencial" Role="CATTipoCredencial" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATPersonas" Role="DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATTipoCredencial">
+        <PropertyRef Name="IdTipoCredencial" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdTipoCredencial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATDoctoPersona_CATTipoDocumento">
+    <End Type="DBSMovilizacionModel.CATTipoDocumento" Role="CATTipoDocumento" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATDoctoPersona" Role="DATDoctoPersona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATTipoDocumento">
+        <PropertyRef Name="IdTipoDocumento" />
+      </Principal>
+      <Dependent Role="DATDoctoPersona">
+        <PropertyRef Name="IdTipoDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATPreguntas_CATTipoPregunta">
+    <End Type="DBSMovilizacionModel.CATTipoPregunta" Role="CATTipoPregunta" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATPreguntas" Role="DATPreguntas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATTipoPregunta">
+        <PropertyRef Name="IdTipoPregunta" />
+      </Principal>
+      <Dependent Role="DATPreguntas">
+        <PropertyRef Name="IdTipoPregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATCambioSeccion_Encarte">
+    <End Type="DBSMovilizacionModel.Encarte" Role="Encarte" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATCambioSeccion" Role="DATCambioSeccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encarte">
+        <PropertyRef Name="IdEncarte" />
+      </Principal>
+      <Dependent Role="DATCambioSeccion">
+        <PropertyRef Name="IdEncarte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATContacto_DATPersonas">
+    <End Type="DBSMovilizacionModel.DATPersonas" Role="DATPersonas" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATContacto" Role="DATContacto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPersonas">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="DATContacto">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATContacto_DATProceso">
+    <End Type="DBSMovilizacionModel.DATProceso" Role="DATProceso" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATContacto" Role="DATContacto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATProceso">
+        <PropertyRef Name="IdProceso" />
+      </Principal>
+      <Dependent Role="DATContacto">
+        <PropertyRef Name="IdProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATDoctoPersona_DATPersonas">
+    <End Type="DBSMovilizacionModel.DATPersonas" Role="DATPersonas" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATDoctoPersona" Role="DATDoctoPersona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPersonas">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="DATDoctoPersona">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATDomicilios_DATPersonas">
+    <End Type="DBSMovilizacionModel.DATPersonas" Role="DATPersonas" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATDomicilios" Role="DATDomicilios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPersonas">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="DATDomicilios">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATPreguntas_DATEncuestas">
+    <End Type="DBSMovilizacionModel.DATEncuestas" Role="DATEncuestas" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATPreguntas" Role="DATPreguntas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATEncuestas">
+        <PropertyRef Name="IdEncuesta" />
+      </Principal>
+      <Dependent Role="DATPreguntas">
+        <PropertyRef Name="IdEncuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATInvitados_DATPersonas">
+    <End Type="DBSMovilizacionModel.DATPersonas" Role="DATPersonas" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATInvitados" Role="DATInvitados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPersonas">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="DATInvitados">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATPersonas_UsersDeteccion">
+    <End Type="DBSMovilizacionModel.UsersDeteccion" Role="UsersDeteccion" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATPersonas" Role="DATPersonas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersDeteccion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DATPersonas">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATRespUsuario_DATPersonas">
+    <End Type="DBSMovilizacionModel.DATPersonas" Role="DATPersonas" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATRespUsuario" Role="DATRespUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPersonas">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="DATRespUsuario">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATRespuestas_DATPreguntas">
+    <End Type="DBSMovilizacionModel.DATPreguntas" Role="DATPreguntas" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATRespuestas" Role="DATRespuestas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPreguntas">
+        <PropertyRef Name="IdPregunta" />
+      </Principal>
+      <Dependent Role="DATRespuestas">
+        <PropertyRef Name="IdPregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATRespUsuario_DATPreguntas">
+    <End Type="DBSMovilizacionModel.DATPreguntas" Role="DATPreguntas" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATRespUsuario" Role="DATRespUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATPreguntas">
+        <PropertyRef Name="IdPregunta" />
+      </Principal>
+      <Dependent Role="DATRespUsuario">
+        <PropertyRef Name="IdPregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATProceso_Encarte">
+    <End Type="DBSMovilizacionModel.Encarte" Role="Encarte" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATProceso" Role="DATProceso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encarte">
+        <PropertyRef Name="IdEncarte" />
+      </Principal>
+      <Dependent Role="DATProceso">
+        <PropertyRef Name="IdEncarte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATReporteCasilla_DATProceso">
+    <End Type="DBSMovilizacionModel.DATProceso" Role="DATProceso" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.DATReporteCasilla" Role="DATReporteCasilla" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATProceso">
+        <PropertyRef Name="IdProceso" />
+      </Principal>
+      <Dependent Role="DATReporteCasilla">
+        <PropertyRef Name="IdProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProcesoUsuario_DATProceso">
+    <End Type="DBSMovilizacionModel.DATProceso" Role="DATProceso" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.ProcesoUsuario" Role="ProcesoUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATProceso">
+        <PropertyRef Name="IdProceso" />
+      </Principal>
+      <Dependent Role="ProcesoUsuario">
+        <PropertyRef Name="IdProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_DATProceso">
+    <End Type="DBSMovilizacionModel.DATProceso" Role="DATProceso" Multiplicity="1" />
+    <End Type="DBSMovilizacionModel.Territorio" Role="Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATProceso">
+        <PropertyRef Name="IdProceso" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="IdProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATRespUsuario_DATRespuestas">
+    <End Type="DBSMovilizacionModel.DATRespuestas" Role="DATRespuestas" Multiplicity="0..1" />
+    <End Type="DBSMovilizacionModel.DATRespUsuario" Role="DATRespUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATRespuestas">
+        <PropertyRef Name="IdRespuestas" />
+      </Principal>
+      <Dependent Role="DATRespUsuario">
+        <PropertyRef Name="IdRespuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CatDistritoFederalDistritoLocal">
+    <Key>
+      <PropertyRef Name="IdEncarte" />
+      <PropertyRef Name="IdEstado" />
+      <PropertyRef Name="IdDistritoFederal" />
+      <PropertyRef Name="IdDistritoLocal" />
+      <PropertyRef Name="IdSeccion" />
+    </Key>
+    <Property Name="IdEncarte" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="IdDistritoFederal" Type="Int32" Nullable="false" />
+    <Property Name="IdDistritoLocal" Type="Int32" Nullable="false" />
+    <Property Name="IdSeccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="CatDistritoFederalMunicipio">
+    <Key>
+      <PropertyRef Name="IdEncarte" />
+      <PropertyRef Name="IdEstado" />
+      <PropertyRef Name="IdMunicipio" />
+      <PropertyRef Name="IdDistritoFederal" />
+      <PropertyRef Name="IdSeccion" />
+    </Key>
+    <Property Name="IdEncarte" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="IdMunicipio" Type="Int32" Nullable="false" />
+    <Property Name="IdDistritoFederal" Type="Int32" Nullable="false" />
+    <Property Name="IdSeccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="CatDistritoLocalDistritoFederal">
+    <Key>
+      <PropertyRef Name="IdEncarte" />
+      <PropertyRef Name="IdEstado" />
+      <PropertyRef Name="IdDistritoLocal" />
+      <PropertyRef Name="IdDistritoFederal" />
+      <PropertyRef Name="IdSeccion" />
+    </Key>
+    <Property Name="IdEncarte" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="IdDistritoLocal" Type="Int32" Nullable="false" />
+    <Property Name="IdDistritoFederal" Type="Int32" Nullable="false" />
+    <Property Name="IdSeccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="CatDistritoLocalMunicipio">
+    <Key>
+      <PropertyRef Name="IdEncarte" />
+      <PropertyRef Name="IdEstado" />
+      <PropertyRef Name="IdMunicipio" />
+      <PropertyRef Name="IdDistritoLocal" />
+      <PropertyRef Name="IdSeccion" />
+    </Key>
+    <Property Name="IdEncarte" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="IdMunicipio" Type="Int32" Nullable="false" />
+    <Property Name="IdDistritoLocal" Type="Int32" Nullable="false" />
+    <Property Name="IdSeccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="DATDetectados">
+    <Key>
+      <PropertyRef Name="Usuario" />
+      <PropertyRef Name="FechaRegistro" />
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="Paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Materno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Calle" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="NoExterior" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoInterior" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Colonia" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Municipio" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ClaveINE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CURP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoEstado" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="NoMunicipio" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Seccion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Emision" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Vigencia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="OCR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="RegistroINE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoEmision" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdPadre" Type="Guid" />
+    <Property Name="IdUsuario" Type="Guid" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdPersona" Type="Guid" Nullable="false" />
+  </EntityType>
+</Schema>

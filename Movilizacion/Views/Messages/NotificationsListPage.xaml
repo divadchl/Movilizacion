@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Movilizacion.Views.Messages.NotificationsListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:local="clr-namespace:Movilizacion"
+    Title="{grial:Translate PageTitleNotifications2}"
+    grial:Effects.ApplyIOSSafeAreaAsPadding="Left,Right"
+    BackgroundColor="{DynamicResource BasePageColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <grial:BooleanToObjectConverter
+                x:Key="isStaredIconConverter"
+                x:TypeArguments="x:String"
+                FalseValue="{x:Static local:GrialIconsFont.Star}"
+                TrueValue="{x:Static local:GrialIconsFont.StarFill}" />
+
+            <grial:BooleanToObjectConverter x:Key="isReadConverter" x:TypeArguments="FontAttributes">
+                <grial:BooleanToObjectConverter.TrueValue>
+                    <FontAttributes>None</FontAttributes>
+                </grial:BooleanToObjectConverter.TrueValue>
+
+                <grial:BooleanToObjectConverter.FalseValue>
+                    <FontAttributes>Bold</FontAttributes>
+                </grial:BooleanToObjectConverter.FalseValue>
+            </grial:BooleanToObjectConverter>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <RefreshView
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefreshing}"
+        RefreshColor="{StaticResource AccentColor}">
+        <CollectionView
+            x:Name="lstNotifications"
+            HeightRequest="{OnIdiom Phone=120,
+                                    Tablet=160}"
+            ItemsSource="{Binding Notifications}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItemView Command="{Binding Source={x:Reference lstNotifications}, Path=BindingContext.DeleteNotificationCommand}" CommandParameter="{Binding}">
+                                    <Grid WidthRequest="70">
+                                        <StackLayout VerticalOptions="Center">
+                                            <Image Source="{FontImage FontFamily={StaticResource MaterialCommunityIcons}, Glyph={x:Static local:MaterialCommunityIconsFont.DeleteSweep}, Size=30, Color={StaticResource AccentColor}}" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                HorizontalTextAlignment="Center"
+                                                Text="Eliminar"
+                                                TextColor="{StaticResource AccentColor}"
+                                                VerticalTextAlignment="Center" />
+                                        </StackLayout>
+                                    </Grid>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <StackLayout Spacing="0">
+                            <StackLayout
+                                Padding="10,5,5,5"
+                                Orientation="Horizontal"
+                                Spacing="0"
+                                VerticalOptions="Center">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectNotificationCommand}" />
+                                </StackLayout.GestureRecognizers>
+
+                                <local:CircleCachedImage
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding Icon}"
+                                    Style="{StaticResource Avatar}"
+                                    TranslationX="8"
+                                    TranslationY="14"
+                                    VerticalOptions="Start" />
+                                <StackLayout
+                                    Padding="10,0,0,0"
+                                    Orientation="Horizontal"
+                                    Spacing="0">
+                                    <StackLayout
+                                        Padding="10"
+                                        HorizontalOptions="FillAndExpand"
+                                        Spacing="0">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                                FontAttributes="{Binding IsRead, Converter={StaticResource isReadConverter}}"
+                                                HorizontalOptions="Fill"
+                                                Text="{Binding Title}"
+                                                TextColor="{DynamicResource AccentColor}"
+                                                VerticalOptions="EndAndExpand" />
+                                        </StackLayout>
+                                        <Label
+                                            HorizontalOptions="Start"
+                                            Text="{Binding Description}"
+                                            VerticalOptions="FillAndExpand" />
+                                        <StackLayout Padding="0,8,0,0" Orientation="Horizontal">
+                                            <Label
+                                                LineBreakMode="WordWrap"
+                                                Text="{Binding DateTimeAgo}"
+                                                VerticalOptions="FillAndExpand" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                            <BoxView BackgroundColor="{DynamicResource ListViewSeparatorColor}" HeightRequest="1" />
+                        </StackLayout>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <Grid>
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            HorizontalTextAlignment="Center"
+                            Text="No tiene notificaciones" />
+                    </StackLayout>
+                </Grid>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

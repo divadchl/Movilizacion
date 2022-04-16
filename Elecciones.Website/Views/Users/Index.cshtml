@@ -1,0 +1,360 @@
+﻿
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+
+
+@section Styles{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/jquery-bootgrid/dist/jquery.bootgrid.css">
+
+    <link href="@Styles.Url("~/Vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.css")" rel="stylesheet" />
+    <link href="@Styles.Url("~/Vendor/bootstrap-slider/dist/css/bootstrap-slider.css")" rel="stylesheet" />
+    <link href="@Styles.Url("~/Vendor/chosen-js/chosen.css")" rel="stylesheet" />
+    <link href="@Styles.Url("~/Vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker.css")" rel="stylesheet" />
+    <link href="@Styles.Url("~/Vendor/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css")" rel="stylesheet" />
+    <link href="@Styles.Url("~/Vendor/select2/dist/css/select2.css")" rel="stylesheet" />
+    <link href="@Styles.Url("~/Vendor/@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.css")" rel="stylesheet" />
+
+}
+
+<div id="divPrincipal" data-bind="visible: $root.divPrincipalVisible">
+    <div class="content-heading">Usuarios</div>
+    <div id="filter" class="box">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title" data-bind="text: $root.generalInformation"></div>
+                @*<div class="text-sm">Usuarios</div>*@
+            </div>
+            <div id="filter" class="box">
+                <button class="btn btn-labeled btn-success mb-2" type="button" data-toggle="modal" data-target="#newUser" data-bind="click: $root.initValuesNewUser">
+                    <span class="btn-label">
+                        <i class="fa fa-plus"></i>
+                    </span>Nuevo Usuario
+                </button>
+                <div class="card-body">
+                    <table class="table table-bordered my-4 w-100" id="usersByProcessTable">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Telefono</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: $root.usuarios">
+                            <tr class="gradeA">
+                                <td data-bind="text: Username "></td>
+                                <td data-bind="text: NombreCompleto"></td>
+                                <td data-bind="text: Correo"></td>
+                                <td data-bind="text: Telefono"></td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-info mr-2 command-edit" data-toggle="modal" data-target="#newUser" data-bind="click: $root.editUser" title="Editar usuario"><em class="fa fa-edit fa-fw"></em></button>
+                                    <button type="button" class="btn btn-sm btn-success mr-2 command-edit" data-toggle="modal" data-target="#territories" data-bind="click: $root.showTerritories" title="Ver territorios"><em class="fa fa-location-arrow fa-fw"></em></button>
+                                    <button type="button" class="btn btn-sm btn-success mr-2 command-edit" data-bind="click: $root.confirmResetPassword" title="Restablecer contraseña"><em class="fa fa-key fa-fw"></em></button>
+                                    <button type="button" class="btn btn-sm btn-danger command-delete" title="Eliminar Usuario" id="deleteUser" data-bind="click: $root.confirmDeleteUser"><em class="fa fa-trash fa-fw"></em></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divTerritory" data-bind="visible: $root.divTerritoryVisible">
+    <div class="content-heading">Sección Territorios</div>
+    <button class="btn btn-primary btn-sm" type="button" data-bind="click: $root.hideTerritoryForm">
+        <span class="btn-label">
+            <i class="fa fa-arrow-left"></i>
+        </span>Regresar
+    </button>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title">Información general de territorios</h3>
+                </div>
+                <div class="card-body">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Usuario</label>
+                            <div class="col-md-10">
+                                <input class="form-control col-lg-10" type="text" data-bind="value: $root.selectedUser() != undefined ? $root.selectedUser().Username: ''" readonly />
+                                <span class="form-text"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label class="col-md-2 col-form-label">Nombre</label>
+                            <div class="col-md-10">
+                                <input class="form-control col-lg-10" type="text" data-bind="value:$root.selectedUser() != undefined ? $root.selectedUser().NombreCompleto: ''" readonly />
+                                <span class="form-text"></span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-labeled btn-success mb-2" type="button" data-toggle="modal" data-target="#newTerritory" data-bind="click: $root.initValuesNewTerritory">
+                        <span class="btn-label">
+                            <i class="fa fa-plus"></i>
+                        </span>Agregar territorio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered my-4 w-100" id="territoryTable">
+                <thead>
+                    <tr>
+                        <th>Territorio</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <!-- ko if: $root.selectedUser() != undefined -->
+                <tbody data-bind="foreach: $root.territoriosUsuario">
+                    <tr>
+                        <td data-bind="text: FullName"></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-danger command-delete" title="Eliminar territorio" id="deleteTerritory" data-bind="click: $root.confirmDeleteTerritory"><em class="fa fa-trash fa-fw"></em></button>
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- /ko -->
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+@section BodyArea {
+
+    <div class="modal fade" id="newUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLarge" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabelLarge"><span data-bind="text: $root.selectedUser() != undefined ? 'Editar Usuario' : 'Nuevo Usuario' "></span></h4>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h3 class="card-title">Información principal</h3>
+                                </div>
+                                <div class="card-body">
+                                    <fieldset>
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label">Usuario</label>
+                                            <div class="col-md-10">
+                                                <input id="username" class="form-control col-lg-10" type="text" data-bind="value: $root.userName, enable: $root.selectedUser() == undefined" />
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label">Nombre</label>
+                                            <div class="col-md-10">
+                                                <input id="name" class="form-control col-lg-10" type="text" data-bind="value: $root.name" />
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label">Paterno</label>
+                                            <div class="col-md-10">
+                                                <input id="patern" class="form-control col-lg-10" type="text" data-bind="value: $root.patern" />
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label">Materno</label>
+                                            <div class="col-md-10">
+                                                <input id="matern" class="form-control col-lg-10" type="text" data-bind="value: $root.matern" />
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label">Teléfono</label>
+                                            <div class="col-md-10">
+                                                <input id="phone" class="form-control col-lg-10" data-masked="" data-inputmask="'mask': '(999) 999-9999'" type="text" data-bind="value: $root.phone" />
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label">Email</label>
+                                            <div class="col-md-10">
+                                                <input id="email" class="form-control col-lg-10" type="email" data-bind="value: $root.email" />
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" data-bind="visible: $root.selectedUser() != undefined">
+                                            <label class="col-md-2 col-form-label">Perfil</label>
+                                            <div class="col-md-10">
+                                                <input id="perfil" class="form-control col-lg-10" type="email" data-bind="value: $root.perfil" readonly />
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" data-bind="visible: $root.selectedUser() == undefined">
+                                            <label class="col-md-2 col-form-label">Perfil</label>
+                                            <div class="col-md-10">
+                                                <select id="perfiles" class="form-control" data-bind="options: perfiles, optionsValue:'Id', optionsText: 'Perfil', value: selectedPerfil"></select>
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-bind="click: $root.newUser">Guardar</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" data-bind="click: $root.resetNewUser">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="newTerritory" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLarge" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabelLarge"><span data-bind="text: 'Nuevo Territorio' "></span></h4>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h3 class="card-title">Información principal</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card card-default">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Territorio</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <fieldset>
+                                                <div class="form-group row">
+                                                    <label class="col-md-2 col-form-label">Estado</label>
+                                                    <div class="col-md-10">
+                                                        <select id="addEditState" class="form-control" data-bind="options: stateAddEditList, optionsValue:'Identifier', optionsText: 'State', value: addEditState"></select>
+                                                        <span class="form-text"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-md-2 col-form-label"></label>
+                                                    <div class="col-md-10" data-bind="visible: filterAddEditList().length > 0 && $root.addEditState() > 0">
+                                                        <select class="form-control" data-bind="options: filterAddEditList, optionsValue: $data, optionsText: 'Description', optionsCaption: 'Agregar filtro:', value: selectedAddEditFilterList"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row" data-bind="visible: searchAddEditList().length > 0 && $root.addEditState() > 0, foreach: searchAddEditList">
+                                                    <label class="col-md-2 col-form-label" data-bind="text: $data.description"></label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control" data-bind="visible: false ,options: $data.comparerList, optionsValue: 'Comparador', optionsText: 'Descripcion', value: $data.selectedComparer"></select>
+                                                        <!-- ko if: isTerritory() == true -->
+                                                        <select class="form-control" data-bind="css: { error: $data.error() == true },options: $data.territoryList, optionsValue: 'Id', optionsText: 'Descripcion', optionsCaption: '[ELIGE UNA OPCIÓN]', value: $data.selectedValue"></select>
+                                                        <!-- /ko -->
+                                                        <!-- ko if: isTerritory() == false -->
+                                                        <input class="form-control" type="text" data-bind="css: { error: $data.error() == true }, value: $data.selectedValue" />
+                                                        <!-- /ko -->
+                                                        <span class="form-text"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div data-bind="visible: searchAddEditList().length  && $root.addEditState() > 0">
+                                                    <div>
+                                                        <a class="btn btn-oval btn-primary" data-bind="click: addEditReset">Limpiar</a>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-bind="click: $root.saveAddTerritory">Agregar</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        var generalInformation = '@ViewBag.GeneralInformation';
+        var currentProcessId = '@ViewBag.CurrentProcessId';
+        var currentStateId = '@ViewBag.CurrentStateId';
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="@Scripts.Url("~/Vendor/jquery-bootgrid/dist/jquery.bootgrid.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jquery-bootgrid/dist/jquery.bootgrid.fa.js")"></script>
+
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+
+
+    <script src="@Scripts.Url("~/Vendor/bootstrap-filestyle/src/bootstrap-filestyle.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/chosen-js/chosen.jquery.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-slider/dist/bootstrap-slider.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/inputmask/dist/jquery.inputmask.bundle.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/moment/min/moment-with-locales.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/select2/dist/js/select2.full.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/sweetalert/dist/sweetalert.min.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jquery-knob/dist/jquery.knob.min.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/easy-pie-chart/dist/jquery.easypiechart.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/chart.js/dist/Chart.js")"></script>
+
+
+    @Scripts.Render("~/Scripts/knockout-3.5.1.js")
+    @Scripts.Render("~/Scripts/Areas/Users/index.js");
+}
+
+
+
+
+
+

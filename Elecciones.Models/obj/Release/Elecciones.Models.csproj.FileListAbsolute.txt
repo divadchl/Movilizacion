@@ -1,0 +1,16 @@
+C:\Project\master\Elecciones.Models\bin\Release\Elecciones.Models.dll.config
+C:\Project\master\Elecciones.Models\bin\Release\Elecciones.Models.dll
+C:\Project\master\Elecciones.Models\bin\Release\Elecciones.Models.pdb
+C:\Project\master\Elecciones.Models\bin\Release\Elecciones.Common.dll
+C:\Project\master\Elecciones.Models\bin\Release\EntityFramework.dll
+C:\Project\master\Elecciones.Models\bin\Release\EntityFramework.SqlServer.dll
+C:\Project\master\Elecciones.Models\bin\Release\Newtonsoft.Json.dll
+C:\Project\master\Elecciones.Models\bin\Release\Elecciones.Common.pdb
+C:\Project\master\Elecciones.Models\bin\Release\EntityFramework.xml
+C:\Project\master\Elecciones.Models\bin\Release\EntityFramework.SqlServer.xml
+C:\Project\master\Elecciones.Models\bin\Release\Newtonsoft.Json.xml
+C:\Project\master\Elecciones.Models\obj\Release\Elecciones.Models.csprojAssemblyReference.cache
+C:\Project\master\Elecciones.Models\obj\Release\Elecciones.Models.csproj.CoreCompileInputs.cache
+C:\Project\master\Elecciones.Models\obj\Release\Elecciones.Models.csproj.CopyComplete
+C:\Project\master\Elecciones.Models\obj\Release\Elecciones.Models.dll
+C:\Project\master\Elecciones.Models\obj\Release\Elecciones.Models.pdb

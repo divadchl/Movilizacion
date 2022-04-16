@@ -1,0 +1,267 @@
+﻿
+@{
+    ViewBag.Title = "Noticias";
+}
+
+@section Styles{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/jquery-bootgrid/dist/jquery.bootgrid.css">
+
+}
+
+
+<div id="divPrincipal" data-bind="visible: $root.divPrincipalVisible">
+    <div class="content-heading">Noticias</div>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon" data-bind="text: 'Estado'"></span>
+            <select class="form-control" data-bind="optionsCaption: '[Elige un Estado]', options: statePrincipalList, optionsValue:'Identifier', optionsText: 'State', value: principalState"></select>
+        </div>
+    </div>
+
+    <div data-bind="visible: $root.principalState() > 0">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="all" data-bind="checked: allChecked" />
+                Mostrar Todos
+                <i class="fa fa-square-o small"></i>
+            </label>
+        </div>
+    </div>
+
+
+    <div id="filter" class="box">
+
+        <div class="box-header">
+            <div class="box-name">
+                <i class="fa fa-filter"></i>
+                <span>Filtro de noticias</span>
+            </div>
+        </div>
+        <br />
+
+        <div>
+            <div class="form-group">
+                <div class="input-group" data-bind="visible: filterPrincipalList().length > 0 && $root.principalState() > 0">
+                    <select class="form-control" data-bind="options: filterPrincipalList, optionsValue: $data, optionsText: 'Description', optionsCaption: 'Agregar filtro:', value: selectedPrincipalFilterList"></select>
+                </div>
+            </div>
+
+            <div class="form-group" data-bind="visible: searchPrincipalList().length > 0 && $root.principalState() > 0, foreach: searchPrincipalList">
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-addon" data-bind="text: $data.description"></span>
+                        <select class="form-control" data-bind="visible: false ,options: $data.comparerList, optionsValue: 'Comparador', optionsText: 'Descripcion', value: $data.selectedComparer"></select>
+                    </div>
+                </div>
+                <div>
+                    <!-- ko if: isTerritory() == true -->
+                    <select class="form-control" data-bind="css: { error: $data.error() == true },options: $data.territoryList, optionsValue: 'Id', optionsText: 'Descripcion', optionsCaption: '[ELIGE UNA OPCIÓN]', value: $data.selectedValue"></select>
+                    <!-- /ko -->
+                    <!-- ko if: isTerritory() == false -->
+                    <input class="form-control" type="text" data-bind="css: { error: $data.error() == true }, value: $data.selectedValue" />
+                    <!-- /ko -->
+                </div>
+            </div>
+
+
+
+            <div data-bind="visible: searchPrincipalList().length  && $root.principalState() > 0">
+                <div>
+                    <a class="btn btn-oval btn-primary" data-bind="click: search">Buscar</a>
+                    <a class="btn btn-oval btn-primary" data-bind="click: reset">Limpiar</a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <br />
+
+        <button class="btn btn-labeled btn-success mb-2" type="button" data-toggle="modal" data-target="#newNew" data-bind="visible: $root.principalState() > 0, click: $root.initValuesNewNew">
+            <span class="btn-label">
+                <i class="fa fa-plus"></i>
+            </span>Nueva Noticia
+        </button>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Información General</div>
+                <div class="text-sm">Noticias</div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered my-4 w-100" id="noticiasTable">
+                    <thead>
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Link</th>
+                            <th>Territorio</th>
+                            <th>Estatus</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: $root.news">
+                        <tr class="gradeA">
+                            <td data-bind="text: Titulo"></td>
+                            <td data-bind="text: Link"></td>
+                            <td data-bind="text: Territorio"></td>
+                            <td class="text-center">
+                                <label class="switch" data-bind="attr: { title: Activo() ? 'Desactivar noticia': 'Activar noticia'  }">
+                                    <input type="checkbox" data-bind="checked: Activo(), click: $root.confirmChangeStatusNew" />
+                                    <span></span>
+                                </label>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-info mr-2 command-edit" data-toggle="modal" data-target="#newNew" data-bind="click: $root.initValuesEditNew" title="Editar noticia"><em class="fa fa-edit fa-fw"></em></button>
+                                <button type="button" class="btn btn-sm btn-danger command-delete" title="Eliminar noticia" id="deletePoll" data-bind="click: $root.confirmDeleteNew"><em class="fa fa-trash fa-fw"></em></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        @section BodyArea {
+            <div class="modal fade" id="newNew" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLarge" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabelLarge"><span data-bind="text: $root.selectedNew() != undefined ? 'Editar Noticia' : 'Nueva Noticia' "></span></h4>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card card-default">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Información principal</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <fieldset>
+                                                <div class="form-group row">
+                                                    <label class="col-md-2 col-form-label">Título</label>
+                                                    <div class="col-md-10">
+                                                        <input id="title" class="form-control col-lg-10" type="text" data-bind="value: $root.title" />
+                                                        <span class="form-text"></span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <div class="col-lg-10">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Link</span>
+                                                    </div>
+                                                    <textarea id="link" class="form-control" aria-label="With textarea" data-bind="value: $root.link" style="min-width:500px; max-width:100%;min-height:50px;height:100%;width:100%;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card card-default" data-bind="visible: $root.selectedNew() == undefined">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Territorio</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <fieldset>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-2 col-form-label">Estado</label>
+                                                        <div class="col-md-10">
+                                                            <select id="addEditState" class="form-control" data-bind="options: stateAddEditList, optionsValue:'Identifier', optionsText: 'State', value: addEditState"></select>
+                                                            <span class="form-text"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-2 col-form-label"></label>
+                                                        <div class="col-md-10" data-bind="visible: filterAddEditList().length > 0 && $root.addEditState() > 0">
+                                                            <select class="form-control" data-bind="options: filterAddEditList, optionsValue: $data, optionsText: 'Description', optionsCaption: 'Agregar filtro:', value: selectedAddEditFilterList"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" data-bind="visible: searchAddEditList().length > 0 && $root.addEditState() > 0, foreach: searchAddEditList">
+                                                        <label class="col-md-2 col-form-label" data-bind="text: $data.description"></label>
+                                                        <div class="col-md-10">
+                                                            <select class="form-control" data-bind="visible: false ,options: $data.comparerList, optionsValue: 'Comparador', optionsText: 'Descripcion', value: $data.selectedComparer"></select>
+                                                            <!-- ko if: isTerritory() == true -->
+                                                            <select class="form-control" data-bind="css: { error: $data.error() == true },options: $data.territoryList, optionsValue: 'Id', optionsText: 'Descripcion', optionsCaption: '[ELIGE UNA OPCIÓN]', value: $data.selectedValue"></select>
+                                                            <!-- /ko -->
+                                                            <!-- ko if: isTerritory() == false -->
+                                                            <input class="form-control" type="text" data-bind="css: { error: $data.error() == true }, value: $data.selectedValue" />
+                                                            <!-- /ko -->
+                                                            <span class="form-text"></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div data-bind="visible: searchAddEditList().length  && $root.addEditState() > 0">
+                                                        <div>
+                                                            <a class="btn btn-oval btn-primary" data-bind="click: addEditReset">Limpiar</a>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="button" data-bind="click: $root.newChanges">Guardar</button>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal" data-bind="click: $root.resetNewNew">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    </div>
+
+
+</div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="@Scripts.Url("~/Vendor/jquery-bootgrid/dist/jquery.bootgrid.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jquery-bootgrid/dist/jquery.bootgrid.fa.js")"></script>
+
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+
+    <script src="@Scripts.Url("~/Vendor/bootstrap-filestyle/src/bootstrap-filestyle.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/chosen-js/chosen.jquery.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-slider/dist/bootstrap-slider.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/inputmask/dist/jquery.inputmask.bundle.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/moment/min/moment-with-locales.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/select2/dist/js/select2.full.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/sweetalert/dist/sweetalert.min.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jquery-knob/dist/jquery.knob.min.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/easy-pie-chart/dist/jquery.easypiechart.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/chart.js/dist/Chart.js")"></script>
+
+    @Scripts.Render("~/Scripts/knockout-3.5.1.js")
+    @Scripts.Render("~/Scripts/Areas/News/index.js");
+}
+
+
+
+
+
+

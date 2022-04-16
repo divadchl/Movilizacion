@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:WalkthroughBaseStepItemTemplate
+    x:Class="Deteccion.Views.Onboarding.Templates.VoteTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:local="clr-namespace:Deteccion"
+    xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"
+    x:Name="Root"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    Style="{StaticResource WalkthroughStepStyle}">
+    <local:WalkthroughBaseStepItemTemplate.Resources>
+        <ResourceDictionary>
+
+            <!--  ANIM IN  -->
+            <xamanimation:StoryBoard x:Key="AnimIn">
+                <xamanimation:FadeToAnimation
+                    Opacity="1"
+                    Target="{x:Reference image}"
+                    Duration="100" />
+
+                <xamanimation:RotateToAnimation
+                    Rotation="0"
+                    Target="{x:Reference image}"
+                    Duration="100" />
+
+                <xamanimation:ScaleToAnimation
+                    Scale="1"
+                    Target="{x:Reference image}"
+                    Duration="100" />
+
+                <xamanimation:FadeInAnimation Target="{x:Reference headerLabel}" Duration="600" />
+
+                <xamanimation:TurnstileInAnimation Target="{x:Reference headerLabel}" Duration="600" />
+
+                <xamanimation:FadeToAnimation
+                    Opacity="1"
+                    Target="{x:Reference descriptionLabel}"
+                    Duration="600" />
+            </xamanimation:StoryBoard>
+
+            <!--  ANIM RESET  -->
+            <xamanimation:StoryBoard x:Key="AnimReset">
+                <local:Reset
+                    Opacity="0"
+                    Rotation="-40"
+                    Scale="1.8"
+                    Target="{x:Reference image}" />
+
+                <local:Reset Opacity="0" Target="{x:Reference headerLabel}" />
+
+                <local:Reset Opacity="0" Target="{x:Reference descriptionLabel}" />
+            </xamanimation:StoryBoard>
+        </ResourceDictionary>
+    </local:WalkthroughBaseStepItemTemplate.Resources>
+
+    <local:WalkthroughBaseStepItemTemplate.Triggers>
+
+        <EventTrigger Event="ItemInitialized">
+            <xamanimation:BeginAnimation Animation="{StaticResource AnimReset}" />
+        </EventTrigger>
+
+        <EventTrigger Event="ItemDisappearing">
+            <xamanimation:BeginAnimation Animation="{StaticResource AnimReset}" />
+        </EventTrigger>
+
+        <EventTrigger Event="ItemAppearing">
+            <xamanimation:BeginAnimation Animation="{StaticResource AnimReset}" />
+            <xamanimation:BeginAnimation Animation="{StaticResource AnimIn}" />
+        </EventTrigger>
+    </local:WalkthroughBaseStepItemTemplate.Triggers>
+
+    <local:WalkthroughBaseStepItemTemplate.Content>
+        <Grid>
+            <Grid RowDefinitions="*, Auto">
+                <!--  CONTENT  -->
+                <StackLayout
+                    Grid.Row="0"
+                    Padding="40,0"
+                    HeightRequest="-1"
+                    VerticalOptions="{grial:OnOrientationLayoutOptions Portrait=CenterAndExpand,
+                                                                       Landscape=Center}">
+
+                    <!--  ICON  -->
+                    <Label
+                        x:Name="image"
+                        FontFamily="{StaticResource FontawesomeRegular}"
+                        FontSize="120"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{Binding Source={x:Reference Root}, Path=IconText}"
+                        TextColor="{Binding Source={x:Reference Root}, Path=IconColor}"
+                        VerticalOptions="Center" />
+
+                    <!--  HEADER  -->
+                    <Label
+                        x:Name="headerLabel"
+                        FontSize="34"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelBoldStyle}"
+                        Text="¿Ya fuiste a votar?"
+                        TextColor="{DynamicResource BaseTextColor}"
+                        VerticalTextAlignment="Center" />
+
+                    <!--  TEXT  -->
+                    <Label
+                        x:Name="descriptionLabel"
+                        FontSize="16"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Cumple con tu obligación como ciudadano!!!"
+                        TextColor="{DynamicResource BaseTextColor}"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+
+                <!--  BUTTON  -->
+                <Button
+                    x:Name="ActionButton"
+                    Grid.Row="1"
+                    Margin="30,0,30,30"
+                    Command="{Binding VoteCommand}"
+                    HorizontalOptions="{grial:OnOrientationLayoutOptions PortraitPhone=Fill,
+                                                                         LandscapePhone=Center,
+                                                                         PortraitTablet=Fill,
+                                                                         LandscapeTablet=Center}"
+                    Style="{StaticResource PrimaryActionButtonStyle}"
+                    Text="Ya voté!!!"
+                    WidthRequest="{grial:OnOrientationDouble LandscapePhone=200,
+                                                             LandscapeTablet=400}" />
+            </Grid>
+            <!--  COSE BUTTON  -->
+            <Label Style="{DynamicResource IconCloseLabelStyle}" TextColor="{DynamicResource BaseTextColor}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </local:WalkthroughBaseStepItemTemplate.Content>
+</local:WalkthroughBaseStepItemTemplate>

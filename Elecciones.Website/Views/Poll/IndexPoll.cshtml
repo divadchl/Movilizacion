@@ -1,0 +1,424 @@
+﻿
+@{
+    ViewBag.Title = "Encuestas";
+}
+
+
+@Styles.Render("~/Content/Site.css")
+<link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+<link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+<link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+<link rel="stylesheet" href="~/vendor/jquery-bootgrid/dist/jquery.bootgrid.css">
+
+<link href="@Styles.Url("~/Vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.css")" rel="stylesheet" />
+<link href="@Styles.Url("~/Vendor/bootstrap-slider/dist/css/bootstrap-slider.css")" rel="stylesheet" />
+<link href="@Styles.Url("~/Vendor/chosen-js/chosen.css")" rel="stylesheet" />
+<link href="@Styles.Url("~/Vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker.css")" rel="stylesheet" />
+<link href="@Styles.Url("~/Vendor/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css")" rel="stylesheet" />
+<link href="@Styles.Url("~/Vendor/select2/dist/css/select2.css")" rel="stylesheet" />
+<link href="@Styles.Url("~/Vendor/@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.css")" rel="stylesheet" />
+
+
+
+<div id="divPrincipal" data-bind="visible: $root.divPrincipalVisible">
+    <div class="content-heading">Encuestas</div>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon" data-bind="text: 'Estado'"></span>
+            <select class="form-control" data-bind="optionsCaption: '[Elige un Estado]', options: statePrincipalList, optionsValue:'Identifier', optionsText: 'State', value: principalState"></select>
+        </div>
+    </div>
+
+    <div data-bind="visible: $root.principalState() > 0">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="all" data-bind="checked: allChecked" />
+                Mostrar Todos
+                <i class="fa fa-square-o small"></i>
+            </label>
+        </div>
+    </div>
+
+    <div id="filter" class="box">
+
+        <div class="box-header">
+            <div class="box-name">
+                <i class="fa fa-filter"></i>
+                <span>Detectadas</span>
+            </div>
+        </div>
+        <br />
+
+        <div>
+            <div class="form-group">
+                <div class="input-group" data-bind="visible: filterPrincipalList().length > 0 && $root.principalState() > 0">
+                    <select class="form-control" data-bind="options: filterPrincipalList, optionsValue: $data, optionsText: 'Description', optionsCaption: 'Agregar filtro:', value: selectedPrincipalFilterList"></select>
+                </div>
+            </div>
+
+            <div class="form-group" data-bind="visible: searchPrincipalList().length > 0 && $root.principalState() > 0, foreach: searchPrincipalList">
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-addon" data-bind="text: $data.description"></span>
+                        <select class="form-control" data-bind="visible: false ,options: $data.comparerList, optionsValue: 'Comparador', optionsText: 'Descripcion', value: $data.selectedComparer"></select>
+                    </div>
+                </div>
+                <div>
+                    <!-- ko if: isTerritory() == true -->
+                    <select class="form-control" data-bind="css: { error: $data.error() == true },options: $data.territoryList, optionsValue: 'Id', optionsText: 'Descripcion', optionsCaption: '[ELIGE UNA OPCIÓN]', value: $data.selectedValue"></select>
+                    <!-- /ko -->
+                    <!-- ko if: isTerritory() == false -->
+                    <input class="form-control" type="text" data-bind="css: { error: $data.error() == true }, value: $data.selectedValue" />
+                    <!-- /ko -->
+                </div>
+            </div>
+
+
+
+            <div data-bind="visible: searchPrincipalList().length  && $root.principalState() > 0">
+                <div>
+                    <a class="btn btn-oval btn-primary" data-bind="click: search">Buscar</a>
+                    <a class="btn btn-oval btn-primary" data-bind="click: reset">Limpiar</a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <br />
+        <button class="btn btn-labeled btn-success mb-2" type="button" data-toggle="modal" data-target="#newPoll" data-bind="visible: $root.principalState() > 0, click: $root.initValuesNewPoll">
+                <span class="btn-label">
+                    <i class="fa fa-bible"></i>
+                </span>Nueva Encuesta
+            </button>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Información General</div>
+                <div class="text-sm">Personas detectadas</div>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped my-4 w-100" id="encuestaTable">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Num. Preguntas</th>
+                            <th>Num. Participantes</th>
+                            <th>Vigencia</th>
+                            <th>Estatus</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: $root.encuestas">
+                        <tr class="gradeA">
+                            <td data-bind="text: Nombre"></td>
+                            <td data-bind="text: CantidadPreguntas"></td>
+                            <td data-bind="text: CantidadParticipantes"></td>
+                            <td data-bind="text: Vigencia"></td>
+                            <td data-bind="text: Activo() == true ? 'Activada': 'Desactivada'"></td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-info mr-2 command-edit" data-toggle="modal" data-target="#newPoll" data-bind="click: $root.editPoll" title="Editar encuesta"><em class="fa fa-edit fa-fw"></em></button>
+                                <button type="button" class="btn btn-sm btn-success mr-2 command-edit" data-bind="click: $root.showQuestions" title="Agregar preguntas"><em class="fa fa-bible fa-fw"></em></button>
+                                <button type="button" class="btn btn-sm btn-danger command-delete" title="Eliminar encuesta" id="deletePoll" data-bind="enable: CantidadParticipantes() == 0, click: $root.confirmDeletePoll"><em class="fa fa-trash fa-fw"></em></button>
+                                <button type="button" class="btn btn-sm btn-warning command-delete" title="Activar/Desactivar encuesta" id="changeStatusPoll" data-bind="click: $root.confirmChangeStatusPoll"><em class="fa fa-trash fa-fw"></em></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        @*<div class="card">
+                <div class="card-body">
+                    <table class="table table-striped my-4 w-100" id="pollTable">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Num. Preguntas</th>
+                                <th>Num. Participantes</th>
+                                <th>Vigencia</th>
+                                <th>Estatus</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: $root.encuestas">
+                            <tr class="gradeA">
+                                <td data-bind="text: Nombre"></td>
+                                <td data-bind="text: CantidadPreguntas"></td>
+                                <td data-bind="text: CantidadParticipantes"></td>
+                                <td data-bind="text: Vigencia"></td>
+                                <td data-bind="text: Activo() == true ? 'Activada': 'Desactivada'"></td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-info mr-2 command-edit" data-toggle="modal" data-target="#newPoll" data-bind="click: $root.editPoll" title="Editar encuesta"><em class="fa fa-edit fa-fw"></em></button>
+                                    <button type="button" class="btn btn-sm btn-success mr-2 command-edit" data-bind="click: $root.showQuestions" title="Agregar preguntas"><em class="fa fa-bible fa-fw"></em></button>
+                                    <button type="button" class="btn btn-sm btn-danger command-delete" title="Eliminar encuesta" id="deletePoll" data-bind="enable: CantidadParticipantes() == 0, click: $root.confirmDeletePoll"><em class="fa fa-trash fa-fw"></em></button>
+                                    <button type="button" class="btn btn-sm btn-warning command-delete" title="Activar/Desactivar encuesta" id="changeStatusPoll" data-bind="click: $root.confirmChangeStatusPoll"><em class="fa fa-trash fa-fw"></em></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>*@
+    </div>
+</div>
+
+
+<div id="divAddEdit" data-bind="visible: $root.divAddEditVisible">
+    <div class="content-heading">Sección Preguntas</div>
+    <button class="btn btn-primary btn-sm" type="button" data-bind="click: $root.hideAddEditForm">
+        <span class="btn-label">
+            <i class="fa fa-arrow-left"></i>
+        </span>Regresar
+    </button>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title">Información general de la encuesta</h3>
+                </div>
+                <div class="card-body">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Título</label>
+                            <div class="col-md-10">
+                                <input class="form-control col-lg-10" type="text" data-bind="value: $root.selectedPoll() != undefined ? $root.selectedPoll().Nombre: ''" readonly />
+                                <span class="form-text"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label class="col-md-2 col-form-label">Vigencia</label>
+                            <div class="col-md-10">
+                                <input class="form-control col-lg-10" type="text" data-bind="value:$root.selectedPoll() != undefined ? $root.selectedPoll().Vigencia: ''" readonly />
+                                <span class="form-text"></span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-labeled btn-success mb-2" type="button" data-toggle="modal" data-target="#newQuestion">
+                        <span class="btn-label">
+                            <i class="fa fa-bible"></i>
+                        </span>Agregar pregunta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="questionTable">
+                <thead>
+                    <tr>
+                        <th>Pregunta</th>
+                        <th>Tipo</th>
+                        <th>Estatus</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <!-- ko if: $root.selectedPoll() != undefined -->
+                <tbody data-bind="foreach: $root.selectedPoll().Preguntas">
+                    <tr class="gradeA">
+                        <td data-bind="text: Pregunta"></td>
+                        <td data-bind="text: EsAbierta() ? 'Abierta': EsMultiple() ? 'Múltiple': 'Individual'"></td>
+                        <td data-bind="text: Activo() == true ? 'Activada': 'Desactivada'"></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-info mr-2 command-edit" data-toggle="modal" data-target="#newQuestion" data-bind="@*enable: EsAbierta() == true,*@ click: $root.editQuestion" title="Editar pregunta"><em class="fa fa-edit fa-fw"></em></button>
+                            <button type="button" class="btn btn-sm btn-success mr-2 command-edit" data-bind="enable: EsAbierta() == false, click: $root.addResponseToQuestion" title="Agregar respuesta"><em class="fa fa-bible fa-fw"></em></button>
+                            <button type="button" class="btn btn-sm btn-danger command-delete" title="Eliminar pregunta" id="deleteQuestion" data-bind="enable: CantidadParticipantes() == 0, click: $root.confirmDeleteQuestion"><em class="fa fa-trash fa-fw"></em></button>
+                            <button type="button" class="btn btn-sm btn-warning command-delete" title="Activar/Desactivar pregunta" id="changeStatusQuestion" data-bind="click: $root.confirmChangeStatusQuestion"><em class="fa fa-trash fa-fw"></em></button>
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- /ko -->
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+@section BodyArea {
+    <div class="modal fade" id="newPoll" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLarge" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabelLarge"><span data-bind="text: $root.selectedPoll() != undefined ? 'Editar Encuesta' : 'Nueva Encuesta' "></span></h4>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h3 class="card-title">Información principal</h3>
+                                </div>
+                                <div class="card-body">
+                                    <fieldset>
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label">Título</label>
+                                            <div class="col-md-10">
+                                                <input id="pollName" class="form-control col-lg-10" type="text" data-bind="value: $root.pollName" />
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-2">
+                                            <label class="col-md-2 col-form-label mb-2">Vigencia</label>
+                                            <div class="col-xl-6 col-10">
+                                                <div class="input-group date" id="datetimepicker1">
+                                                    <input id="vigencia" class="form-control" type="text" data-bind="value:$root.vigencia" readonly />
+                                                    <span class="input-group-append input-group-addon">
+                                                        <span class="input-group-text fas fa-calendar-alt"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="card card-default" data-bind="visible: $root.selectedPoll() == undefined">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Territorio</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <fieldset>
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label">Estado</label>
+                                                <div class="col-md-10">
+                                                    <select id="addEditState" class="form-control" data-bind="options: stateAddEditList, optionsValue:'Identifier', optionsText: 'State', value: addEditState"></select>
+                                                    <span class="form-text"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label"></label>
+                                                <div class="col-md-10" data-bind="visible: filterAddEditList().length > 0 && $root.addEditState() > 0">
+                                                    <select class="form-control" data-bind="options: filterAddEditList, optionsValue: $data, optionsText: 'Description', optionsCaption: 'Agregar filtro:', value: selectedAddEditFilterList"></select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" data-bind="visible: searchAddEditList().length > 0 && $root.addEditState() > 0, foreach: searchAddEditList">
+                                                <label class="col-md-2 col-form-label" data-bind="text: $data.description"></label>
+                                                <div class="col-md-10">
+                                                    <select class="form-control" data-bind="visible: false ,options: $data.comparerList, optionsValue: 'Comparador', optionsText: 'Descripcion', value: $data.selectedComparer"></select>
+                                                    <!-- ko if: isTerritory() == true -->
+                                                    <select class="form-control" data-bind="css: { error: $data.error() == true },options: $data.territoryList, optionsValue: 'Id', optionsText: 'Descripcion', optionsCaption: '[ELIGE UNA OPCIÓN]', value: $data.selectedValue"></select>
+                                                    <!-- /ko -->
+                                                    <!-- ko if: isTerritory() == false -->
+                                                    <input class="form-control" type="text" data-bind="css: { error: $data.error() == true }, value: $data.selectedValue" />
+                                                    <!-- /ko -->
+                                                    <span class="form-text"></span>
+                                                </div>
+                                            </div>
+
+                                            <div data-bind="visible: searchAddEditList().length  && $root.addEditState() > 0">
+                                                <div>
+                                                    <a class="btn btn-oval btn-primary" data-bind="click: addEditReset">Limpiar</a>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-bind="click: $root.pollChanges">Guardar</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" data-bind="click: $root.resetNewPoll">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="newQuestion" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLarge" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabelLarge">Agregar pregunta</h4>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Pregunta</label>
+                            <div class="col-md-10">
+                                <input id="questionName" class="form-control col-lg-10" type="text" data-bind="value:$root.currentQuestion" />
+                                <span class="form-text"></span>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group row" id="radioGroupQuestionType">
+                        <div class="col-md-10">
+                            <div class="c-radio">
+                                <label>
+                                    <input type="radio" name="typeQuestion" value="individual" data-bind="checked: $root.questionType" />
+                                    <span class="fa fa-circle"></span>Opción individual
+                                </label>
+                            </div>
+                            <div class="c-radio">
+                                <label>
+                                    <input type="radio" name="typeQuestion" value="multiple" data-bind="checked: $root.questionType" />
+                                    <span class="fa fa-circle"></span>Opción múltiple
+                                </label>
+                            </div>
+                            <div class="c-radio">
+                                <label>
+                                    <input type="radio" name="typeQuestion" value="open" data-bind="checked: $root.questionType" />
+                                    <span class="fa fa-circle"></span>Abierta
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-bind="click: $root.questionChanges">Agregar</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" data-bind="click: $root.closePopQuestion">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="@Scripts.Url("~/Vendor/jquery-bootgrid/dist/jquery.bootgrid.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jquery-bootgrid/dist/jquery.bootgrid.fa.js")"></script>
+
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+
+    <script src="@Scripts.Url("~/Vendor/bootstrap-filestyle/src/bootstrap-filestyle.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/chosen-js/chosen.jquery.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-slider/dist/bootstrap-slider.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/inputmask/dist/jquery.inputmask.bundle.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/moment/min/moment-with-locales.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/select2/dist/js/select2.full.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/sweetalert/dist/sweetalert.min.js")"></script>
+
+    @Scripts.Render("~/Scripts/knockout-3.5.1.js")
+    @Scripts.Render("~/Scripts/Areas/Poll/indexPoll.js")
+
+
+}

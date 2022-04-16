@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="42796b4d028d4b458db84101042036ae" Name="Diagram1">
+        <EntityTypeShape EntityType="DBSMovilizacionIdentityModel.ApplicationUserGroups" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSMovilizacionIdentityModel.AspNetUsers" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSMovilizacionIdentityModel.ApplicationGroupRoles" Width="1.5" PointX="3" PointY="7.125" />
+        <EntityTypeShape EntityType="DBSMovilizacionIdentityModel.ApplicationGroups" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSMovilizacionIdentityModel.AspNetRoles" Width="1.5" PointX="2.75" PointY="3.875" />
+        <EntityTypeShape EntityType="DBSMovilizacionIdentityModel.AspNetUserClaims" Width="1.5" PointX="7.25" PointY="1.375" />
+        <EntityTypeShape EntityType="DBSMovilizacionIdentityModel.AspNetUserLogins" Width="1.5" PointX="7.25" PointY="4.125" />
+        <AssociationConnector Association="DBSMovilizacionIdentityModel.FK_dbo_ApplicationGroupRoles_dbo_ApplicationGroups_ApplicationGroupId" />
+        <AssociationConnector Association="DBSMovilizacionIdentityModel.FK_dbo_ApplicationUserGroups_dbo_ApplicationGroups_ApplicationGroupId" />
+        <AssociationConnector Association="DBSMovilizacionIdentityModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="DBSMovilizacionIdentityModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="DBSMovilizacionIdentityModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

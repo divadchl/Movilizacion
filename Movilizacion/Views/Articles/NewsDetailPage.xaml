@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:grial="clr-namespace:UXDivers.Grial;assembly=UXDivers.Grial"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	x:Class="Movilizacion.Views.Articles.NewsDetailPage"
+	Title="{ grial:Translate PageTitleNewsDetail }"
+	BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }">
+    
+    <ScrollView
+		Padding="{ StaticResource MainWrapperPadding }">
+        <Grid
+            RowDefinitions="240, *"
+			RowSpacing="0"
+			VerticalOptions="FillAndExpand">
+
+            <!-- MAIN IMAGE -->
+            <ffimageloading:CachedImage
+				Grid.Row="0"
+				Source="{Binding NewsNotification.UriImage}"
+				Aspect="AspectFill"
+				BackgroundColor="Black"
+				HorizontalOptions="FillAndExpand" />
+
+            <!-- MAIN HEADER -->
+            <StackLayout
+				HorizontalOptions="Start"
+				Grid.Row="0"
+				Padding="20"
+				Spacing="0"
+				VerticalOptions="End"
+				grial:Effects.ApplyIOSSafeAreaAsPadding="Left,Right">
+            </StackLayout>
+
+            <!-- CONTENT -->
+            <Grid
+                RowDefinitions="Auto, Auto, Auto, 10"
+				Grid.Row="1"
+				RowSpacing="0"
+				BackgroundColor="{ DynamicResource BasePageColor }">
+
+                <!--HEADER BACKGROUND-->
+                <BoxView
+					Grid.Row="0"
+					BackgroundColor="{ DynamicResource ArticleHeaderBackgroundColor }" />
+                <Label
+                    Padding="15,5"
+                    TextColor="Black"
+					Text="{ Binding NewsNotification.Title }"
+					LineBreakMode="WordWrap"
+					VerticalTextAlignment="Center"
+					FontSize="20"
+					Style="{ StaticResource LabelBoldStyle }" />
+                <!-- TEXT -->
+                <Grid
+                    RowDefinitions="Auto"
+					Grid.Row="1"
+					Padding="20,20,20,0"
+					VerticalOptions="Center"
+					RowSpacing="20"
+					grial:Effects.ApplyIOSSafeAreaAsPadding="Left,Right">
+
+                    <!-- MAIN PARAGRAPH -->
+                    <Label
+						Grid.Row="0"
+						Text="{ Binding NewsNotification.Content }"
+						VerticalOptions="Center"
+						TextColor="{ DynamicResource BaseTextColor }" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
